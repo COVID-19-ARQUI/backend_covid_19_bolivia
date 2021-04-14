@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ArquiSoftApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ArquiSoftApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ArquiSoftApplication.class, args);
+    }
 
 }

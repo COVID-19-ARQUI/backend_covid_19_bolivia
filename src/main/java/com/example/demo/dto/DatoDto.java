@@ -1,10 +1,9 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.Dato;
 
 import java.util.Date;
 
-public class  DatoDto {
+public class DatoDto {
 
     private Integer idDato;
     private String dato;
@@ -13,7 +12,8 @@ public class  DatoDto {
     private String tipoDeDato;
     private Integer paisId;
 
-    public DatoDto(){}
+    public DatoDto() {
+    }
 
     public Integer getIdDato() {
         return idDato;

@@ -5,12 +5,10 @@
 <mapper namespace="com.example.demo.dao.TransactionDao">
     <insert id="create" parameterType="com.example.demo.domain.Transaction">
         INSERT INTO transaction
-        VALUES (
-            null,
-            #{txHost},
-            #{txUserId},
-            #{txDate}
-        )
+        VALUES (null,
+                #{txHost},
+                #{txUserId},
+                #{txDate})
     </insert>
     <select id="getLastInsertId" resultType="java.lang.Integer">
         SELECT LAST_INSERT_ID()

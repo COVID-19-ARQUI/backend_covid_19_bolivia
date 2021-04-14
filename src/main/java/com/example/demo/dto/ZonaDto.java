@@ -7,7 +7,8 @@ public class ZonaDto {
     private String Departamento;
     private String Ciudad;
     private String Zona;
-    public ZonaDto(){
+
+    public ZonaDto() {
     }
 
     public ZonaDto(Integer idZona, String departamento, String ciudad, String zona) {

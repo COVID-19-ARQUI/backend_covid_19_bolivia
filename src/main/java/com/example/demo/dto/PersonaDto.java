@@ -14,7 +14,7 @@ public class PersonaDto {
     private String urlImage;
     private String nameImage;
 
-    public PersonaDto(){
+    public PersonaDto() {
     }
 
     public PersonaDto(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password, String urlImage, String nameImage) {

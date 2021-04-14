@@ -20,7 +20,7 @@ public class DashboardService {
     private DashboardRepository dashboardRepository;
     private DatoRepository datoRepository;
     private DepartmentRepository departmentRepository;
-//    private TransactionRepository transactionRepository;
+    //    private TransactionRepository transactionRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
 
     @Autowired
@@ -31,14 +31,12 @@ public class DashboardService {
     }
 
 
+    public List<DashboardDto> getdashboard() {
 
-
-    public List<DashboardDto> getdashboard(){
-
-        List<DepartmentDto> departments=departmentRepository.getDepartments();
+        List<DepartmentDto> departments = departmentRepository.getDepartments();
         LOGGER.debug(departments.toString());
         List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
-            DashboardDto dashboard= new DashboardDto();
+            DashboardDto dashboard = new DashboardDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
             dashboard.setDepartment(departmentDto.getDepartment());
             dashboard.setDatoDto(datoRepository.getDatos(departmentDto.getIdDepartment()));

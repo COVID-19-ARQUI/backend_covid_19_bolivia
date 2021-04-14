@@ -13,7 +13,8 @@ public class GraphicDto {
     private int idView;
     private int idTypeGraphic;
 
-    public  GraphicDto(){}
+    public GraphicDto() {
+    }
 
 
     public GraphicDto(Integer idGraphic, String name, String txUser, String txHost, String txDate, int active, int idView, int idTypeGraphic) {
