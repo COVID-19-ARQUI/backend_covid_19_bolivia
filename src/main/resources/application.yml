@@ -24,7 +24,7 @@ mybatis:
   configuration:
     default-fetch-size: 100
     default-statement-timeout: 30
-  mapper-locations: classpath:/dao/*Dao.xml
+  mapper-locations: classpath:/dao/*Repository.xml
 
 server:
   error:

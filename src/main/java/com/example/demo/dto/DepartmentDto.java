@@ -1,16 +1,10 @@
 package com.example.demo.dto;
 
-
-import java.util.Date;
-import java.util.List;
-
-public class DashboardDto {
-
+public class DepartmentDto {
     private Integer idDepartment;
     private String department;
-    private List<DatoDto> datoDto;
 
-    public DashboardDto() {
+    public DepartmentDto() {
     }
 
     public Integer getIdDepartment() {
@@ -29,11 +23,11 @@ public class DashboardDto {
         this.department = department;
     }
 
-    public List<DatoDto> getDatoDto() {
-        return datoDto;
-    }
-
-    public void setDatoDto(List<DatoDto> datoDto) {
-        this.datoDto = datoDto;
+    @Override
+    public String toString() {
+        return "DepartmentDto{" +
+                "idDepartment=" + idDepartment +
+                ", department='" + department + '\'' +
+                '}';
     }
 }

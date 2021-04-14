@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.DatoRepository">
+
+    <select id="getDatos" resultType="com.example.demo.dto.DatoDto">
+        SELECT a.id_dato as idDato,
+               a.dato as dato,
+               a.fecha as fecha,
+               a.zona_id_zona as zonaId,
+               (SELECT c.tipo_de_dato FROM tipodedato c WHERE a.tipodedato_id_tdd=c.id_tdd) as tipoDeDato,
+               a.id_pais as paisId
+        FROM dato a,zona b
+        WHERE b.id_zona=a.zona_id_zona AND b.Departamento_id_dep=#{idDepartment}
+    </select>
+</mapper>
