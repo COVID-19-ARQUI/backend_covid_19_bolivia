@@ -8,4 +8,5 @@ import java.util.*;
 @Mapper
 public interface DatoRepository {
     public List<DatoDto> getDatos(Integer idDepartment);
+    public  List<DatoDto> getDatosGenerales();
 }

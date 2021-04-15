@@ -16,4 +16,15 @@
         WHERE b.id_zona = a.zona_id_zona
           AND b.Departamento_id_dep = #{idDepartment}
     </select>
+
+    <select id="getDatosGenerales" resultType="com.example.demo.dto.DatoDto">
+        SELECT a.id_dato as idDato,
+               a.dato as dato,
+               a.fecha as fecha,
+               a.zona_id_zona as zonaId,
+               (SELECT c.tipo_de_dato FROM tipodedato c WHERE a.tipodedato_id_tdd=c.id_tdd) as tipoDeDato,
+               a.id_pais as paisId
+        FROM dato a,zona b
+        WHERE b.id_zona=a.zona_id_zona AND b.Departamento_id_dep=1
+    </select>
 </mapper>
