@@ -26,9 +26,10 @@ public class DatoControler {
         this.transactionService = transactionService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DatoDto> getdato(HttpServletRequest request) {
-        return datoService.getdatos();
+    @RequestMapping(value = "/department/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DatoDto> findVehiclesByCompany(HttpServletRequest request, @PathVariable Integer departmentId) {
+        List<DatoDto> vehicleListDriver=datoService.listDataofDepartament(departmentId);
+        return vehicleListDriver;
     }
 
     @RequestMapping(value = "/new/single", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

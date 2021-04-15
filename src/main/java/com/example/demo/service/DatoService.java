@@ -60,4 +60,9 @@ public class DatoService {
         LOGGER.warn(zoneId.toString());
         return dataDto;
     }
+
+    public List<DatoDto> listDataofDepartament(Integer departmentId){
+        List<DatoDto> listDataofDepartament = datoRepository.getDatos(departmentId);
+        return listDataofDepartament;
+    }
 }
