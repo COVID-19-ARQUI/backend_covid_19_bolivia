@@ -4,25 +4,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DatoRepository">
 
-    <select id="getDatos" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_dato as idDato,
-               a.dato as dato,
-               a.fecha as fecha,
-               a.zona_id_zona as zonaId,
-               (SELECT c.tipo_de_dato FROM tipodedato c WHERE a.tipodedato_id_tdd=c.id_tdd) as tipoDeDato,
-               a.id_pais as paisId
-        FROM dato a,zona b
-        WHERE b.id_zona=a.zona_id_zona AND b.Departamento_id_dep=#{idDepartment}
+
+
+    <resultMap id="listDataofDepartament" type="com.example.demo.dto.DatoDto" >
+        <result column="idDato" property="idDato"/>
+        <result column="dato" property="dato"/>
+        <result column="fecha" property="fecha"/>
+        <result column="tipoDeDato" property="tipoDeDato"/>
+        <result column="txUser" property="txUser"/>
+        <result column="txHost" property="txHost"/>
+        <result column="txDate" property="txDate"/>
+        <result column="idZona" property="idZona"/>
+    </resultMap>
+
+    <select id="dataofDepartament" resultMap="listDataofDepartament">
+
+        select a.id_dato as idDato, a.dato as dato, a.fecha as fecha,
+               d.tipo_de_dato as tipoDeDato,a.tx_user as txUser,
+               a.tx_host as txHost, a.tx_date as txDate, b.id_zona as idZona
+        from dato a, zona b, departamento c, tipodedato d
+        where a.zona_id_zona = b.id_zona
+          and b.Departamento_id_dep = c.id_dep
+          and d.id_tdd = a.tipodedato_id_tdd
+          and c.id_dep= #{idDepartment}
+
     </select>
 
-    <select id="getDatosGenerales" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_dato as idDato,
-               a.dato as dato,
-               a.fecha as fecha,
-               a.zona_id_zona as zonaId,
-               (SELECT c.tipo_de_dato FROM tipodedato c WHERE a.tipodedato_id_tdd=c.id_tdd) as tipoDeDato,
-               a.id_pais as paisId
-        FROM dato a,zona b
-        WHERE b.id_zona=a.zona_id_zona AND b.Departamento_id_dep=1
-    </select>
 </mapper>
