@@ -8,7 +8,6 @@ public class Dato {
     private Date fecha;
     private Integer zonaId;
     private Integer tipodedatoId;
-    private Integer idPais;
     private String txUser;
     private String txHost;
     private Date txDate;
@@ -16,13 +15,12 @@ public class Dato {
     public Dato() {
     }
 
-    public Dato(Integer idDato, String dato, Date fecha, Integer zonaId, Integer tipodedatoId, Integer idPais, String txUser, String txHost, Date txDate) {
+    public Dato(Integer idDato, String dato, Date fecha, Integer zonaId, Integer tipodedatoId, String txUser, String txHost, Date txDate) {
         this.idDato = idDato;
         this.dato = dato;
         this.fecha = fecha;
         this.zonaId = zonaId;
         this.tipodedatoId = tipodedatoId;
-        this.idPais = idPais;
         this.txUser = txUser;
         this.txHost = txHost;
         this.txDate = txDate;
@@ -66,14 +64,6 @@ public class Dato {
 
     public void setTipodedatoId(Integer tipodedatoId) {
         this.tipodedatoId = tipodedatoId;
-    }
-
-    public Integer getIdPais() {
-        return idPais;
-    }
-
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
     }
 
     public String getTxUser() {

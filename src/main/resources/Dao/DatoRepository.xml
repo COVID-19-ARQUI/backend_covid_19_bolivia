@@ -29,4 +29,9 @@
         WHERE b.id_zona = a.zona_id_zona
           AND b.Departamento_id_dep = 1
     </select>
+    <insert id="addSingleData" parameterType="com.example.demo.domain.Dato">
+        INSERT INTO `dato`
+        (`dato`, `fecha`, `zona_id_zona`, `tipodedato_id_tdd`, `tx_user`, `tx_host`, `tx_date`)
+        VALUES (#{dato}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{txUser}, #{txHost}, #{txDate});
+    </insert>
 </mapper>

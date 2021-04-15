@@ -35,7 +35,7 @@ public class DatoControler {
     public DataDto pushSingleData(@RequestBody DataDto dataDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
-        return datoService.pushSingleData(dataDto);
+        return datoService.pushSingleData(dataDto, transaction);
     }
 
 
