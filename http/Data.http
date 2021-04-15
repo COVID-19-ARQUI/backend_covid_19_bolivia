@@ -1,0 +1,15 @@
+### Add new data
+POST http://localhost:8080/data/new/single
+Accept: application/json
+Content-Type: application/json
+
+{
+  "department": "",
+  "municipality": "",
+  "date": "2021-12-31T16:00:00Z",
+  "confirmed": 100,
+  "deaths": 100,
+  "recovered": 100,
+  "actives": 100,
+  "vaccinated": 0
+}
