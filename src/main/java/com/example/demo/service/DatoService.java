@@ -7,11 +7,13 @@ import com.example.demo.domain.Dato;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DatoDto;
+import com.example.demo.dto.DepartmentDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -64,5 +66,19 @@ public class DatoService {
     public List<DatoDto> listDataofDepartament(Integer departmentId) {
         List<DatoDto> listDataofDepartament = datoRepository.getDatos(departmentId);
         return listDataofDepartament;
+    }
+
+    public List<DepartmentDto> getDepartments() {
+        List<DepartmentDto> departments = departmentRepository.getDepartments();
+        List<DepartmentDto> result = new ArrayList<>();
+        departments.forEach(departmentDto -> {
+            DepartmentDto dto = new DepartmentDto();
+            dto.setDepartment(departmentDto.getDepartment());
+            dto.setIdDepartment(departmentDto.getIdDepartment());
+            dto.setMunicipalities(departmentRepository.getMunicipalities(departmentDto.getIdDepartment()));
+            LOGGER.error(dto.toString());
+            result.add(dto);
+        });
+        return result;
     }
 }

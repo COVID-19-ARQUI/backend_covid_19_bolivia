@@ -3,11 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DepartmentRepository">
-
     <select id="getDepartments" resultType="com.example.demo.dto.DepartmentDto">
         SELECT id_dep as idDepartment,
                Nombre as department
         FROM Departamento
         WHERE id_dep != 1
+    </select>
+    <select id="getMunicipalities" resultType="java.lang.String">
+        SELECT m.Nombre
+        FROM zona z,
+             municipio m
+        WHERE z.Municipio_id_municipio = m.id_municipio
+          AND z.Departamento_id_dep = #{idDepartment}
     </select>
 </mapper>

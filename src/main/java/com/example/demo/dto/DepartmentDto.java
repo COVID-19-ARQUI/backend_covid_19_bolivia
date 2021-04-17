@@ -1,10 +1,21 @@
 package com.example.demo.dto;
 
+import java.util.List;
+
 public class DepartmentDto {
     private Integer idDepartment;
     private String department;
+    private List<String> municipalities;
 
     public DepartmentDto() {
+    }
+
+    public List<String> getMunicipalities() {
+        return municipalities;
+    }
+
+    public void setMunicipalities(List<String> municipalities) {
+        this.municipalities = municipalities;
     }
 
     public Integer getIdDepartment() {
@@ -28,6 +39,7 @@ public class DepartmentDto {
         return "DepartmentDto{" +
                 "idDepartment=" + idDepartment +
                 ", department='" + department + '\'' +
+                ", municipalities=" + municipalities.toString() +
                 '}';
     }
 }

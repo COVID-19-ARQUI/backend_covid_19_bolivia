@@ -17,3 +17,8 @@ Content-Type: application/json
   "actives": null,
   "vaccinated": 100
 }
+
+###
+GET http://localhost:8080/data/departments/
+Accept: application/json
+Content-Type: application/json
