@@ -35,21 +35,21 @@ public class DatoService {
 
     public DataDto pushSingleData(DataDto dataDto, Transaction transaction) {
         Integer zoneId = zonaRepository.getZoneByDepartment(dataDto.getDepartment(), dataDto.getMunicipality());
-
+        LOGGER.warn(zoneId != null ? zoneId.toString() : null);
         if (dataDto.getConfirmed() != null) {
-            Dato contagiados = new Dato(null, dataDto.getConfirmed().toString(), dataDto.getDate(), zoneId, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Dato contagiados = new Dato(null, dataDto.getConfirmed().toString(), dataDto.getDate(), zoneId, 1, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(contagiados);
         }
         if (dataDto.getDeaths() != null) {
-            Dato muertos = new Dato(null, dataDto.getDeaths().toString(), dataDto.getDate(), zoneId, 2, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Dato muertos = new Dato(null, dataDto.getDeaths().toString(), dataDto.getDate(), zoneId, 2, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(muertos);
         }
         if (dataDto.getRecovered() != null) {
-            Dato recuperados = new Dato(null, dataDto.getRecovered().toString(), dataDto.getDate(), zoneId, 3, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Dato recuperados = new Dato(null, dataDto.getRecovered().toString(), dataDto.getDate(), zoneId, 3, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(recuperados);
         }
         if (dataDto.getVaccinated() != null) {
-            Dato vacunados = new Dato(null, dataDto.getVaccinated().toString(), dataDto.getDate(), zoneId, 4, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Dato vacunados = new Dato(null, dataDto.getVaccinated().toString(), dataDto.getDate(), zoneId, 4, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(vacunados);
         }
 
@@ -61,7 +61,7 @@ public class DatoService {
         return dataDto;
     }
 
-    public List<DatoDto> listDataofDepartament(Integer departmentId){
+    public List<DatoDto> listDataofDepartament(Integer departmentId) {
         List<DatoDto> listDataofDepartament = datoRepository.getDatos(departmentId);
         return listDataofDepartament;
     }
