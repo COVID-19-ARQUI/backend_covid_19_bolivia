@@ -34,7 +34,6 @@ public class DashboardService {
     public List<DashboardDto> getdashboard() {
 
         List<DepartmentDto> departments = departmentRepository.getDepartments();
-        LOGGER.debug(departments.toString());
         List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
             DashboardDto dashboard = new DashboardDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
