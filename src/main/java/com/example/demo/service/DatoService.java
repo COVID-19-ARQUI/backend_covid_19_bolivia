@@ -7,6 +7,7 @@ import com.example.demo.domain.Dato;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DatoDto;
+import com.example.demo.dto.DepartmentDataDto;
 import com.example.demo.dto.DepartmentDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,5 +85,10 @@ public class DatoService {
             result.add(dto);
         });
         return result;
+    }
+
+    public List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId){
+        List<DepartmentDataDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
+        return listDepartmentsDataById;
     }
 }

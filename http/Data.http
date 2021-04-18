@@ -22,3 +22,8 @@ Content-Type: application/json
 GET http://localhost:8080/data/departments/
 Accept: application/json
 Content-Type: application/json
+
+### Add new data
+GET http://localhost:8080/data/departmentData/1
+Accept: application/json
+Content-Type: application/json

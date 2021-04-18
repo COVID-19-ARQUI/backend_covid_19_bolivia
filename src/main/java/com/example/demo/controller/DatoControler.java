@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DatoDto;
+import com.example.demo.dto.DepartmentDataDto;
 import com.example.demo.dto.DepartmentDto;
 import com.example.demo.service.DatoService;
 import com.example.demo.service.TransactionService;
@@ -48,6 +49,12 @@ public class DatoControler {
     @RequestMapping(value = "/departments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentDto> getAllDepartments() {
         return datoService.getDepartments();
+    }
+
+    @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DepartmentDataDto> getDataByDepartmentsId(HttpServletRequest request, @PathVariable Integer departmentId) {
+        List<DepartmentDataDto> listDepartment=datoService.getDataByDepartmentsId(departmentId);
+        return listDepartment;
     }
 
 }
