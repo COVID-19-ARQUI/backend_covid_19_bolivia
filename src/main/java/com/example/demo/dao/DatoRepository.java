@@ -11,7 +11,7 @@ public interface DatoRepository {
     public List<DatoDto> getDatos(Integer idDepartment);
 
     public List<DatoDto> getDatosGenerales();
-
+    public List<DatoDto>sumdato(Integer idDepartment);
     // Add sigle row on table Dato
     public void addSingleData(Dato dato);
 }

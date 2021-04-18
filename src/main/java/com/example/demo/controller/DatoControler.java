@@ -32,7 +32,12 @@ public class DatoControler {
         List<DatoDto> vehicleListDriver=datoService.listDataofDepartament(departmentId);
         return vehicleListDriver;
     }
-
+//sumdatos
+    @RequestMapping(value = "/departmentgeneral/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DatoDto> sumadedatos(HttpServletRequest request, @PathVariable Integer departmentId) {
+        List<DatoDto> vehicleListDriver=datoService.sumdatos(departmentId);
+        return vehicleListDriver;
+    }
     @RequestMapping(value = "/new/single", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataDto pushSingleData(@RequestBody DataDto dataDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);

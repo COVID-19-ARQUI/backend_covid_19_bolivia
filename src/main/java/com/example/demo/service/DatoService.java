@@ -67,6 +67,10 @@ public class DatoService {
         List<DatoDto> listDataofDepartament = datoRepository.getDatos(departmentId);
         return listDataofDepartament;
     }
+    public List<DatoDto> sumdatos(Integer departmentId) {
+        List<DatoDto> listDataofDepartament = datoRepository.sumdato(departmentId);
+        return listDataofDepartament;
+    }
 
     public List<DepartmentDto> getDepartments() {
         List<DepartmentDto> departments = departmentRepository.getDepartments();
