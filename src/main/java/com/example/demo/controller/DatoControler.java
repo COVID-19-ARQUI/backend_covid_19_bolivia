@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Transaction;
+import com.example.demo.dto.DashboardDto;
+import com.example.demo.dto.DataDto;
+import com.example.demo.dto.DatoDto;
+import com.example.demo.dto.DepartmentDto;
 import com.example.demo.dto.*;
 import com.example.demo.service.DatoService;
 import com.example.demo.service.TransactionService;
@@ -64,4 +68,8 @@ public class DatoControler {
     }
 
 
+    @RequestMapping(value = "/Bolivia",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DatoDto> getGeneral(HttpServletRequest request) {
+        return datoService.getdatos();
+    }
 }
