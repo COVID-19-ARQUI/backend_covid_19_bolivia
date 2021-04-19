@@ -35,6 +35,12 @@ public class DatoService {
         List<DatoDto> datoDtoList = datoRepository.getDatosGenerales();
         return datoDtoList;
     }
+    public DatoDto getdatosvac1(Integer departmentId) {
+        return datoRepository.vacuna1final(departmentId);
+    }
+    public DatoDto getdatosvac2(Integer departmentId) {
+        return datoRepository.vacuna2final(departmentId);
+    }
 
     public DataDto pushSingleData(DataDto dataDto, Transaction transaction) {
         Integer zoneId = zonaRepository.getZoneByDepartment(dataDto.getDepartment(), dataDto.getMunicipality());

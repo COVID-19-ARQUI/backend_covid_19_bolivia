@@ -53,6 +53,30 @@
         WHERE b.id_zona = a.zona_id_zona
           AND b.Departamento_id_dep = #{idDepartment} GROUP BY a.tipodedato_id_tdd
     </select>
+    <select id="vacuna1final" resultType="com.example.demo.dto.DatoDto" >
+       SELECT a.id_dato                                                                      as idDato,
+               a.dato                                                                         as dato,
+               a.fecha                                                                        as fecha,
+               a.zona_id_zona                                                                 as zonaId,
+               (SELECT c.tipo_de_dato FROM tipodedato c WHERE a.tipodedato_id_tdd = c.id_tdd) as tipoDeDato,
+               a.id_pais                                                                      as paisId
+        FROM dato a,
+             zona b
+        WHERE b.id_zona = a.zona_id_zona  AND b.Departamento_id_dep = #{idDepartment} and a.tipodedato_id_tdd=4  order by a.fecha
+        DESC LIMIT     1
+    </select>
+    <select id="vacuna2final" resultType="com.example.demo.dto.DatoDto" >
+       SELECT a.id_dato                                                                      as idDato,
+               a.dato                                                                         as dato,
+               a.fecha                                                                        as fecha,
+               a.zona_id_zona                                                                 as zonaId,
+               (SELECT c.tipo_de_dato FROM tipodedato c WHERE a.tipodedato_id_tdd = c.id_tdd) as tipoDeDato,
+               a.id_pais                                                                      as paisId
+        FROM dato a,
+             zona b
+        WHERE b.id_zona = a.zona_id_zona  AND b.Departamento_id_dep = #{idDepartment}  and a.tipodedato_id_tdd=5  order by a.fecha
+        DESC LIMIT     1
+    </select>
     <select id="dataofDepartament" resultMap="listDataofDepartament">
 
         select a.id_dato      as idDato,

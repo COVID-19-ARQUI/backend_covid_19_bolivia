@@ -40,6 +40,17 @@ public class DatoControler {
         List<DatoDto> vehicleListDriver=datoService.sumdatos(departmentId);
         return vehicleListDriver;
     }
+    //vacunas
+    @RequestMapping(value = "/departmentvacuna/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DatoDto vacunasdatos(HttpServletRequest request, @PathVariable Integer departmentId) {
+        DatoDto vehicleListDriver=datoService.getdatosvac1(departmentId);
+        return vehicleListDriver;
+    }
+    @RequestMapping(value = "/departmentvacuna2/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DatoDto vacunas2datos(HttpServletRequest request, @PathVariable Integer departmentId) {
+        DatoDto vehicleListDriver=datoService.getdatosvac2(departmentId);
+        return vehicleListDriver;
+    }
     @RequestMapping(value = "/new/single", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataDto pushSingleData(@RequestBody DataDto dataDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
