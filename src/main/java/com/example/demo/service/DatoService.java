@@ -93,4 +93,9 @@ public class DatoService {
         List<DateCovidDto> mostRecentDateOfCovidData = datoRepository.mostRecentDateOfCovidData();
         return mostRecentDateOfCovidData;
     }
+
+    public List<DataCovidDepartmentDto>listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId){
+        List<DataCovidDepartmentDto>list = datoRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+        return list;
+    }
 }

@@ -58,5 +58,10 @@ public class DatoControler {
         return datoService.mostRecentDateOfCovidData();
     }
 
+    @RequestMapping(value = "/dataOfDepartmentAndTypeDate/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(HttpServletRequest request,@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+        return datoService.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+    }
+
 
 }

@@ -88,5 +88,15 @@
             FROM dato a)
     </select>
 
+    <select id="listDataOfDepartmentAndTypeDate" resultType="com.example.demo.dto.DataCovidDepartmentDto">
+        select b.dato, b.fecha
+        from tipodedato a, dato b, zona c, departamento d
+        where a.id_tdd = #{tipoDatoId}
+        and d.id_dep = #{departmentId}
+        and d.id_dep = c.Departamento_id_dep
+        and b.zona_id_zona = c.id_zona
+        and a.id_tdd = b.tipodedato_id_tdd
+    </select>
+
 
 </mapper>

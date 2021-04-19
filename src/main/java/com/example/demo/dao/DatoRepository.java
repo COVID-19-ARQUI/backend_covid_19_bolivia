@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Dato;
+import com.example.demo.dto.DataCovidDepartmentDto;
 import com.example.demo.dto.DatoDto;
 import com.example.demo.dto.DateCovidDto;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,5 @@ public interface DatoRepository {
     // Add sigle row on table Dato
     public void addSingleData(Dato dato);
     public List<DateCovidDto> mostRecentDateOfCovidData();
+    public List<DataCovidDepartmentDto>listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId);
 }
