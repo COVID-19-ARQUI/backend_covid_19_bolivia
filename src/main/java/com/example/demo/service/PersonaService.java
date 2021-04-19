@@ -17,7 +17,7 @@ public class PersonaService {
         this.personaRepository = personaRepository;
     }
 
-    public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction){
+    public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
         Persona persona = new Persona();
         persona.setNicknameUser(registerUserDto.getNicknameUser());
         persona.setName(registerUserDto.getName());

@@ -19,10 +19,13 @@
 
     <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DepartmentDataDto">
         select b.dato, b.fecha, d.tipo_de_dato as tipoDeDato
-        from departamento a, dato b, zona c, tipodedato d
+        from departamento a,
+             dato b,
+             zona c,
+             tipodedato d
         where b.zona_id_zona = c.id_zona
-        and a.id_dep = c.Departamento_id_dep
-        and d.id_tdd = b.tipodedato_id_tdd
-        and a.id_dep = #{departmentId}
+          and a.id_dep = c.Departamento_id_dep
+          and d.id_tdd = b.tipodedato_id_tdd
+          and a.id_dep = #{departmentId}
     </select>
 </mapper>
