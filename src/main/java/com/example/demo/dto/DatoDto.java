@@ -6,8 +6,8 @@ import java.util.Date;
 public class DatoDto {
 
     private Integer idDato;
-    private String dato;
-    private Date fecha;
+    private Integer dato;
+    private String fecha;
     private Integer zonaId;
     private String tipoDeDato;
     private Integer paisId;
@@ -23,19 +23,19 @@ public class DatoDto {
         this.idDato = idDato;
     }
 
-    public String getDato() {
+    public Integer getDato() {
         return dato;
     }
 
-    public void setDato(String dato) {
+    public void setDato(Integer dato) {
         this.dato = dato;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

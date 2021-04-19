@@ -39,6 +39,7 @@
              zona b
         WHERE b.id_zona = a.zona_id_zona
           AND b.Departamento_id_dep = 1
+        ORDER BY a.fecha ASC
     </select>
     <select id="sumdato" resultType="com.example.demo.dto.DatoDto">
         SELECT a.id_dato                                                                      as idDato,
@@ -50,8 +51,7 @@
         FROM dato a,
              zona b
         WHERE b.id_zona = a.zona_id_zona
-          AND b.Departamento_id_dep = #{idDepartment}
-        group by a.tipodedato_id_tdd
+          AND b.Departamento_id_dep = #{idDepartment} GROUP BY a.tipodedato_id_tdd
     </select>
     <select id="dataofDepartament" resultMap="listDataofDepartament">
 
@@ -100,5 +100,16 @@
             SELECT MAX(a.fecha)
             FROM dato a)
     </select>
+
+    <select id="listDataOfDepartmentAndTypeDate" resultType="com.example.demo.dto.DataCovidDepartmentDto">
+        select b.dato, b.fecha
+        from tipodedato a, dato b, zona c, departamento d
+        where a.id_tdd = #{tipoDatoId}
+        and d.id_dep = #{departmentId}
+        and d.id_dep = c.Departamento_id_dep
+        and b.zona_id_zona = c.id_zona
+        and a.id_tdd = b.tipodedato_id_tdd
+    </select>
+
 
 </mapper>

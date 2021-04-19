@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Dato;
+import com.example.demo.dto.DataCovidDepartmentDto;
 import com.example.demo.dto.DatoDto;
 import com.example.demo.dto.DateCovidDto;
 import com.example.demo.dto.GeneralDataDto;
@@ -23,4 +24,5 @@ public interface DatoRepository {
 
     // Get general accumulate data
     public GeneralDataDto getGeneralAccumulateData();
+    public List<DataCovidDepartmentDto>listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId);
 }

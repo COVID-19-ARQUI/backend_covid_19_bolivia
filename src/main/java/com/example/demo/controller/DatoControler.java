@@ -1,6 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Transaction;
+import com.example.demo.dto.DashboardDto;
+import com.example.demo.dto.DataDto;
+import com.example.demo.dto.DatoDto;
+import com.example.demo.dto.DepartmentDto;
 import com.example.demo.dto.*;
 import com.example.demo.service.DatoService;
 import com.example.demo.service.TransactionService;
@@ -58,5 +62,14 @@ public class DatoControler {
         return datoService.mostRecentDateOfCovidData();
     }
 
+    @RequestMapping(value = "/dataOfDepartmentAndTypeDate/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(HttpServletRequest request,@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+        return datoService.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+    }
 
+
+    @RequestMapping(value = "/Bolivia",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DatoDto> getGeneral(HttpServletRequest request) {
+        return datoService.getdatos();
+    }
 }

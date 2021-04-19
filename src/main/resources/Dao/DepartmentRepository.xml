@@ -6,7 +6,7 @@
     <select id="getDepartments" resultType="com.example.demo.dto.DepartmentDto">
         SELECT id_dep as idDepartment,
                Nombre as department
-        FROM Departamento
+        FROM departamento
         WHERE id_dep != 1
     </select>
     <select id="getMunicipalities" resultType="java.lang.String">
