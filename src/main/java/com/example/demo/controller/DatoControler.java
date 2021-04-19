@@ -72,4 +72,10 @@ public class DatoControler {
     public List<DatoDto> getGeneral(HttpServletRequest request) {
         return datoService.getdatos();
     }
+
+    @RequestMapping(value = "/municipios/{tipoDatoId}/{departmentId}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataCovidMunicipioDto> getDataByMunicipioId(HttpServletRequest request,@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+        return datoService.getDataByMunicipioId(tipoDatoId,departmentId);
+    }
+
 }

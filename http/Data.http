@@ -64,6 +64,11 @@ Accept: application/json
 Content-Type: application/json
 
 ### Add new data
-GET http://localhost:8080/data//dataOfDepartmentAndTypeDate/1/8
+GET http://localhost:8080/data/dataOfDepartmentAndTypeDate/1/8
+Accept: application/json
+Content-Type: application/json
+
+### Add new data
+GET http://localhost:8080/data/municipios/1/20101
 Accept: application/json
 Content-Type: application/json
