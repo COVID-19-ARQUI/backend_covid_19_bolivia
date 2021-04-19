@@ -27,3 +27,29 @@ Content-Type: application/json
 GET http://localhost:8080/data/departmentData/1
 Accept: application/json
 Content-Type: application/json
+
+### Add new data
+GET http://localhost:8080/data/departments
+Accept: application/json
+Content-Type: application/json
+
+### Add new data
+POST http://localhost:8080/data/new/single
+Accept: application/json
+Content-Type: application/json
+
+{
+  "department": 2,
+  "municipality": "",
+  "date": null,
+  "confirmed": null,
+  "deaths": null,
+  "recovered": null,
+  "actives": null,
+  "vaccinated": null
+}
+
+### Add new data
+GET http://localhost:8080/data/dataRecent
+Accept: application/json
+Content-Type: application/json

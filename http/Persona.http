@@ -1,0 +1,13 @@
+POST http://localhost:8080/persona/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nicknameUser":"DaniXd",
+  "name":"Daniel",
+  "secondName":"Alberto",
+  "lastName":"Salazar",
+  "secondLastName":"Dominguez",
+  "email":"dani@gmail.com",
+  "password":"123"
+}
