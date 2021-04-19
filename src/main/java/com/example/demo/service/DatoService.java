@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.DatoRepository;
 import com.example.demo.dao.DepartmentRepository;
+import com.example.demo.dao.MunicipioRepository;
 import com.example.demo.dao.ZonaRepository;
 import com.example.demo.domain.Dato;
 import com.example.demo.domain.Transaction;
@@ -19,13 +20,15 @@ public class DatoService {
     private DatoRepository datoRepository;
     private DepartmentRepository departmentRepository;
     private ZonaRepository zonaRepository;
+    private MunicipioRepository municipioRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
 
     @Autowired
-    public DatoService(DatoRepository datoRepository, DepartmentRepository departmentRepository, ZonaRepository zonaRepository) {
+    public DatoService(DatoRepository datoRepository, DepartmentRepository departmentRepository, ZonaRepository zonaRepository, MunicipioRepository municipioRepository) {
         this.datoRepository = datoRepository;
         this.departmentRepository = departmentRepository;
         this.zonaRepository = zonaRepository;
+        this.municipioRepository = municipioRepository;
     }
 
     public List<DatoDto> getdatos() {
@@ -96,6 +99,10 @@ public class DatoService {
 
     public List<DataCovidDepartmentDto>listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId){
         List<DataCovidDepartmentDto>list = datoRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+        return list;
+    }
+    public List<DataCovidMunicipioDto>getDataByMunicipioId(Integer tipoDatoId, Integer municipioId){
+        List<DataCovidMunicipioDto>list = municipioRepository.getDataByMunicipioId(tipoDatoId, municipioId);
         return list;
     }
 }
