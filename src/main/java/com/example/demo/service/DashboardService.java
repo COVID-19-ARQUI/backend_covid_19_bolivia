@@ -44,4 +44,5 @@ public class DashboardService {
         LOGGER.debug(dashboardDepartments.toString());
         return dashboardDepartments;
     }
+
 }
