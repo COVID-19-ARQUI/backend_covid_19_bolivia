@@ -74,6 +74,7 @@ public class DatoService {
         List<DatoDto> listDataofDepartament = datoRepository.getDatos(departmentId);
         return listDataofDepartament;
     }
+
     public List<DatoDto> sumdatos(Integer departmentId) {
         List<DatoDto> listDataofDepartament = datoRepository.sumdato(departmentId);
         return listDataofDepartament;
@@ -87,18 +88,18 @@ public class DatoService {
             dto.setDepartment(departmentDto.getDepartment());
             dto.setIdDepartment(departmentDto.getIdDepartment());
             dto.setMunicipalities(departmentRepository.getMunicipalities(departmentDto.getIdDepartment()));
-            LOGGER.error(dto.toString());
+//            LOGGER.error(dto.toString());
             result.add(dto);
         });
         return result;
     }
 
-    public List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId){
+    public List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId) {
         List<DepartmentDataDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
         return listDepartmentsDataById;
     }
 
-    public List<DateCovidDto> mostRecentDateOfCovidData(){
+    public List<DateCovidDto> mostRecentDateOfCovidData() {
         List<DateCovidDto> mostRecentDateOfCovidData = datoRepository.mostRecentDateOfCovidData();
         return mostRecentDateOfCovidData;
     }

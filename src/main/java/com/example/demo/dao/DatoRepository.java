@@ -19,6 +19,10 @@ public interface DatoRepository {
     public DatoDto vacuna1final(Integer idDepartment);
     // Add sigle row on table Dato
     public void addSingleData(Dato dato);
+
     public List<DateCovidDto> mostRecentDateOfCovidData();
+
+    // Get general accumulate data
+    //public GeneralDataDto getGeneralAccumulateData();
     public List<DataCovidDepartmentDto>listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId);
 }

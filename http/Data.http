@@ -18,12 +18,12 @@ Content-Type: application/json
   "vaccinated": 100
 }
 
-###
+### Department list with their municipalities.
 GET http://localhost:8080/data/departments/
 Accept: application/json
 Content-Type: application/json
 
-###
+### Department data general.
 GET http://localhost:8080/data/departmentgeneral/1
 Accept: application/json
 Content-Type: application/json
@@ -32,43 +32,23 @@ Content-Type: application/json
 GET http://localhost:8080/data/Bolivia
 Accept: application/json
 Content-Type: application/json
-### Add new data
+
+### Department details data
 GET http://localhost:8080/data/departmentData/1
 Accept: application/json
 Content-Type: application/json
 
-### Add new data
-GET http://localhost:8080/data/departments
-Accept: application/json
-Content-Type: application/json
-
-### Add new data
-POST http://localhost:8080/data/new/single
-Accept: application/json
-Content-Type: application/json
-
-{
-  "department": 2,
-  "municipality": "",
-  "date": null,
-  "confirmed": null,
-  "deaths": null,
-  "recovered": null,
-  "actives": null,
-  "vaccinated": null
-}
-
-### Add new data
+### Last date
 GET http://localhost:8080/data/dataRecent
 Accept: application/json
 Content-Type: application/json
 
-### Add new data
+###
 GET http://localhost:8080/data/dataOfDepartmentAndTypeDate/1/8
 Accept: application/json
 Content-Type: application/json
 
-### Add new data
+###
 GET http://localhost:8080/data/municipios/1/20101
 Accept: application/json
 Content-Type: application/json

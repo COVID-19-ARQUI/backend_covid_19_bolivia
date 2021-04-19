@@ -14,9 +14,9 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    public Transaction createTransaction (Transaction transaction){
+    public Transaction createTransaction(Transaction transaction) {
         this.transactionRepository.create(transaction);
-        Integer lastPrimaryKey= this.transactionRepository.getLastInsertId();
+        Integer lastPrimaryKey = this.transactionRepository.getLastInsertId();
         transaction.setTxId(lastPrimaryKey);
         return transaction;
     }
