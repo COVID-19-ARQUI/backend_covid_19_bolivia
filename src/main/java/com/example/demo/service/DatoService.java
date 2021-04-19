@@ -5,9 +5,7 @@ import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dao.ZonaRepository;
 import com.example.demo.domain.Dato;
 import com.example.demo.domain.Transaction;
-import com.example.demo.dto.DataDto;
-import com.example.demo.dto.DatoDto;
-import com.example.demo.dto.DepartmentDto;
+import com.example.demo.dto.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +82,15 @@ public class DatoService {
             result.add(dto);
         });
         return result;
+    }
+
+    public List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId){
+        List<DepartmentDataDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
+        return listDepartmentsDataById;
+    }
+
+    public List<DateCovidDto> mostRecentDateOfCovidData(){
+        List<DateCovidDto> mostRecentDateOfCovidData = datoRepository.mostRecentDateOfCovidData();
+        return mostRecentDateOfCovidData;
     }
 }

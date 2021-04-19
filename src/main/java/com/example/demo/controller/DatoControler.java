@@ -5,6 +5,7 @@ import com.example.demo.dto.DashboardDto;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DatoDto;
 import com.example.demo.dto.DepartmentDto;
+import com.example.demo.dto.*;
 import com.example.demo.service.DatoService;
 import com.example.demo.service.TransactionService;
 import com.example.demo.util.TransactionUtil;
@@ -50,6 +51,17 @@ public class DatoControler {
     public List<DepartmentDto> getAllDepartments() {
         return datoService.getDepartments();
     }
+
+    @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DepartmentDataDto> getDataByDepartmentsId(HttpServletRequest request, @PathVariable Integer departmentId) {
+        List<DepartmentDataDto> listDepartment=datoService.getDataByDepartmentsId(departmentId);
+        return listDepartment;
+    }
+    @RequestMapping(value = "/dataRecent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DateCovidDto> mostRecentDateOfCovidData() {
+        return datoService.mostRecentDateOfCovidData();
+    }
+
 
     @RequestMapping(value = "/Bolivia",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DatoDto> getGeneral(HttpServletRequest request) {

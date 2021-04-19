@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import com.example.demo.dto.DepartmentDataDto;
 import com.example.demo.dto.DepartmentDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,4 +12,6 @@ public interface DepartmentRepository {
 
     // Get municipalities by department ID
     List<String> getMunicipalities(Integer idDepartment);
+
+    List<DepartmentDataDto>getDataByDepartmentsId(Integer departmentId);
 }

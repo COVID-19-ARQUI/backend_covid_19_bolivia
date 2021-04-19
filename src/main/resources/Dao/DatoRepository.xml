@@ -78,4 +78,16 @@
         (`dato`, `fecha`, `zona_id_zona`, `tipodedato_id_tdd`, `id_pais`, `tx_user`, `tx_host`, `tx_date`)
         VALUES (#{dato}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{idPais}, #{txUser}, #{txHost}, #{txDate});
     </insert>
+
+    <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DateCovidDto">
+        select a.fecha, a.dato, c.tipo_de_dato as tipoDeDatos
+        from dato a, tipodedato c
+        where a.zona_id_zona = 1
+        and a.tipodedato_id_tdd = c.id_tdd
+        and a.fecha  = (
+            SELECT MAX(a.fecha)
+            FROM dato a)
+    </select>
+
+
 </mapper>
