@@ -3,29 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DepartmentRepository">
+
     <select id="getDepartments" resultType="com.example.demo.dto.DepartmentDto">
-        SELECT id_dep as idDepartment,
-               Nombre as department
-        FROM departamento
-        WHERE id_dep != 1
+        SELECT id_departament as idDepartment,
+               department     as department
+        FROM departaments
+        WHERE id_departament != 1
     </select>
+
     <select id="getMunicipalities" resultType="java.lang.String">
-        SELECT m.Nombre
-        FROM zona z,
-             municipio m
-        WHERE z.Municipio_id_municipio = m.id_municipio
-          AND z.Departamento_id_dep = #{idDepartment}
+        SELECT m.municipality
+        FROM locations l,
+             municipalities m
+        WHERE l.id_municipality = m.id_municipality
+          AND l.id_departament = #{idDepartment}
+          AND m.municipality != 'default'
     </select>
 
     <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DepartmentDataDto">
-        select b.dato, b.fecha, d.tipo_de_dato as tipoDeDato
-        from departamento a,
-             dato b,
-             zona c,
-             tipodedato d
-        where b.zona_id_zona = c.id_zona
-          and a.id_dep = c.Departamento_id_dep
-          and d.id_tdd = b.tipodedato_id_tdd
-          and a.id_dep = #{departmentId}
+        select b.data, b.in_date, d.id_datatype as tipoDeDato
+        from departaments a,
+             data b,
+             locations c,
+             datatypes d
+        where b.id_location = c.id_location
+          and a.id_departament = c.id_departament
+          and d.id_datatype = b.id_datatype
+          and a.id_departament = #{departmentId}
     </select>
 </mapper>
