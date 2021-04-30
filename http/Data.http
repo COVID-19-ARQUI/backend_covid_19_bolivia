@@ -34,7 +34,7 @@ Accept: application/json
 Content-Type: application/json
 
 ### Department details data
-GET http://localhost:8080/data/departmentData/1
+GET http://localhost:8080/data/departmentData/2
 Accept: application/json
 Content-Type: application/json
 
