@@ -2,24 +2,24 @@ package com.example.demo.domain;
 
 import java.util.Date;
 
-public class View {
+public class Views {
     private Integer idView;
     private String name;
     private Integer active;
     private Integer idDashboard;
-    private String txUser;
+    private String txUserId;
     private String txHost;
     private Date txDate;
 
-    public View() {
+    public Views() {
     }
 
-    public View(Integer idView, String name, Integer active, Integer idDashboard, String txUser, String txHost, Date txDate) {
+    public Views(Integer idView, String name, Integer active, Integer idDashboard, String txUser, String txHost, Date txDate) {
         this.idView = idView;
         this.name = name;
         this.active = active;
         this.idDashboard = idDashboard;
-        this.txUser = txUser;
+        this.txUserId = txUser;
         this.txHost = txHost;
         this.txDate = txDate;
     }
@@ -31,7 +31,7 @@ public class View {
                 ", name='" + name + '\'' +
                 ", active=" + active +
                 ", idDashboard=" + idDashboard +
-                ", txUser='" + txUser + '\'' +
+                ", txUser='" + txUserId + '\'' +
                 ", txHost='" + txHost + '\'' +
                 ", txDate=" + txDate +
                 '}';
@@ -69,12 +69,12 @@ public class View {
         this.idDashboard = idDashboard;
     }
 
-    public String getTxUser() {
-        return txUser;
+    public String getTxUserId() {
+        return txUserId;
     }
 
-    public void setTxUser(String txUser) {
-        this.txUser = txUser;
+    public void setTxUserId(String txUserId) {
+        this.txUserId = txUserId;
     }
 
     public String getTxHost() {

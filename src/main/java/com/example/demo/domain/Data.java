@@ -2,7 +2,7 @@ package com.example.demo.domain;
 
 import java.util.Date;
 
-public class Dato {
+public class Data {
     private Integer idDato;
     private String dato;
     private Date fecha;
@@ -13,7 +13,7 @@ public class Dato {
     private String txHost;
     private Date txDate;
 
-    public Dato() {
+    public Data() {
     }
 
 

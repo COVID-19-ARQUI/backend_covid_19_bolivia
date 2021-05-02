@@ -1,7 +1,5 @@
 package com.example.demo.domain;
 
-import com.example.demo.dto.DashboardDto;
-
 import java.util.Date;
 
 public class Dashboard {
@@ -9,7 +7,7 @@ public class Dashboard {
     private String name;
     private Integer active;
     private Integer idUser;
-    private String txUser;
+    private String txUserId;
     private String txHost;
     private Date txDate;
 
@@ -21,7 +19,7 @@ public class Dashboard {
         this.name = name;
         this.active = active;
         this.idUser = idUser;
-        this.txUser = txUser;
+        this.txUserId = txUser;
         this.txHost = txHost;
         this.txDate = txDate;
     }
@@ -33,7 +31,7 @@ public class Dashboard {
                 ", name='" + name + '\'' +
                 ", active=" + active +
                 ", idUser=" + idUser +
-                ", txUser='" + txUser + '\'' +
+                ", txUser='" + txUserId + '\'' +
                 ", txHost='" + txHost + '\'' +
                 ", txDate=" + txDate +
                 '}';
@@ -71,12 +69,12 @@ public class Dashboard {
         this.idUser = idUser;
     }
 
-    public String getTxUser() {
-        return txUser;
+    public String getTxUserId() {
+        return txUserId;
     }
 
-    public void setTxUser(String txUser) {
-        this.txUser = txUser;
+    public void setTxUserId(String txUserId) {
+        this.txUserId = txUserId;
     }
 
     public String getTxHost() {

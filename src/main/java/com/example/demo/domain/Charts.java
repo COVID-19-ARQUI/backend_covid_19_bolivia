@@ -2,50 +2,50 @@ package com.example.demo.domain;
 
 import java.util.Date;
 
-public class Graphic {
-    private Integer idGraphic;
+public class Charts {
+    private Integer idChart;
     private String name;
     private Integer active;
-    private Integer idGraphicType;
+    private Integer idChartsType;
     private Integer idView;
+    private Integer txUserId;
     private String txHost;
-    private Integer txUser;
     private Date txDate;
 
-    public Graphic() {
+    public Charts() {
     }
 
-    public Graphic(Integer idGraphic, String name, Integer active, Integer idGraphicType, Integer idView, String txHost, Integer txUser, Date txDate) {
-        this.idGraphic = idGraphic;
+    public Charts(Integer idChart, String name, Integer active, Integer idChartsType, Integer idView, Integer txUserId, String txHost, Date txDate) {
+        this.idChart = idChart;
         this.name = name;
         this.active = active;
-        this.idGraphicType = idGraphicType;
+        this.idChartsType = idChartsType;
         this.idView = idView;
+        this.txUserId = txUserId;
         this.txHost = txHost;
-        this.txUser = txUser;
         this.txDate = txDate;
     }
 
     @Override
     public String toString() {
-        return "Graphic{" +
-                "idGraphic=" + idGraphic +
+        return "Charts{" +
+                "idChart=" + idChart +
                 ", name='" + name + '\'' +
                 ", active=" + active +
-                ", idGraphicType=" + idGraphicType +
+                ", idChartsType=" + idChartsType +
                 ", idView=" + idView +
+                ", txUserId=" + txUserId +
                 ", txHost='" + txHost + '\'' +
-                ", txUser=" + txUser +
                 ", txDate=" + txDate +
                 '}';
     }
 
-    public Integer getIdGraphic() {
-        return idGraphic;
+    public Integer getIdChart() {
+        return idChart;
     }
 
-    public void setIdGraphic(Integer idGraphic) {
-        this.idGraphic = idGraphic;
+    public void setIdChart(Integer idChart) {
+        this.idChart = idChart;
     }
 
     public String getName() {
@@ -64,12 +64,12 @@ public class Graphic {
         this.active = active;
     }
 
-    public Integer getIdGraphicType() {
-        return idGraphicType;
+    public Integer getIdChartsType() {
+        return idChartsType;
     }
 
-    public void setIdGraphicType(Integer idGraphicType) {
-        this.idGraphicType = idGraphicType;
+    public void setIdChartsType(Integer idChartsType) {
+        this.idChartsType = idChartsType;
     }
 
     public Integer getIdView() {
@@ -80,20 +80,20 @@ public class Graphic {
         this.idView = idView;
     }
 
+    public Integer getTxUserId() {
+        return txUserId;
+    }
+
+    public void setTxUserId(Integer txUserId) {
+        this.txUserId = txUserId;
+    }
+
     public String getTxHost() {
         return txHost;
     }
 
     public void setTxHost(String txHost) {
         this.txHost = txHost;
-    }
-
-    public Integer getTxUser() {
-        return txUser;
-    }
-
-    public void setTxUser(Integer txUser) {
-        this.txUser = txUser;
     }
 
     public Date getTxDate() {
