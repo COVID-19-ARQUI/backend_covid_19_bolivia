@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Transaction;
-import com.example.demo.dto.DashboardDto;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DatoDto;
 import com.example.demo.dto.DepartmentDto;
