@@ -16,6 +16,17 @@ public class Data {
     public Data() {
     }
 
+    public Data(Integer idDato, String dato, Date fecha, Integer zonaId, Integer tipodedatoId, Integer idPais, String txUser, String txHost, Date txDate) {
+        this.idDato = idDato;
+        this.dato = dato;
+        this.fecha = fecha;
+        this.zonaId = zonaId;
+        this.tipodedatoId = tipodedatoId;
+        this.idPais = idPais;
+        this.txUser = txUser;
+        this.txHost = txHost;
+        this.txDate = txDate;
+    }
 
     public Integer getIdPais() {
         return idPais;

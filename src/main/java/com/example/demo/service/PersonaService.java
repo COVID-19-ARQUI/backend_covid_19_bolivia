@@ -20,13 +20,13 @@ public class PersonaService {
     public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
         Persons persons = new Persons();
         persons.setNickname(registerUserDto.getNicknameUser());
-        persons.setName(registerUserDto.getName());
+
         persons.setSecondName(registerUserDto.getSecondName());
-        persons.setLastName(registerUserDto.getLastName());
+        persons.setFirstLastName(registerUserDto.getLastName());
         persons.setSecondLastName(registerUserDto.getSecondLastName());
         persons.setEmail(registerUserDto.getEmail());
         persons.setPassword(registerUserDto.getPassword());
-        persons.setTxUser(transaction.getTxUserUd().toString());
+        persons.setTxUserId(transaction.getTxUserUd().toString());
         persons.setTxHost(transaction.getTxHost());
         persons.setTxDate(transaction.getTxDate());
         personaRepository.createUser(persons);

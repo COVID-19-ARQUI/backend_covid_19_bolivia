@@ -35,9 +35,11 @@ public class DatoService {
         List<DatoDto> datoDtoList = datoRepository.getDatosGenerales();
         return datoDtoList;
     }
+
     public DatoDto getdatosvac1(Integer departmentId) {
         return datoRepository.vacuna1final(departmentId);
     }
+
     public DatoDto getdatosvac2(Integer departmentId) {
         return datoRepository.vacuna2final(departmentId);
     }
@@ -104,12 +106,13 @@ public class DatoService {
         return mostRecentDateOfCovidData;
     }
 
-    public List<DataCovidDepartmentDto>listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId){
-        List<DataCovidDepartmentDto>list = datoRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
+        List<DataCovidDepartmentDto> list = datoRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
         return list;
     }
-    public List<DataCovidMunicipioDto>getDataByMunicipioId(Integer tipoDatoId, Integer municipioId){
-        List<DataCovidMunicipioDto>list = municipioRepository.getDataByMunicipioId(tipoDatoId, municipioId);
+
+    public List<DataCovidMunicipioDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
+        List<DataCovidMunicipioDto> list = municipioRepository.getDataByMunicipioId(tipoDatoId, municipioId);
         return list;
     }
 }
