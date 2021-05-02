@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.Persona;
-
 public class PersonaDto {
     private Integer idUser;
     private String nicknameUser;

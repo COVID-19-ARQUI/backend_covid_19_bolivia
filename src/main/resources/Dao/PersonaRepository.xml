@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.PersonaRepository">
 
-    <insert id="createUser" parameterType="com.example.demo.domain.Persona">
-        insert into persona (nickname_user, name, second_name, last_name,
+    <insert id="createUser" parameterType="com.example.demo.domain.Persons">
+        insert into persons (nickname_user, name, second_name, last_name,
                              second_last_name, mail, password, active, tx_user, tx_host, tx_date)
         values (#{nicknameUser}, #{name}, #{secondName}, #{lastName}, #{secondLastName},
                 #{email}, #{password}, 1, #{txUser}, #{txHost}, #{txDate});

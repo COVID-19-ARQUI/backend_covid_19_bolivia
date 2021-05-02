@@ -34,5 +34,4 @@ public class PersonaController {
         return personaService.createUser(registerUserDto, transaction);
     }
 
-
 }

@@ -26,6 +26,4 @@ public class DashboardControler {
         return dashboardService.getdashboard();
     }
 
-
-
 }

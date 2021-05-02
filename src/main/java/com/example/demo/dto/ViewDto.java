@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.View;
-
 public class ViewDto {
     private Integer idView;
     private String name;

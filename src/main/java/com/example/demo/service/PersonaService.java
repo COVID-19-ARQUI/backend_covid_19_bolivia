@@ -1,7 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.*;
-import com.example.demo.domain.Persona;
+import com.example.demo.domain.Persons;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.RegisterUserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +18,18 @@ public class PersonaService {
     }
 
     public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
-        Persona persona = new Persona();
-        persona.setNicknameUser(registerUserDto.getNicknameUser());
-        persona.setName(registerUserDto.getName());
-        persona.setSecondName(registerUserDto.getSecondName());
-        persona.setLastName(registerUserDto.getLastName());
-        persona.setSecondLastName(registerUserDto.getSecondLastName());
-        persona.setEmail(registerUserDto.getEmail());
-        persona.setPassword(registerUserDto.getPassword());
-        persona.setTxUser(transaction.getTxUserUd().toString());
-        persona.setTxHost(transaction.getTxHost());
-        persona.setTxDate(transaction.getTxDate());
-        personaRepository.createUser(persona);
+        Persons persons = new Persons();
+        persons.setNickname(registerUserDto.getNicknameUser());
+        persons.setName(registerUserDto.getName());
+        persons.setSecondName(registerUserDto.getSecondName());
+        persons.setLastName(registerUserDto.getLastName());
+        persons.setSecondLastName(registerUserDto.getSecondLastName());
+        persons.setEmail(registerUserDto.getEmail());
+        persons.setPassword(registerUserDto.getPassword());
+        persons.setTxUser(transaction.getTxUserUd().toString());
+        persons.setTxHost(transaction.getTxHost());
+        persons.setTxDate(transaction.getTxDate());
+        personaRepository.createUser(persons);
         return registerUserDto;
     }
 }

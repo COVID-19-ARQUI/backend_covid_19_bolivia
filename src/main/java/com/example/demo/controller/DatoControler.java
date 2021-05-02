@@ -31,26 +31,30 @@ public class DatoControler {
 
     @RequestMapping(value = "/department/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DatoDto> findVehiclesByCompany(HttpServletRequest request, @PathVariable Integer departmentId) {
-        List<DatoDto> vehicleListDriver=datoService.listDataofDepartament(departmentId);
+        List<DatoDto> vehicleListDriver = datoService.listDataofDepartament(departmentId);
         return vehicleListDriver;
     }
-//sumdatos
+
+    //sumdatos
     @RequestMapping(value = "/departmentgeneral/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DatoDto> sumadedatos(HttpServletRequest request, @PathVariable Integer departmentId) {
-        List<DatoDto> vehicleListDriver=datoService.sumdatos(departmentId);
+        List<DatoDto> vehicleListDriver = datoService.sumdatos(departmentId);
         return vehicleListDriver;
     }
+
     //vacunas
     @RequestMapping(value = "/departmentvacuna/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public DatoDto vacunasdatos(HttpServletRequest request, @PathVariable Integer departmentId) {
-        DatoDto vehicleListDriver=datoService.getdatosvac1(departmentId);
+        DatoDto vehicleListDriver = datoService.getdatosvac1(departmentId);
         return vehicleListDriver;
     }
+
     @RequestMapping(value = "/departmentvacuna2/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public DatoDto vacunas2datos(HttpServletRequest request, @PathVariable Integer departmentId) {
-        DatoDto vehicleListDriver=datoService.getdatosvac2(departmentId);
+        DatoDto vehicleListDriver = datoService.getdatosvac2(departmentId);
         return vehicleListDriver;
     }
+
     @RequestMapping(value = "/new/single", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataDto pushSingleData(@RequestBody DataDto dataDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
@@ -65,28 +69,29 @@ public class DatoControler {
 
     @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentDataDto> getDataByDepartmentsId(HttpServletRequest request, @PathVariable Integer departmentId) {
-        List<DepartmentDataDto> listDepartment=datoService.getDataByDepartmentsId(departmentId);
+        List<DepartmentDataDto> listDepartment = datoService.getDataByDepartmentsId(departmentId);
         return listDepartment;
     }
+
     @RequestMapping(value = "/dataRecent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DateCovidDto> mostRecentDateOfCovidData() {
         return datoService.mostRecentDateOfCovidData();
     }
 
     @RequestMapping(value = "/dataOfDepartmentAndTypeDate/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(HttpServletRequest request,@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(HttpServletRequest request, @PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
         return datoService.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
     }
 
 
-    @RequestMapping(value = "/Bolivia",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/Bolivia", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DatoDto> getGeneral(HttpServletRequest request) {
         return datoService.getdatos();
     }
 
-    @RequestMapping(value = "/municipios/{tipoDatoId}/{departmentId}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataCovidMunicipioDto> getDataByMunicipioId(HttpServletRequest request,@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
-        return datoService.getDataByMunicipioId(tipoDatoId,departmentId);
+    @RequestMapping(value = "/municipios/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataCovidMunicipioDto> getDataByMunicipioId(HttpServletRequest request, @PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+        return datoService.getDataByMunicipioId(tipoDatoId, departmentId);
     }
 
 }

@@ -6,10 +6,10 @@
 
     <select id="getDataByMunicipioId" resultType="com.example.demo.dto.DataCovidMunicipioDto">
 
-        select c.dato, c.fecha
+        select c.data, c.fecha
         from municipio a,
              zona b,
-             dato c,
+             data c,
              tipodedato d
         where a.id_municipio = b.Municipio_id_municipio
           and b.id_zona = c.zona_id_zona
@@ -20,17 +20,17 @@
     </select>
 
     <select id="getMunicipalitiesByDepartmentId" resultType="com.example.demo.dto.MunicipalityDataDto">
-        SELECT SUM(dato.dato) as dato, m.Nombre as municipio, t.tipo_de_dato as tipo
+        SELECT SUM(data.data) as data, m.Nombre as municipio, t.tipo_de_dato as tipo
         FROM zona z,
              municipio m,
              departamento d,
-             dato,
+             data,
              tipodedato t
         WHERE d.id_dep = z.Departamento_id_dep
           AND z.Municipio_id_municipio = m.id_municipio
-          AND z.id_zona = dato.zona_id_zona
+          AND z.id_zona = data.zona_id_zona
           AND m.Nombre != 'default'
-          AND t.id_tdd = dato.tipodedato_id_tdd
+          AND t.id_tdd = data.tipodedato_id_tdd
           AND d.id_dep = #{departmentId}
         GROUP BY m.Nombre
     </select>

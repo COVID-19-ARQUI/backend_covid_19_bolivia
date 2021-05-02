@@ -4,7 +4,7 @@ public class DataCovidMunicipioDto {
     private Integer dato;
     private String fecha;
 
-    public DataCovidMunicipioDto(){
+    public DataCovidMunicipioDto() {
 
     }
 

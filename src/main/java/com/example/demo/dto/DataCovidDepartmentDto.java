@@ -5,7 +5,7 @@ public class DataCovidDepartmentDto {
     private Integer dato;
     private String fecha;
 
-    public DataCovidDepartmentDto(){
+    public DataCovidDepartmentDto() {
     }
 
     public Integer getDato() {

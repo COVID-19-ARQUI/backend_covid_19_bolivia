@@ -8,6 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface MunicipioRepository {
+    //
     public List<DataCovidMunicipioDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId);
 
     // Get general data of municipalities by department

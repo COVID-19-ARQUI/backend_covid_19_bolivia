@@ -6,7 +6,7 @@
 
     <resultMap id="listDataofDepartament" type="com.example.demo.dto.DatoDto">
         <result column="idDato" property="idDato"/>
-        <result column="dato" property="dato"/>
+        <result column="data" property="data"/>
         <result column="fecha" property="fecha"/>
         <result column="tipoDeDato" property="tipoDeDato"/>
         <result column="txUser" property="txUser"/>
@@ -17,7 +17,7 @@
 
     <select id="getDatos" resultType="com.example.demo.dto.DatoDto">
         SELECT a.id_data                             AS idDato,
-               a.data                                AS dato,
+               a.data                                AS data,
                a.in_date                             AS fecha,
                a.id_location                         AS zonaId,
                (SELECT c.type
@@ -31,7 +31,7 @@
 
     <select id="getDatosGenerales" resultType="com.example.demo.dto.DatoDto">
         SELECT a.id_data                             AS idDato,
-               a.data                                AS dato,
+               a.data                                AS data,
                a.in_date                             AS fecha,
                a.id_location                         AS zonaId,
                (SELECT c.type
@@ -46,7 +46,7 @@
 
     <select id="sumdato" resultType="com.example.demo.dto.DatoDto">
         SELECT a.id_data                             AS idDato,
-               sum(a.data)                           AS dato,
+               sum(a.data)                           AS data,
                a.in_date                             AS fecha,
                a.id_location                         AS zonaId,
                (SELECT c.type
@@ -61,7 +61,7 @@
 
     <select id="vacuna1final" resultType="com.example.demo.dto.DatoDto">
         SELECT a.id_data                             AS idDato,
-               a.data                                AS dato,
+               a.data                                AS data,
                a.in_date                             AS fecha,
                a.id_location                         AS zonaId,
                (SELECT c.id_datatype
@@ -78,7 +78,7 @@
 
     <select id="vacuna2final" resultType="com.example.demo.dto.DatoDto">
         SELECT a.id_data                             AS idDato,
-               a.data                                AS dato,
+               a.data                                AS data,
                a.in_date                             AS fecha,
                a.id_location                         AS zonaId,
                (SELECT c.id_datatype
@@ -95,7 +95,7 @@
 
     <select id="dataofDepartament" resultMap="listDataofDepartament">
         SELECT a.id_data     AS idDato,
-               a.data        AS dato,
+               a.data        AS data,
                a.in_date     AS fecha,
                d.type        AS tipoDeDato,
                a.tx_user_id  AS txUser,
@@ -112,9 +112,9 @@
           AND c.id_departament = #{idDepartment}
     </select>
 
-    <insert id="addSingleData" parameterType="com.example.demo.domain.Dato">
+    <insert id="addSingleData" parameterType="com.example.demo.domain.Data">
         INSERT INTO `data` (`data`, `in_date`, `id_location`, `id_datatype`, `tx_user_id`, `tx_host`, `tx_date`)
-        VALUES (#{dato}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{txUser}, #{txHost}, #{txDate});
+        VALUES (#{data}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{txUser}, #{txHost}, #{txDate});
     </insert>
 
     <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DateCovidDto">

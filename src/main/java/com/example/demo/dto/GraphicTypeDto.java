@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.GraphicType;
-
 public class GraphicTypeDto {
     private Integer idGraphictype;
     private String name;

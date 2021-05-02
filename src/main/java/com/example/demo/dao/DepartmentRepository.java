@@ -8,10 +8,12 @@ import java.util.*;
 
 @Mapper
 public interface DepartmentRepository {
+    //
     public List<DepartmentDto> getDepartments();
 
     // Get municipalities by department ID
     List<String> getMunicipalities(Integer idDepartment);
 
-    List<DepartmentDataDto>getDataByDepartmentsId(Integer departmentId);
+    //
+    List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId);
 }
