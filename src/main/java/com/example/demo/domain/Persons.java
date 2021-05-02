@@ -20,22 +20,6 @@ public class Persons {
     public Persons() {
     }
 
-    public Persons(Integer idUser, String nickname, String firstName, String secondName, String firstLastName, String secondLastName, String email, String password, String urlPhoto, String active, String txUserId, String txHost, Date txDate) {
-        this.idUser = idUser;
-        this.nickname = nickname;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.firstLastName = firstLastName;
-        this.secondLastName = secondLastName;
-        this.email = email;
-        this.password = password;
-        this.urlPhoto = urlPhoto;
-        this.active = active;
-        this.txUserId = txUserId;
-        this.txHost = txHost;
-        this.txDate = txDate;
-    }
-
     @Override
     public String toString() {
         return "Persons{" +
@@ -54,6 +38,7 @@ public class Persons {
                 ", txDate=" + txDate +
                 '}';
     }
+
 
     public Integer getIdUser() {
         return idUser;

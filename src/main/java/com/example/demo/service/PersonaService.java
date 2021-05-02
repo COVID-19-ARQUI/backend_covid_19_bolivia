@@ -20,7 +20,7 @@ public class PersonaService {
     public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
         Persons persons = new Persons();
         persons.setNickname(registerUserDto.getNicknameUser());
-
+        persons.setFirstName(registerUserDto.getName());
         persons.setSecondName(registerUserDto.getSecondName());
         persons.setFirstLastName(registerUserDto.getLastName());
         persons.setSecondLastName(registerUserDto.getSecondLastName());
