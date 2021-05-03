@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.Zona;
 
 public class ZonaDto {
     private Integer idZona;

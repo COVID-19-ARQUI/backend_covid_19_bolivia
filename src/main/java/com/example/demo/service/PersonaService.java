@@ -26,7 +26,7 @@ public class PersonaService {
         persons.setSecondLastName(registerUserDto.getSecondLastName());
         persons.setEmail(registerUserDto.getEmail());
         persons.setPassword(registerUserDto.getPassword());
-        persons.setTxUserId(transaction.getTxUserUd().toString());
+        persons.setTxUserId(transaction.getTxUserId().toString());
         persons.setTxHost(transaction.getTxHost());
         persons.setTxDate(transaction.getTxDate());
         personaRepository.createUser(persons);

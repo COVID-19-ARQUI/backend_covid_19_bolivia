@@ -3,85 +3,100 @@ package com.example.demo.domain;
 import java.util.Date;
 
 public class Data {
-    private Integer idDato;
-    private String dato;
-    private Date fecha;
-    private Integer zonaId;
-    private Integer tipodedatoId;
-    private Integer idPais;
-    private String txUser;
+    private Integer idData;
+    private String data;
+    private Date inDate;
+    private Integer idLocation;
+    private Integer idDatatype;
+    private Integer active;
+    private String txUserId;
     private String txHost;
     private Date txDate;
 
     public Data() {
     }
 
-    public Data(Integer idDato, String dato, Date fecha, Integer zonaId, Integer tipodedatoId, Integer idPais, String txUser, String txHost, Date txDate) {
-        this.idDato = idDato;
-        this.dato = dato;
-        this.fecha = fecha;
-        this.zonaId = zonaId;
-        this.tipodedatoId = tipodedatoId;
-        this.idPais = idPais;
-        this.txUser = txUser;
+    public Data(Integer idData, String data, Date inDate, Integer idLocation, Integer idDatatype, Integer active, String txUserId, String txHost, Date txDate) {
+        this.idData = idData;
+        this.data = data;
+        this.inDate = inDate;
+        this.idLocation = idLocation;
+        this.idDatatype = idDatatype;
+        this.active = active;
+        this.txUserId = txUserId;
         this.txHost = txHost;
         this.txDate = txDate;
     }
 
-    public Integer getIdPais() {
-        return idPais;
+    @Override
+    public String toString() {
+        return "Data{" +
+                "idData=" + idData +
+                ", data='" + data + '\'' +
+                ", inDate=" + inDate +
+                ", idLocation=" + idLocation +
+                ", idDatatype=" + idDatatype +
+                ", active=" + active +
+                ", txUserId='" + txUserId + '\'' +
+                ", txHost='" + txHost + '\'' +
+                ", txDate=" + txDate +
+                '}';
     }
 
-    public void setIdPais(Integer idPais) {
-        this.idPais = idPais;
+    public Integer getIdData() {
+        return idData;
     }
 
-    public Integer getIdDato() {
-        return idDato;
+    public void setIdData(Integer idData) {
+        this.idData = idData;
     }
 
-    public void setIdDato(Integer idDato) {
-        this.idDato = idDato;
+    public String getData() {
+        return data;
     }
 
-    public String getDato() {
-        return dato;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public void setDato(String dato) {
-        this.dato = dato;
+    public Date getInDate() {
+        return inDate;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public void setInDate(Date inDate) {
+        this.inDate = inDate;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public Integer getIdLocation() {
+        return idLocation;
     }
 
-    public Integer getZonaId() {
-        return zonaId;
+    public void setIdLocation(Integer idLocation) {
+        this.idLocation = idLocation;
     }
 
-    public void setZonaId(Integer zonaId) {
-        this.zonaId = zonaId;
+    public Integer getIdDatatype() {
+        return idDatatype;
     }
 
-    public Integer getTipodedatoId() {
-        return tipodedatoId;
+    public void setIdDatatype(Integer idDatatype) {
+        this.idDatatype = idDatatype;
     }
 
-    public void setTipodedatoId(Integer tipodedatoId) {
-        this.tipodedatoId = tipodedatoId;
+    public Integer getActive() {
+        return active;
     }
 
-    public String getTxUser() {
-        return txUser;
+    public void setActive(Integer active) {
+        this.active = active;
     }
 
-    public void setTxUser(String txUser) {
-        this.txUser = txUser;
+    public String getTxUserId() {
+        return txUserId;
+    }
+
+    public void setTxUserId(String txUserId) {
+        this.txUserId = txUserId;
     }
 
     public String getTxHost() {

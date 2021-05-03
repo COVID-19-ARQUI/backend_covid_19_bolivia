@@ -48,19 +48,19 @@ public class DatoService {
         Integer zoneId = zonaRepository.getZoneByDepartment(dataDto.getDepartment(), dataDto.getMunicipality());
         LOGGER.warn(zoneId != null ? zoneId.toString() : null);
         if (dataDto.getConfirmed() != null) {
-            Data contagiados = new Data(null, dataDto.getConfirmed().toString(), dataDto.getDate(), zoneId, 1, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data contagiados = new Data(null, dataDto.getConfirmed().toString(), dataDto.getDate(), zoneId, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(contagiados);
         }
         if (dataDto.getDeaths() != null) {
-            Data muertos = new Data(null, dataDto.getDeaths().toString(), dataDto.getDate(), zoneId, 2, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data muertos = new Data(null, dataDto.getDeaths().toString(), dataDto.getDate(), zoneId, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(muertos);
         }
         if (dataDto.getRecovered() != null) {
-            Data recuperados = new Data(null, dataDto.getRecovered().toString(), dataDto.getDate(), zoneId, 3, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data recuperados = new Data(null, dataDto.getRecovered().toString(), dataDto.getDate(), zoneId, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(recuperados);
         }
         if (dataDto.getVaccinated() != null) {
-            Data vacunados = new Data(null, dataDto.getVaccinated().toString(), dataDto.getDate(), zoneId, 4, 1, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data vacunados = new Data(null, dataDto.getVaccinated().toString(), dataDto.getDate(), zoneId, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             datoRepository.addSingleData(vacunados);
         }
 

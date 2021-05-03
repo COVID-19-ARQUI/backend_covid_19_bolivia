@@ -4,14 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.ZonaRepository">
     <select id="getZoneByDepartment" resultType="java.lang.Integer">
-        SELECT z.id_zona
-        FROM departamento d,
-             municipio m,
-             zona z
-        WHERE d.id_dep = z.Departamento_id_dep
-          AND z.Municipio_id_municipio = m.id_municipio
-          AND d.Nombre = #{department}
-          AND m.Nombre = #{municipalities}
+        SELECT z.id_location
+        FROM departaments d,
+             municipalities m,
+             locations z
+        WHERE d.id_departament = z.id_departament
+          AND z.id_municipality = m.id_municipality
+          AND d.department = #{department}
+          AND m.municipality = #{municipalities}
         LIMIT 1;
     </select>
 </mapper>

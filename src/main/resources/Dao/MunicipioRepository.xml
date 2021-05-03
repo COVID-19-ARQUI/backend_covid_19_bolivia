@@ -6,33 +6,33 @@
 
     <select id="getDataByMunicipioId" resultType="com.example.demo.dto.DataCovidMunicipioDto">
 
-        select c.data, c.fecha
-        from municipio a,
-             zona b,
+        select c.data, c.in_date
+        from municipalities a,
+             locations b,
              data c,
-             tipodedato d
-        where a.id_municipio = b.Municipio_id_municipio
-          and b.id_zona = c.zona_id_zona
-          and d.id_tdd = c.tipodedato_id_tdd
-          and a.id_municipio = #{municipioId}
-          and d.id_tdd = #{tipoDatoId}
+             datatypes d
+        where a.id_municipality = b.id_municipality
+          and b.id_location = c.id_location
+          and d.id_datatype = c.id_datatype
+          and a.id_municipality = #{municipioId}
+          and d.id_datatype = #{tipoDatoId}
 
     </select>
 
     <select id="getMunicipalitiesByDepartmentId" resultType="com.example.demo.dto.MunicipalityDataDto">
-        SELECT SUM(data.data) as data, m.Nombre as municipio, t.tipo_de_dato as tipo
-        FROM zona z,
-             municipio m,
-             departamento d,
+        SELECT SUM(data.data) as data, m.municipality as municipio, t.type as tipo
+        FROM locations z,
+             municipalities m,
+             departaments d,
              data,
-             tipodedato t
-        WHERE d.id_dep = z.Departamento_id_dep
-          AND z.Municipio_id_municipio = m.id_municipio
-          AND z.id_zona = data.zona_id_zona
-          AND m.Nombre != 'default'
-          AND t.id_tdd = data.tipodedato_id_tdd
-          AND d.id_dep = #{departmentId}
-        GROUP BY m.Nombre
+             datatypes t
+        WHERE d.id_departament = z.id_departament
+          AND z.id_municipality = m.id_municipality
+          AND z.id_location = data.id_location
+          AND m.municipality != 'default'
+          AND t.id_datatype = data.id_datatype
+          AND d.id_departament = #{departmentId}
+        GROUP BY m.municipality
     </select>
 
 

@@ -8,7 +8,7 @@
         SELECT id_departament as idDepartment,
                department     as department
         FROM departaments
-        WHERE id_departament != 1
+        WHERE id_departament > 0
     </select>
 
     <select id="getMunicipalities" resultType="java.lang.String">
@@ -17,7 +17,7 @@
              municipalities m
         WHERE l.id_municipality = m.id_municipality
           AND l.id_departament = #{idDepartment}
-          AND m.municipality != 'default'
+          AND m.id_municipality > 0
     </select>
 
     <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DepartmentDataDto">
