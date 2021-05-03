@@ -18,10 +18,6 @@ Content-Type: application/json
   "vaccinated": 100
 }
 
-### Department list with their municipalities.
-GET http://localhost:8080/data/departments/
-Accept: application/json
-Content-Type: application/json
 
 ### Department data general.
 GET http://localhost:8080/data/departmentgeneral/1

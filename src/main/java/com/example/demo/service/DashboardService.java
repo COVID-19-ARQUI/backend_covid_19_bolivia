@@ -4,6 +4,7 @@ package com.example.demo.service;
 import com.example.demo.dao.DashboardRepository;
 import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
+import com.example.demo.domain.Departments;
 import com.example.demo.dto.DashboardDto;
 import com.example.demo.dto.DepartmentDto;
 import org.slf4j.Logger;
@@ -32,7 +33,7 @@ public class DashboardService {
 
     public List<DashboardDto> getdashboard() {
 
-        List<DepartmentDto> departments = departmentRepository.getDepartments();
+        List<Departments> departments = departmentRepository.getDepartments();
         List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
             DashboardDto dashboard = new DashboardDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());

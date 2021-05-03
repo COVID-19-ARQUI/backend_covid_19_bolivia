@@ -35,5 +35,10 @@
         GROUP BY m.municipality
     </select>
 
+    <select id="getMunicipalities" resultType="com.example.demo.domain.Municipalities">
+        SELECT m.id_municipality as idMunicipality,
+               m.municipality    as municipality
+        FROM municipalities m
+    </select>
 
 </mapper>

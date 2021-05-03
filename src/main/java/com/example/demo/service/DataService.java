@@ -5,6 +5,7 @@ import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dao.MunicipalityRepository;
 import com.example.demo.dao.LocationRepository;
 import com.example.demo.domain.Data;
+import com.example.demo.domain.Departments;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.*;
 import org.slf4j.Logger;
@@ -83,7 +84,7 @@ public class DataService {
     }
 
     public List<DepartmentDto> getDepartments() {
-        List<DepartmentDto> departments = departmentRepository.getDepartments();
+        List<Departments> departments = departmentRepository.getDepartments();
         List<DepartmentDto> result = new ArrayList<>();
         departments.forEach(departmentDto -> {
             DepartmentDto dto = new DepartmentDto();

@@ -4,13 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DepartmentRepository">
 
-    <select id="getDepartments" resultType="com.example.demo.dto.DepartmentDto">
-        SELECT id_departament as idDepartment,
-               department     as department
-        FROM departaments
-        WHERE id_departament > 0
-    </select>
-
     <select id="getMunicipalities" resultType="java.lang.String">
         SELECT m.municipality
         FROM locations l,
@@ -31,4 +24,12 @@
           and d.id_datatype = b.id_datatype
           and a.id_departament = #{departmentId}
     </select>
+
+    <select id="getDepartments" resultType="com.example.demo.domain.Departments">
+        SELECT d.id_departament as idDepartment,
+               d.department     as department
+        FROM departaments d
+    </select>
+
+
 </mapper>
