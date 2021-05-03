@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.ZonaRepository">
+<mapper namespace="com.example.demo.dao.LocationRepository">
     <select id="getZoneByDepartment" resultType="java.lang.Integer">
         SELECT z.id_location
         FROM departaments d,

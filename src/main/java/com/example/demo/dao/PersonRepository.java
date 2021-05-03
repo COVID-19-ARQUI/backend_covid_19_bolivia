@@ -5,7 +5,7 @@ import com.example.demo.domain.Persons;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface PersonaRepository {
+public interface PersonRepository {
     //
     public void createUser(Persons persons);
 }

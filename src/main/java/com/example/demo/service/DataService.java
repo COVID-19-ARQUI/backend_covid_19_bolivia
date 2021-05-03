@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.DatoRepository;
+import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
-import com.example.demo.dao.MunicipioRepository;
-import com.example.demo.dao.ZonaRepository;
+import com.example.demo.dao.MunicipalityRepository;
+import com.example.demo.dao.LocationRepository;
 import com.example.demo.domain.Data;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.*;
@@ -17,51 +17,51 @@ import java.util.List;
 
 @Service
 public class DataService {
-    private DatoRepository datoRepository;
+    private DataRepository dataRepository;
     private DepartmentRepository departmentRepository;
-    private ZonaRepository zonaRepository;
-    private MunicipioRepository municipioRepository;
+    private LocationRepository locationRepository;
+    private MunicipalityRepository municipalityRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
 
     @Autowired
-    public DataService(DatoRepository datoRepository, DepartmentRepository departmentRepository, ZonaRepository zonaRepository, MunicipioRepository municipioRepository) {
-        this.datoRepository = datoRepository;
+    public DataService(DataRepository dataRepository, DepartmentRepository departmentRepository, LocationRepository locationRepository, MunicipalityRepository municipalityRepository) {
+        this.dataRepository = dataRepository;
         this.departmentRepository = departmentRepository;
-        this.zonaRepository = zonaRepository;
-        this.municipioRepository = municipioRepository;
+        this.locationRepository = locationRepository;
+        this.municipalityRepository = municipalityRepository;
     }
 
     public List<DatoDto> getdatos() {
-        List<DatoDto> datoDtoList = datoRepository.getDatosGenerales();
+        List<DatoDto> datoDtoList = dataRepository.getDatosGenerales();
         return datoDtoList;
     }
 
     public DatoDto getdatosvac1(Integer departmentId) {
-        return datoRepository.vacuna1final(departmentId);
+        return dataRepository.vacuna1final(departmentId);
     }
 
     public DatoDto getdatosvac2(Integer departmentId) {
-        return datoRepository.vacuna2final(departmentId);
+        return dataRepository.vacuna2final(departmentId);
     }
 
     public DataDto pushSingleData(DataDto dataDto, Transaction transaction) {
-        Integer zoneId = zonaRepository.getZoneByDepartment(dataDto.getDepartment(), dataDto.getMunicipality());
+        Integer zoneId = locationRepository.getZoneByDepartment(dataDto.getDepartment(), dataDto.getMunicipality());
         LOGGER.warn(zoneId != null ? zoneId.toString() : null);
         if (dataDto.getConfirmed() != null) {
             Data contagiados = new Data(null, dataDto.getConfirmed().toString(), dataDto.getDate(), zoneId, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            datoRepository.addSingleData(contagiados);
+            dataRepository.addSingleData(contagiados);
         }
         if (dataDto.getDeaths() != null) {
             Data muertos = new Data(null, dataDto.getDeaths().toString(), dataDto.getDate(), zoneId, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            datoRepository.addSingleData(muertos);
+            dataRepository.addSingleData(muertos);
         }
         if (dataDto.getRecovered() != null) {
             Data recuperados = new Data(null, dataDto.getRecovered().toString(), dataDto.getDate(), zoneId, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            datoRepository.addSingleData(recuperados);
+            dataRepository.addSingleData(recuperados);
         }
         if (dataDto.getVaccinated() != null) {
             Data vacunados = new Data(null, dataDto.getVaccinated().toString(), dataDto.getDate(), zoneId, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            datoRepository.addSingleData(vacunados);
+            dataRepository.addSingleData(vacunados);
         }
 
 //        Dato activos = new Dato(null, dataDto.getActives().toString(), dataDto.getDate(), zoneId, 6, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
@@ -73,12 +73,12 @@ public class DataService {
     }
 
     public List<DatoDto> listDataofDepartament(Integer departmentId) {
-        List<DatoDto> listDataofDepartament = datoRepository.getDatos(departmentId);
+        List<DatoDto> listDataofDepartament = dataRepository.getDatos(departmentId);
         return listDataofDepartament;
     }
 
     public List<DatoDto> sumdatos(Integer departmentId) {
-        List<DatoDto> listDataofDepartament = datoRepository.sumdato(departmentId);
+        List<DatoDto> listDataofDepartament = dataRepository.sumdato(departmentId);
         return listDataofDepartament;
     }
 
@@ -102,17 +102,17 @@ public class DataService {
     }
 
     public List<DateCovidDto> mostRecentDateOfCovidData() {
-        List<DateCovidDto> mostRecentDateOfCovidData = datoRepository.mostRecentDateOfCovidData();
+        List<DateCovidDto> mostRecentDateOfCovidData = dataRepository.mostRecentDateOfCovidData();
         return mostRecentDateOfCovidData;
     }
 
     public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
-        List<DataCovidDepartmentDto> list = datoRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+        List<DataCovidDepartmentDto> list = dataRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
         return list;
     }
 
     public List<DataCovidMunicipioDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
-        List<DataCovidMunicipioDto> list = municipioRepository.getDataByMunicipioId(tipoDatoId, municipioId);
+        List<DataCovidMunicipioDto> list = municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
         return list;
     }
 }

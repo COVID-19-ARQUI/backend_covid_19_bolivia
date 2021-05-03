@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 
 import com.example.demo.dao.DashboardRepository;
-import com.example.demo.dao.DatoRepository;
+import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dto.DashboardDto;
 import com.example.demo.dto.DepartmentDto;
@@ -11,22 +11,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class DashboardService {
     private DashboardRepository dashboardRepository;
-    private DatoRepository datoRepository;
+    private DataRepository dataRepository;
     private DepartmentRepository departmentRepository;
     //    private TransactionRepository transactionRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
 
     @Autowired
-    public DashboardService(DashboardRepository dashboardRepository, DatoRepository datoRepository, DepartmentRepository departmentRepository) {
+    public DashboardService(DashboardRepository dashboardRepository, DataRepository dataRepository, DepartmentRepository departmentRepository) {
         this.dashboardRepository = dashboardRepository;
-        this.datoRepository = datoRepository;
+        this.dataRepository = dataRepository;
         this.departmentRepository = departmentRepository;
     }
 
@@ -38,7 +37,7 @@ public class DashboardService {
             DashboardDto dashboard = new DashboardDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
             dashboard.setDepartment(departmentDto.getDepartment());
-            dashboard.setDatoDto(datoRepository.getDatos(departmentDto.getIdDepartment()));
+            dashboard.setDatoDto(dataRepository.getDatos(departmentDto.getIdDepartment()));
             return dashboard;
         }).collect(Collectors.toList());
         LOGGER.debug(dashboardDepartments.toString());

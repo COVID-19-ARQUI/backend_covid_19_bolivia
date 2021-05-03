@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.*;
 
 @Mapper
-public interface DatoRepository {
+public interface DataRepository {
     //
     public List<DatoDto> getDatos(Integer idDepartment);
 

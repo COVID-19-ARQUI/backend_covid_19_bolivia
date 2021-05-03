@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PersonService {
 
-    PersonaRepository personaRepository;
+    PersonRepository personRepository;
 
     @Autowired
-    public PersonService(PersonaRepository personaRepository) {
-        this.personaRepository = personaRepository;
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
     public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
@@ -29,7 +29,7 @@ public class PersonService {
         persons.setTxUserId(transaction.getTxUserId().toString());
         persons.setTxHost(transaction.getTxHost());
         persons.setTxDate(transaction.getTxDate());
-        personaRepository.createUser(persons);
+        personRepository.createUser(persons);
         return registerUserDto;
     }
 }
