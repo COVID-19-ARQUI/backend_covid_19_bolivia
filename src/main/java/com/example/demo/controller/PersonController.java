@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Transaction;
-import com.example.demo.dto.DataDto;
 import com.example.demo.dto.RegisterUserDto;
-import com.example.demo.service.DatoService;
-import com.example.demo.service.PersonaService;
+import com.example.demo.service.PersonService;
 import com.example.demo.service.TransactionService;
 import com.example.demo.util.TransactionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +12,16 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping(value = "/persona")
+@RequestMapping(value = "/person")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class PersonaController {
+public class PersonController {
 
-    private PersonaService personaService;
-    private TransactionService transactionService;
+    private final PersonService personService;
+    private final TransactionService transactionService;
 
     @Autowired
-    public PersonaController(PersonaService personaService, TransactionService transactionService) {
-        this.personaService = personaService;
+    public PersonController(PersonService personService, TransactionService transactionService) {
+        this.personService = personService;
         this.transactionService = transactionService;
     }
 
@@ -31,7 +29,7 @@ public class PersonaController {
     public RegisterUserDto createUser(@RequestBody RegisterUserDto registerUserDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
-        return personaService.createUser(registerUserDto, transaction);
+        return personService.createUser(registerUserDto, transaction);
     }
 
 }

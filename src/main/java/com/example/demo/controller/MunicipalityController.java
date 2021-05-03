@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping(value = "/municipalities")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MunicipalityController {
-    private MunicipalitiesService municipalitiesService;
+    private final MunicipalitiesService municipalitiesService;
 
     @Autowired
     public MunicipalityController(MunicipalitiesService municipalitiesService) {
@@ -19,7 +19,7 @@ public class MunicipalityController {
     }
 
     @RequestMapping(value = "/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MunicipalityDataDto> getMunicipatilyData(@PathVariable Integer departmentId) {
+    public List<MunicipalityDataDto> getMunicipalityData(@PathVariable Integer departmentId) {
         return municipalitiesService.getMunicipalityByDepartment(departmentId);
     }
 

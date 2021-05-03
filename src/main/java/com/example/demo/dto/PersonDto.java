@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-public class PersonaDto {
+public class PersonDto {
     private Integer idUser;
     private String nicknameUser;
     private String name;
@@ -12,10 +12,10 @@ public class PersonaDto {
     private String urlImage;
     private String nameImage;
 
-    public PersonaDto() {
+    public PersonDto() {
     }
 
-    public PersonaDto(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password, String urlImage, String nameImage) {
+    public PersonDto(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password, String urlImage, String nameImage) {
         this.idUser = idUser;
         this.nicknameUser = nicknameUser;
         this.name = name;

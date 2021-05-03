@@ -8,9 +8,43 @@ public class RegisterUserDto {
     private String secondLastName;
     private String email;
     private String password;
+    private String urlPhoto;
 
     public RegisterUserDto() {
 
+    }
+
+    public RegisterUserDto(String nicknameUser, String name, String secondName, String lastName, String secondLastName, String email, String password, String urlPhoto) {
+        this.nicknameUser = nicknameUser;
+        this.name = name;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        this.secondLastName = secondLastName;
+        this.email = email;
+        this.password = password;
+        this.urlPhoto = urlPhoto;
+    }
+
+    @Override
+    public String toString() {
+        return "RegisterUserDto{" +
+                "nicknameUser='" + nicknameUser + '\'' +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", secondLastName='" + secondLastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", urlPhoto='" + urlPhoto + '\'' +
+                '}';
+    }
+
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
+
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
     }
 
     public String getNicknameUser() {

@@ -4,25 +4,26 @@ import com.example.demo.dto.DashboardDto;
 import com.example.demo.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/dashboards")
+@RequestMapping(value = "/dashboard")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class DashboardControler {
-    private DashboardService dashboardService;
-//    private TransactionService transactionService;
+public class DashboardController {
+    private final DashboardService dashboardService;
 
     @Autowired
-    public DashboardControler(DashboardService dashboardService) {
+    public DashboardController(DashboardService dashboardService) {
         this.dashboardService = dashboardService;
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DashboardDto> getDashboard(HttpServletRequest request) {
+    public List<DashboardDto> getDashboard() {
         return dashboardService.getdashboard();
     }
 

@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonaService {
+public class PersonService {
 
     PersonaRepository personaRepository;
 
     @Autowired
-    public PersonaService(PersonaRepository personaRepository) {
+    public PersonService(PersonaRepository personaRepository) {
         this.personaRepository = personaRepository;
     }
 

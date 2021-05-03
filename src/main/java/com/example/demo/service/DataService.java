@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class DatoService {
+public class DataService {
     private DatoRepository datoRepository;
     private DepartmentRepository departmentRepository;
     private ZonaRepository zonaRepository;
@@ -24,7 +24,7 @@ public class DatoService {
     private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
 
     @Autowired
-    public DatoService(DatoRepository datoRepository, DepartmentRepository departmentRepository, ZonaRepository zonaRepository, MunicipioRepository municipioRepository) {
+    public DataService(DatoRepository datoRepository, DepartmentRepository departmentRepository, ZonaRepository zonaRepository, MunicipioRepository municipioRepository) {
         this.datoRepository = datoRepository;
         this.departmentRepository = departmentRepository;
         this.zonaRepository = zonaRepository;
