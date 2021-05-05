@@ -1,6 +1,3 @@
-GET http://localhost:8080/data/department/1
-Accept: application/json
-Content-Type: application/json
 
 ### Add new data
 POST http://localhost:8080/data/new/single
@@ -18,19 +15,8 @@ Content-Type: application/json
   "vaccinated": 100
 }
 
-
-### Department data general.
-GET http://localhost:8080/departmentgeneral/1
-Accept: application/json
-Content-Type: application/json
-
 ###
 GET http://localhost:8080/data/Bolivia
-Accept: application/json
-Content-Type: application/json
-
-### Department details data
-GET http://localhost:8080/departmentData/2
 Accept: application/json
 Content-Type: application/json
 

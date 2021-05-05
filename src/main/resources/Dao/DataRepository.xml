@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DataRepository">
 
-    <resultMap id="listDataofDepartament" type="com.example.demo.dto.DatoDto">
+    <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">
         <result column="idDato" property="idDato"/>
         <result column="data" property="data"/>
         <result column="fecha" property="fecha"/>
@@ -15,28 +15,28 @@
         <result column="idZona" property="idZona"/>
     </resultMap>
 
-    <select id="getDatos" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_data                             AS idDato,
+    <select id="getDatos" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
                a.data                                AS data,
-               a.in_date                             AS fecha,
-               a.id_location                         AS zonaId,
+               a.in_date                             AS inDate,
+               a.id_location                         AS idLocation,
                (SELECT c.type
                 FROM datatypes c
-                WHERE a.id_datatype = c.id_datatype) AS tipoDeDato
+                WHERE a.id_datatype = c.id_datatype) AS datatype
         FROM data a,
              locations b
         WHERE b.id_location = a.id_location
           AND b.id_departament = #{idDepartment}
     </select>
 
-    <select id="getDatosGenerales" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_data                             AS idDato,
+    <select id="getDatosGenerales" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
                a.data                                AS data,
-               a.in_date                             AS fecha,
-               a.id_location                         AS zonaId,
+               a.in_date                             AS inDate,
+               a.id_location                         AS idLocation,
                (SELECT c.type
                 FROM datatypes c
-                WHERE a.id_datatype = c.id_datatype) AS tipoDeDato
+                WHERE a.id_datatype = c.id_datatype) AS datatype
         FROM data a,
              locations b
         WHERE b.id_location = a.id_location
@@ -44,14 +44,14 @@
         ORDER BY a.in_date
     </select>
 
-    <select id="sumdato" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_data                             AS idDato,
+    <select id="sumdato" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
                sum(a.data)                           AS data,
-               a.in_date                             AS fecha,
-               a.id_location                         AS zonaId,
+               a.in_date                             AS inDate,
+               a.id_location                         AS idLocation,
                (SELECT c.type
                 FROM datatypes c
-                WHERE a.id_datatype = c.id_datatype) AS tipoDeDato
+                WHERE a.id_datatype = c.id_datatype) AS datatype
         FROM data a,
              locations b
         WHERE b.id_location = a.id_location
@@ -59,14 +59,14 @@
         GROUP BY a.id_datatype
     </select>
 
-    <select id="vacuna1final" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_data                             AS idDato,
+    <select id="vacuna1final" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
                a.data                                AS data,
-               a.in_date                             AS fecha,
-               a.id_location                         AS zonaId,
+               a.in_date                             AS inDate,
+               a.id_location                         AS idLocation,
                (SELECT c.id_datatype
                 FROM datatypes c
-                WHERE a.id_datatype = c.id_datatype) AS tipoDeDato
+                WHERE a.id_datatype = c.id_datatype) AS datatype
         FROM data a,
              locations b
         WHERE b.id_location = a.id_location
@@ -76,14 +76,14 @@
         LIMIT 1
     </select>
 
-    <select id="vacuna2final" resultType="com.example.demo.dto.DatoDto">
-        SELECT a.id_data                             AS idDato,
+    <select id="vacuna2final" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
                a.data                                AS data,
-               a.in_date                             AS fecha,
-               a.id_location                         AS zonaId,
+               a.in_date                             AS inDate,
+               a.id_location                         AS idLocation,
                (SELECT c.id_datatype
                 FROM datatypes c
-                WHERE a.id_datatype = c.id_datatype) AS tipoDeDato
+                WHERE a.id_datatype = c.id_datatype) AS datatype
         FROM data a,
              locations b
         WHERE b.id_location = a.id_location
@@ -94,14 +94,14 @@
     </select>
 
     <select id="dataofDepartament" resultMap="listDataofDepartament">
-        SELECT a.id_data     AS idDato,
+        SELECT a.id_data     AS idData,
                a.data        AS data,
-               a.in_date     AS fecha,
-               d.type        AS tipoDeDato,
-               a.tx_user_id  AS txUser,
+               a.in_date     AS inDate,
+               d.type        AS datatype,
+               a.tx_user_id  AS txUserId,
                a.tx_host     AS txHost,
                a.tx_date     AS txDate,
-               b.id_location AS idZona
+               b.id_location AS idLocation
         FROM data a,
              locations b,
              departaments c,
@@ -117,8 +117,8 @@
         VALUES (#{data}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{txUser}, #{txHost}, #{txDate});
     </insert>
 
-    <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DataCovidDto">
-        SELECT a.in_date, a.data, c.type AS tipoDeDatos
+    <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DataSimpleDto">
+        SELECT a.in_date as inDate, a.data as data, c.type AS datatype
         FROM data a,
              datatypes c
         WHERE a.id_location = 1
@@ -126,8 +126,8 @@
           AND a.in_date = (SELECT MAX(b.in_date) FROM data b)
     </select>
 
-    <select id="getGeneralAccumulateData" resultType="com.example.demo.dto.GeneralDataDto">
-        SELECT a.in_date, a.data, c.type AS tipoDeDatos
+    <select id="getGeneralAccumulateData" resultType="com.example.demo.dto.GeneralStatisticsDto">
+        SELECT a.in_date as inDate, a.data as data, c.type AS datatype
         FROM data a,
              datatypes c
         WHERE a.id_location = 1
@@ -135,13 +135,13 @@
           AND a.in_date = (SELECT MAX(b.in_date) FROM data b)
     </select>
 
-    <select id="listDataOfDepartmentAndTypeDate" resultType="com.example.demo.dto.DataCovidDto">
-        select b.data, b.in_date
+    <select id="listDataOfDepartmentAndTypeDate" resultType="com.example.demo.dto.DataSimpleDto">
+        select b.data as data, b.in_date as inDate, a.type as datatype
         from datatypes a,
              data b,
              locations l
-        where a.id_datatype = #{tipoDatoId}
-          and l.id_departament = #{departmentId}
+        where a.id_datatype = #{idDatatype}
+          and l.id_departament = #{idDepartment}
           and b.id_location = l.id_location
     </select>
 

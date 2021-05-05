@@ -4,18 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.MunicipalityRepository">
 
-    <select id="getDataByMunicipioId" resultType="com.example.demo.dto.DataCovidDto">
-
-        select c.data, c.in_date
-        from municipalities a,
+    <select id="getDataByMunicipioId" resultType="com.example.demo.dto.DataSimpleDto">
+        SELECT c.data as data, c.in_date as inDate
+        FROM municipalities a,
              locations b,
              data c,
              datatypes d
-        where a.id_municipality = b.id_municipality
-          and b.id_location = c.id_location
-          and d.id_datatype = c.id_datatype
-          and a.id_municipality = #{municipioId}
-          and d.id_datatype = #{tipoDatoId}
+        WHERE a.id_municipality = b.id_municipality
+          AND b.id_location = c.id_location
+          AND d.id_datatype = c.id_datatype
+          AND a.id_municipality = #{municipioId}
+          AND d.id_datatype = #{tipoDatoId}
 
     </select>
 
@@ -29,7 +28,7 @@
         WHERE d.id_departament = z.id_departament
           AND z.id_municipality = m.id_municipality
           AND z.id_location = data.id_location
-          AND m.id_municipality >0
+          AND m.id_municipality > 0
           AND t.id_datatype = data.id_datatype
           AND d.id_departament = #{departmentId}
         GROUP BY m.municipality

@@ -1,9 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Departments;
-import com.example.demo.dto.DepartmentDataDto;
-import com.example.demo.dto.DepartmentDto;
-import com.example.demo.dto.MunicipalityDataDto;
+import com.example.demo.dto.DataSimpleDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.*;
@@ -15,7 +13,7 @@ public interface DepartmentRepository {
     List<String> getMunicipalities(Integer idDepartment);
 
     //
-    List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId);
+    List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId);
 
     // Get list of all departments
     public List<Departments> getDepartments();

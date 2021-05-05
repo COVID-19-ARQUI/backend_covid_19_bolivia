@@ -1,13 +1,13 @@
 package com.example.demo.dto;
 
-public class GeneralDataDto {
+public class GeneralStatisticsDto {
     private Integer confirmed;
     private Integer deaths;
     private Integer recovered;
     private Integer actives;
     private Integer vaccinated;
 
-    public GeneralDataDto() {
+    public GeneralStatisticsDto() {
     }
 
     @Override

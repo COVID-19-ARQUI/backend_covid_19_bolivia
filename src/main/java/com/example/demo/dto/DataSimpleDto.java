@@ -1,23 +1,11 @@
 package com.example.demo.dto;
 
-
-public class DatoDto {
-
-    private Integer idData;
+public class DataSimpleDto {
     private Integer data;
     private String inDate;
-    private Integer idLocation;
     private String datatype;
 
-    public DatoDto() {
-    }
-
-    public Integer getIdData() {
-        return idData;
-    }
-
-    public void setIdData(Integer idData) {
-        this.idData = idData;
+    public DataSimpleDto() {
     }
 
     public Integer getData() {
@@ -36,14 +24,6 @@ public class DatoDto {
         this.inDate = inDate;
     }
 
-    public Integer getIdLocation() {
-        return idLocation;
-    }
-
-    public void setIdLocation(Integer idLocation) {
-        this.idLocation = idLocation;
-    }
-
     public String getDatatype() {
         return datatype;
     }
@@ -52,4 +32,12 @@ public class DatoDto {
         this.datatype = datatype;
     }
 
+    @Override
+    public String toString() {
+        return "DepartmentDataDto{" +
+                "dato=" + data +
+                ", fecha='" + inDate + '\'' +
+                ", tipoDeDato='" + datatype + '\'' +
+                '}';
+    }
 }

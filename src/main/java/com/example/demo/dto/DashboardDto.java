@@ -6,7 +6,7 @@ public class DashboardDto {
 
     private Integer idDepartment;
     private String department;
-    private List<DatoDto> datoDto;
+    private List<DataDto> dataDto;
 
     public DashboardDto() {
     }
@@ -27,11 +27,11 @@ public class DashboardDto {
         this.department = department;
     }
 
-    public List<DatoDto> getDatoDto() {
-        return datoDto;
+    public List<DataDto> getDatoDto() {
+        return dataDto;
     }
 
-    public void setDatoDto(List<DatoDto> datoDto) {
-        this.datoDto = datoDto;
+    public void setDatoDto(List<DataDto> dataDto) {
+        this.dataDto = dataDto;
     }
 }

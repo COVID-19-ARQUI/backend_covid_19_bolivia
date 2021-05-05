@@ -1,8 +1,8 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Data;
-import com.example.demo.dto.DatoDto;
-import com.example.demo.dto.DataCovidDto;
+import com.example.demo.dto.DataDto;
+import com.example.demo.dto.DataSimpleDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.*;
@@ -10,26 +10,26 @@ import java.util.*;
 @Mapper
 public interface DataRepository {
     //
-    public List<DatoDto> getDatos(Integer idDepartment);
+    public List<DataDto> getDatos(Integer idDepartment);
 
     //
-    public List<DatoDto> getDatosGenerales();
+    public List<DataDto> getDatosGenerales();
 
     //
-    public List<DatoDto> sumdato(Integer idDepartment);
+    public List<DataDto> sumdato(Integer idDepartment);
 
     //
-    public DatoDto vacuna2final(Integer idDepartment);
+    public DataDto vacuna2final(Integer idDepartment);
 
     //
-    public DatoDto vacuna1final(Integer idDepartment);
+    public DataDto vacuna1final(Integer idDepartment);
 
     // Add sigle row on table Dato
     public void addSingleData(Data data);
 
     //
-    public List<DataCovidDto> mostRecentDateOfCovidData();
+    public List<DataSimpleDto> mostRecentDateOfCovidData();
 
     // Get general accumulate data
-    public List<DataCovidDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId);
+    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer idDatatype, Integer idDepartment);
 }

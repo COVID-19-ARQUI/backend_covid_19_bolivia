@@ -1,7 +1,3 @@
 GET http://localhost:8080/dashboard
 Accept: application/json
 Content-Type: application/json
-
-###
-GET http://localhost:8080/data/departmentgeneral/1
-Accept: application/json

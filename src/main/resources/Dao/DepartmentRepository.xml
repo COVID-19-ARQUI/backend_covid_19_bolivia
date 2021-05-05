@@ -13,8 +13,8 @@
           AND m.id_municipality > 0
     </select>
 
-    <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DepartmentDataDto">
-        select b.data, b.in_date, d.id_datatype as tipoDeDato
+    <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DataSimpleDto">
+        select b.data as data, b.in_date as inDate, d.id_datatype as datatype
         from departaments a,
              data b,
              locations c,

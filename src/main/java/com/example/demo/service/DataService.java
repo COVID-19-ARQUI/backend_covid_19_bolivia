@@ -30,36 +30,36 @@ public class DataService {
         this.municipalityRepository = municipalityRepository;
     }
 
-    public List<DatoDto> getdatos() {
-        List<DatoDto> datoDtoList = dataRepository.getDatosGenerales();
-        return datoDtoList;
+    public List<DataDto> getdatos() {
+        List<DataDto> dataDtoList = dataRepository.getDatosGenerales();
+        return dataDtoList;
     }
 
-    public DatoDto getdatosvac1(Integer departmentId) {
+    public DataDto getdatosvac1(Integer departmentId) {
         return dataRepository.vacuna1final(departmentId);
     }
 
-    public DatoDto getdatosvac2(Integer departmentId) {
+    public DataDto getdatosvac2(Integer departmentId) {
         return dataRepository.vacuna2final(departmentId);
     }
 
-    public DataDto pushSingleData(DataDto dataDto, Transaction transaction) {
-        Integer zoneId = locationRepository.getZoneByDepartment(dataDto.getDepartment(), dataDto.getMunicipality());
+    public DailyDataDto pushSingleData(DailyDataDto dailyDataDto, Transaction transaction) {
+        Integer zoneId = locationRepository.getZoneByDepartment(dailyDataDto.getDepartment(), dailyDataDto.getMunicipality());
         LOGGER.warn(zoneId != null ? zoneId.toString() : null);
-        if (dataDto.getConfirmed() != null) {
-            Data contagiados = new Data(null, dataDto.getConfirmed().toString(), dataDto.getDate(), zoneId, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        if (dailyDataDto.getConfirmed() != null) {
+            Data contagiados = new Data(null, dailyDataDto.getConfirmed().toString(), dailyDataDto.getDate(), zoneId, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(contagiados);
         }
-        if (dataDto.getDeaths() != null) {
-            Data muertos = new Data(null, dataDto.getDeaths().toString(), dataDto.getDate(), zoneId, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        if (dailyDataDto.getDeaths() != null) {
+            Data muertos = new Data(null, dailyDataDto.getDeaths().toString(), dailyDataDto.getDate(), zoneId, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(muertos);
         }
-        if (dataDto.getRecovered() != null) {
-            Data recuperados = new Data(null, dataDto.getRecovered().toString(), dataDto.getDate(), zoneId, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        if (dailyDataDto.getRecovered() != null) {
+            Data recuperados = new Data(null, dailyDataDto.getRecovered().toString(), dailyDataDto.getDate(), zoneId, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(recuperados);
         }
-        if (dataDto.getVaccinated() != null) {
-            Data vacunados = new Data(null, dataDto.getVaccinated().toString(), dataDto.getDate(), zoneId, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        if (dailyDataDto.getVaccinated() != null) {
+            Data vacunados = new Data(null, dailyDataDto.getVaccinated().toString(), dailyDataDto.getDate(), zoneId, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(vacunados);
         }
 
@@ -68,36 +68,34 @@ public class DataService {
 //            datoRepository.addSingleData(activos);
 
         LOGGER.warn(zoneId.toString());
-        return dataDto;
+        return dailyDataDto;
     }
 
-    public List<DatoDto> listDataofDepartament(Integer departmentId) {
-        List<DatoDto> listDataofDepartament = dataRepository.getDatos(departmentId);
+    public List<DataDto> listDataofDepartament(Integer departmentId) {
+        List<DataDto> dataDtoList = dataRepository.getDatos(departmentId);
+        LOGGER.warn(dataDtoList.toString());
+        return dataDtoList;
+    }
+
+    public List<DataDto> sumdatos(Integer departmentId) {
+        List<DataDto> listDataofDepartament = dataRepository.sumdato(departmentId);
         return listDataofDepartament;
     }
 
-    public List<DatoDto> sumdatos(Integer departmentId) {
-        List<DatoDto> listDataofDepartament = dataRepository.sumdato(departmentId);
-        return listDataofDepartament;
-    }
-
-    public List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId) {
-        List<DepartmentDataDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
+    public List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId) {
+        List<DataSimpleDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
         return listDepartmentsDataById;
     }
 
-    public List<DataCovidDto> mostRecentDateOfCovidData() {
-        List<DataCovidDto> mostRecentDateOfCovidData = dataRepository.mostRecentDateOfCovidData();
-        return mostRecentDateOfCovidData;
+    public List<DataSimpleDto> mostRecentDateOfCovidData() {
+        return dataRepository.mostRecentDateOfCovidData();
     }
 
-    public List<DataCovidDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
-        List<DataCovidDto> list = dataRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
-        return list;
+    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
+        return dataRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
     }
 
-    public List<DataCovidDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
-        List<DataCovidDto> list = municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
-        return list;
+    public List<DataSimpleDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
+        return municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
     }
 }

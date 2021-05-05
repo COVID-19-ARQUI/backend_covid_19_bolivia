@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/graphic")
+@RequestMapping(value = "/chart")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class GraphicController {
+public class ChartController {
 }
