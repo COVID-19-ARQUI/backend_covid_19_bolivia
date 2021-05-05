@@ -1,9 +1,9 @@
 package com.example.demo.dto;
 
 public class MunicipalityDataDto {
-    private Integer dato;
-    private String municipio;
-    private String tipo;
+    private Integer data;
+    private String municipality;
+    private String type;
 
     public MunicipalityDataDto() {
     }
@@ -11,33 +11,33 @@ public class MunicipalityDataDto {
     @Override
     public String toString() {
         return "MunicipalityDataDto{" +
-                "dato=" + dato +
-                ", municipio='" + municipio + '\'' +
-                ", tipo='" + tipo + '\'' +
+                "data=" + data +
+                ", municipality='" + municipality + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 
     public Integer getDato() {
-        return dato;
+        return data;
     }
 
     public void setDato(Integer dato) {
-        this.dato = dato;
+        this.data = dato;
     }
 
-    public String getMunicipio() {
-        return municipio;
+    public String getMunicipality() {
+        return municipality;
     }
 
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getType() {
+        return type;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setType(String type) {
+        this.type = type;
     }
 }

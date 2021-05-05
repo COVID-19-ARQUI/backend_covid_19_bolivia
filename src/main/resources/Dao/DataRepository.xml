@@ -117,7 +117,7 @@
         VALUES (#{data}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{txUser}, #{txHost}, #{txDate});
     </insert>
 
-    <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DateCovidDto">
+    <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DataCovidDto">
         SELECT a.in_date, a.data, c.type AS tipoDeDatos
         FROM data a,
              datatypes c
@@ -135,17 +135,14 @@
           AND a.in_date = (SELECT MAX(b.in_date) FROM data b)
     </select>
 
-    <select id="listDataOfDepartmentAndTypeDate" resultType="com.example.demo.dto.DataCovidDepartmentDto">
+    <select id="listDataOfDepartmentAndTypeDate" resultType="com.example.demo.dto.DataCovidDto">
         select b.data, b.in_date
         from datatypes a,
              data b,
-             locations c,
-             departaments d
+             locations l
         where a.id_datatype = #{tipoDatoId}
-          and d.id_departament = #{departmentId}
-          and d.id_departament = c.id_departament
-          and b.id_location = c.id_location
-          and a.id_datatype = b.id_location
+          and l.id_departament = #{departmentId}
+          and b.id_location = l.id_location
     </select>
 
 

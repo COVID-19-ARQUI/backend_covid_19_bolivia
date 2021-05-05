@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DatoDto;
-import com.example.demo.dto.DepartmentDto;
 import com.example.demo.dto.*;
 import com.example.demo.service.DataService;
 import com.example.demo.service.TransactionService;
@@ -57,23 +56,18 @@ public class DataController {
         return dataService.pushSingleData(dataDto, transaction);
     }
 
-    @RequestMapping(value = "/departments", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DepartmentDto> getAllDepartments() {
-        return dataService.getDepartments();
-    }
-
     @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentDataDto> getDataByDepartmentsId(@PathVariable Integer departmentId) {
         return dataService.getDataByDepartmentsId(departmentId);
     }
 
     @RequestMapping(value = "/dataRecent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DateCovidDto> mostRecentDateOfCovidData() {
+    public List<DataCovidDto> mostRecentDateOfCovidData() {
         return dataService.mostRecentDateOfCovidData();
     }
 
     @RequestMapping(value = "/dataOfDepartmentAndTypeDate/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+    public List<DataCovidDto> listDataOfDepartmentAndTypeDate(@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
         return dataService.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
     }
 
@@ -84,7 +78,7 @@ public class DataController {
     }
 
     @RequestMapping(value = "/municipios/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataCovidMunicipioDto> getDataByMunicipioId(@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
+    public List<DataCovidDto> getDataByMunicipioId(@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
         return dataService.getDataByMunicipioId(tipoDatoId, departmentId);
     }
 

@@ -1,9 +1,8 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Data;
-import com.example.demo.dto.DataCovidDepartmentDto;
 import com.example.demo.dto.DatoDto;
-import com.example.demo.dto.DateCovidDto;
+import com.example.demo.dto.DataCovidDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.*;
@@ -29,8 +28,8 @@ public interface DataRepository {
     public void addSingleData(Data data);
 
     //
-    public List<DateCovidDto> mostRecentDateOfCovidData();
+    public List<DataCovidDto> mostRecentDateOfCovidData();
 
     // Get general accumulate data
-    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId);
+    public List<DataCovidDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId);
 }

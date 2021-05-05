@@ -5,7 +5,6 @@ import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dao.MunicipalityRepository;
 import com.example.demo.dao.LocationRepository;
 import com.example.demo.domain.Data;
-import com.example.demo.domain.Departments;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.*;
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -83,37 +81,23 @@ public class DataService {
         return listDataofDepartament;
     }
 
-    public List<DepartmentDto> getDepartments() {
-        List<Departments> departments = departmentRepository.getDepartments();
-        List<DepartmentDto> result = new ArrayList<>();
-        departments.forEach(departmentDto -> {
-            DepartmentDto dto = new DepartmentDto();
-            dto.setDepartment(departmentDto.getDepartment());
-            dto.setIdDepartment(departmentDto.getIdDepartment());
-            dto.setMunicipalities(departmentRepository.getMunicipalities(departmentDto.getIdDepartment()));
-//            LOGGER.error(dto.toString());
-            result.add(dto);
-        });
-        return result;
-    }
-
     public List<DepartmentDataDto> getDataByDepartmentsId(Integer departmentId) {
         List<DepartmentDataDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
         return listDepartmentsDataById;
     }
 
-    public List<DateCovidDto> mostRecentDateOfCovidData() {
-        List<DateCovidDto> mostRecentDateOfCovidData = dataRepository.mostRecentDateOfCovidData();
+    public List<DataCovidDto> mostRecentDateOfCovidData() {
+        List<DataCovidDto> mostRecentDateOfCovidData = dataRepository.mostRecentDateOfCovidData();
         return mostRecentDateOfCovidData;
     }
 
-    public List<DataCovidDepartmentDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
-        List<DataCovidDepartmentDto> list = dataRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+    public List<DataCovidDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
+        List<DataCovidDto> list = dataRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
         return list;
     }
 
-    public List<DataCovidMunicipioDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
-        List<DataCovidMunicipioDto> list = municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
+    public List<DataCovidDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
+        List<DataCovidDto> list = municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
         return list;
     }
 }

@@ -7,7 +7,7 @@
         INSERT INTO transaction
         VALUES (null,
                 #{txHost},
-                #{txUserUd},
+                #{txUserId},
                 #{txDate})
     </insert>
     <select id="getLastInsertId" resultType="java.lang.Integer">

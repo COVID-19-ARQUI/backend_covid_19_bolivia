@@ -28,6 +28,7 @@ public class DepartmentController {
     public List<Departments> getDepartments() {
         return departmentService.getDepartments();
     }
+
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentDto> getAllDepartments() {
         return departmentService.getDepartmentsWithMunicipalities();

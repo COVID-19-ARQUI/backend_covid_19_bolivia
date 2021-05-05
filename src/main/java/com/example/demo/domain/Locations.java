@@ -5,16 +5,21 @@ public class Locations {
     private Integer idDepartment;
     private Integer idMunicipality;
     private Integer idCountry;
+    private Double latitude;
+    private Double longitude;
 
-    public Locations(Integer idLocation, Integer idDepartment, Integer idMunicipality, Integer idCountry) {
+    public Locations(Integer idLocation, Integer idDepartment, Integer idMunicipality, Integer idCountry, Double latitude, Double longitude) {
         this.idLocation = idLocation;
         this.idDepartment = idDepartment;
         this.idMunicipality = idMunicipality;
         this.idCountry = idCountry;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Locations() {
     }
+
 
     @Override
     public String toString() {
@@ -23,7 +28,25 @@ public class Locations {
                 ", idDepartment=" + idDepartment +
                 ", idMunicipality=" + idMunicipality +
                 ", idCountry=" + idCountry +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
                 '}';
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public Integer getIdLocation() {

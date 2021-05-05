@@ -1,65 +1,55 @@
 package com.example.demo.dto;
 
 
-import java.util.Date;
-
 public class DatoDto {
 
-    private Integer idDato;
-    private Integer dato;
-    private String fecha;
-    private Integer zonaId;
-    private String tipoDeDato;
-    private Integer paisId;
+    private Integer idData;
+    private Integer data;
+    private String inDate;
+    private Integer idLocation;
+    private String datatype;
 
     public DatoDto() {
     }
 
-    public Integer getIdDato() {
-        return idDato;
+    public Integer getIdData() {
+        return idData;
     }
 
-    public void setIdDato(Integer idDato) {
-        this.idDato = idDato;
+    public void setIdData(Integer idData) {
+        this.idData = idData;
     }
 
-    public Integer getDato() {
-        return dato;
+    public Integer getData() {
+        return data;
     }
 
-    public void setDato(Integer dato) {
-        this.dato = dato;
+    public void setData(Integer data) {
+        this.data = data;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getInDate() {
+        return inDate;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setInDate(String inDate) {
+        this.inDate = inDate;
     }
 
-    public Integer getZonaId() {
-        return zonaId;
+    public Integer getIdLocation() {
+        return idLocation;
     }
 
-    public void setZonaId(Integer zonaId) {
-        this.zonaId = zonaId;
+    public void setIdLocation(Integer idLocation) {
+        this.idLocation = idLocation;
     }
 
-    public String getTipoDeDato() {
-        return tipoDeDato;
+    public String getDatatype() {
+        return datatype;
     }
 
-    public void setTipoDeDato(String tipoDeDato) {
-        this.tipoDeDato = tipoDeDato;
+    public void setDatatype(String datatype) {
+        this.datatype = datatype;
     }
 
-    public Integer getPaisId() {
-        return paisId;
-    }
-
-    public void setPaisId(Integer paisId) {
-        this.paisId = paisId;
-    }
 }

@@ -1,43 +1,43 @@
 package com.example.demo.dto;
 
 public class DepartmentDataDto {
-    private Integer dato;
-    private String fecha;
-    private String tipoDeDato;
+    private Integer data;
+    private String inDate;
+    private String datatype;
 
     public DepartmentDataDto() {
     }
 
-    public Integer getDato() {
-        return dato;
+    public Integer getData() {
+        return data;
     }
 
-    public void setDato(Integer dato) {
-        this.dato = dato;
+    public void setData(Integer data) {
+        this.data = data;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getInDate() {
+        return inDate;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setInDate(String inDate) {
+        this.inDate = inDate;
     }
 
-    public String getTipoDeDato() {
-        return tipoDeDato;
+    public String getDatatype() {
+        return datatype;
     }
 
-    public void setTipoDeDato(String tipoDeDato) {
-        this.tipoDeDato = tipoDeDato;
+    public void setDatatype(String datatype) {
+        this.datatype = datatype;
     }
 
     @Override
     public String toString() {
         return "DepartmentDataDto{" +
-                "dato=" + dato +
-                ", fecha='" + fecha + '\'' +
-                ", tipoDeDato='" + tipoDeDato + '\'' +
+                "dato=" + data +
+                ", fecha='" + inDate + '\'' +
+                ", tipoDeDato='" + datatype + '\'' +
                 '}';
     }
 }

@@ -3,36 +3,41 @@ package com.example.demo.dto;
 
 public class GraphicDto {
 
-    private Integer idGraphic;
+    private Integer idChart;
     private String name;
-    private String txUser;
-    private String txHost;
-    private String txDate;
     private int active;
     private int idView;
-    private int idTypeGraphic;
+    private int idChartType;
 
     public GraphicDto() {
     }
 
 
-    public GraphicDto(Integer idGraphic, String name, String txUser, String txHost, String txDate, int active, int idView, int idTypeGraphic) {
-        this.idGraphic = idGraphic;
+    public GraphicDto(Integer idChart, String name, int active, int idView, int idChartType) {
+        this.idChart = idChart;
         this.name = name;
-        this.txUser = txUser;
-        this.txHost = txHost;
-        this.txDate = txDate;
         this.active = active;
         this.idView = idView;
-        this.idTypeGraphic = idTypeGraphic;
+        this.idChartType = idChartType;
     }
 
-    public Integer getIdGraphic() {
-        return idGraphic;
+    @Override
+    public String toString() {
+        return "GraphicDto{" +
+                "idChart=" + idChart +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                ", idView=" + idView +
+                ", idTypeGraphic=" + idChartType +
+                '}';
     }
 
-    public void setIdGraphic(Integer idGraphic) {
-        this.idGraphic = idGraphic;
+    public Integer getIdChart() {
+        return idChart;
+    }
+
+    public void setIdChart(Integer idChart) {
+        this.idChart = idChart;
     }
 
     public String getName() {
@@ -41,30 +46,6 @@ public class GraphicDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getTxUser() {
-        return txUser;
-    }
-
-    public void setTxUser(String txUser) {
-        this.txUser = txUser;
-    }
-
-    public String getTxHost() {
-        return txHost;
-    }
-
-    public void setTxHost(String txHost) {
-        this.txHost = txHost;
-    }
-
-    public String getTxDate() {
-        return txDate;
-    }
-
-    public void setTxDate(String txDate) {
-        this.txDate = txDate;
     }
 
     public int getActive() {
@@ -83,24 +64,14 @@ public class GraphicDto {
         this.idView = idView;
     }
 
-    public int getIdTypeGraphic() {
-        return idTypeGraphic;
+    public int getIdChartType() {
+        return idChartType;
     }
 
-    public void setIdTypeGraphic(int idTypeGraphic) {
-        this.idTypeGraphic = idTypeGraphic;
+    public void setIdChartType(int idChartType) {
+        this.idChartType = idChartType;
     }
 
-    @Override
-    public String toString() {
-        return "GraphicDto{" +
-                "idGraphic=" + idGraphic +
-                ", name='" + name + '\'' +
-                ", txUser='" + txUser + '\'' +
-                ", txHost='" + txHost + '\'' +
-                ", txDate='" + txDate + '\'' +
-                ", active=" + active +
-                '}';
-    }
+
 }
 

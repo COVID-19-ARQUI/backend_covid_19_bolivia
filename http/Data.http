@@ -40,7 +40,7 @@ Accept: application/json
 Content-Type: application/json
 
 ###
-GET http://localhost:8080/data/dataOfDepartmentAndTypeDate/1/8
+GET http://localhost:8080/data/dataOfDepartmentAndTypeDate/1/6
 Accept: application/json
 Content-Type: application/json
 

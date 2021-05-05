@@ -1,25 +1,25 @@
 package com.example.demo.dto;
 
-public class GraphicTypeDto {
-    private Integer idGraphictype;
+public class ChartTypeDto {
+    private Integer idChartType;
     private String name;
     private int active;
 
-    public GraphicTypeDto(Integer idGraphictype, String name, int active) {
-        this.idGraphictype = idGraphictype;
+    public ChartTypeDto(Integer idChartType, String name, int active) {
+        this.idChartType = idChartType;
         this.name = name;
         this.active = active;
     }
 
-    public GraphicTypeDto() {
+    public ChartTypeDto() {
     }
 
-    public Integer getIdGraphictype() {
-        return idGraphictype;
+    public Integer getIdChartType() {
+        return idChartType;
     }
 
-    public void setIdGraphictype(Integer idGraphictype) {
-        this.idGraphictype = idGraphictype;
+    public void setIdChartType(Integer idChartType) {
+        this.idChartType = idChartType;
     }
 
     public String getName() {
@@ -41,7 +41,7 @@ public class GraphicTypeDto {
     @Override
     public String toString() {
         return "Graphictype{" +
-                "idGraphictype=" + idGraphictype +
+                "idGraphictype=" + idChartType +
                 ", name='" + name + '\'' +
                 ", active=" + active +
                 '}';
