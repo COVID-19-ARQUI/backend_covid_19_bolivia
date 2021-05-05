@@ -27,27 +27,7 @@ public class DataController {
         this.transactionService = transactionService;
     }
 
-    @RequestMapping(value = "/department/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DatoDto> findVehiclesByCompany(@PathVariable Integer departmentId) {
-        return dataService.listDataofDepartament(departmentId);
-    }
 
-    //sumdatos
-    @RequestMapping(value = "/departmentgeneral/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DatoDto> sumadedatos(@PathVariable Integer departmentId) {
-        return dataService.sumdatos(departmentId);
-    }
-
-    //vacunas
-    @RequestMapping(value = "/departmentvacuna/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public DatoDto vacunasdatos(@PathVariable Integer departmentId) {
-        return dataService.getdatosvac1(departmentId);
-    }
-
-    @RequestMapping(value = "/departmentvacuna2/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public DatoDto vacunas2datos(@PathVariable Integer departmentId) {
-        return dataService.getdatosvac2(departmentId);
-    }
 
     @RequestMapping(value = "/new/single", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataDto pushSingleData(@RequestBody DataDto dataDto, HttpServletRequest request) {
@@ -56,10 +36,6 @@ public class DataController {
         return dataService.pushSingleData(dataDto, transaction);
     }
 
-    @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DepartmentDataDto> getDataByDepartmentsId(@PathVariable Integer departmentId) {
-        return dataService.getDataByDepartmentsId(departmentId);
-    }
 
     @RequestMapping(value = "/dataRecent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataCovidDto> mostRecentDateOfCovidData() {

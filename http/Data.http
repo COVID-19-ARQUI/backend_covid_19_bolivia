@@ -20,7 +20,7 @@ Content-Type: application/json
 
 
 ### Department data general.
-GET http://localhost:8080/data/departmentgeneral/1
+GET http://localhost:8080/departmentgeneral/1
 Accept: application/json
 Content-Type: application/json
 
@@ -30,7 +30,7 @@ Accept: application/json
 Content-Type: application/json
 
 ### Department details data
-GET http://localhost:8080/data/departmentData/2
+GET http://localhost:8080/departmentData/2
 Accept: application/json
 Content-Type: application/json
 
