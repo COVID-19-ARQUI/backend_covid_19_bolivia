@@ -30,16 +30,11 @@ public class DataService {
         this.municipalityRepository = municipalityRepository;
     }
 
-    public List<DataDto> getdatos() {
-        List<DataDto> dataDtoList = dataRepository.getDatosGenerales();
-        return dataDtoList;
-    }
-
-    public DataDto getdatosvac1(Integer departmentId) {
+    public DataDto getSumDataFirstVaccinated(Integer departmentId) {
         return dataRepository.vacuna1final(departmentId);
     }
 
-    public DataDto getdatosvac2(Integer departmentId) {
+    public DataDto getSumDataSecondVaccinated(Integer departmentId) {
         return dataRepository.vacuna2final(departmentId);
     }
 
@@ -67,6 +62,7 @@ public class DataService {
 //        if (activos.getDato() != null)
 //            datoRepository.addSingleData(activos);
 
+        assert zoneId != null;
         LOGGER.warn(zoneId.toString());
         return dailyDataDto;
     }
@@ -78,24 +74,26 @@ public class DataService {
     }
 
     public List<DataDto> sumdatos(Integer departmentId) {
-        List<DataDto> listDataofDepartament = dataRepository.sumdato(departmentId);
-        return listDataofDepartament;
+        return dataRepository.sumdato(departmentId);
     }
 
     public List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId) {
-        List<DataSimpleDto> listDepartmentsDataById = departmentRepository.getDataByDepartmentsId(departmentId);
-        return listDepartmentsDataById;
+        return departmentRepository.getDataByDepartmentsId(departmentId);
     }
 
     public List<DataSimpleDto> mostRecentDateOfCovidData() {
         return dataRepository.mostRecentDateOfCovidData();
     }
 
-    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer tipoDatoId, Integer departmentId) {
-        return dataRepository.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
+    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer idDatatype, Integer idDepartment) {
+        return dataRepository.listDataOfDepartmentAndTypeDate(idDatatype, idDepartment);
     }
 
     public List<DataSimpleDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
         return municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
+    }
+
+    public List<DataDto> getDataByCountryId(String idCountry) {
+        return locationRepository.getGeneralDataByCountry(idCountry);
     }
 }

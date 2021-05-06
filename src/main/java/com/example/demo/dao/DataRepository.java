@@ -10,26 +10,28 @@ import java.util.*;
 @Mapper
 public interface DataRepository {
     //
-    public List<DataDto> getDatos(Integer idDepartment);
+    List<DataDto> getDatos(Integer idDepartment);
 
     //
-    public List<DataDto> getDatosGenerales();
+    List<DataDto> getDatosGenerales();
 
     //
-    public List<DataDto> sumdato(Integer idDepartment);
+    List<DataDto> sumdato(Integer idDepartment);
 
     //
-    public DataDto vacuna2final(Integer idDepartment);
+    DataDto vacuna2final(Integer idDepartment);
 
     //
-    public DataDto vacuna1final(Integer idDepartment);
+    DataDto vacuna1final(Integer idDepartment);
 
     // Add sigle row on table Dato
-    public void addSingleData(Data data);
+    void addSingleData(Data data);
 
     //
-    public List<DataSimpleDto> mostRecentDateOfCovidData();
+    List<DataSimpleDto> mostRecentDateOfCovidData();
 
     // Get general accumulate data
-    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer idDatatype, Integer idDepartment);
+    List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer idDatatype, Integer idDepartment);
+
+
 }

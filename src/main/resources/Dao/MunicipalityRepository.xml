@@ -13,13 +13,13 @@
         WHERE a.id_municipality = b.id_municipality
           AND b.id_location = c.id_location
           AND d.id_datatype = c.id_datatype
-          AND a.id_municipality = #{municipioId}
-          AND d.id_datatype = #{tipoDatoId}
+          AND a.id_municipality = #{idMunicipality}
+          AND d.id_datatype = #{idDatatype}
 
     </select>
 
     <select id="getMunicipalitiesByDepartmentId" resultType="com.example.demo.dto.MunicipalityDataDto">
-        SELECT SUM(data.data) as data, m.municipality as municipio, t.type as tipo
+        SELECT SUM(data.data) as data, m.municipality as municipality, t.type as type
         FROM locations z,
              municipalities m,
              departaments d,
@@ -30,7 +30,7 @@
           AND z.id_location = data.id_location
           AND m.id_municipality > 0
           AND t.id_datatype = data.id_datatype
-          AND d.id_departament = #{departmentId}
+          AND d.id_departament = #{idDepartment}
         GROUP BY m.municipality
     </select>
 

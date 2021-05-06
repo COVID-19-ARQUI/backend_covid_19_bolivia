@@ -13,9 +13,9 @@ public interface DepartmentRepository {
     List<String> getMunicipalities(Integer idDepartment);
 
     //
-    List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId);
+    List<DataSimpleDto> getDataByDepartmentsId(Integer idDepartment);
 
     // Get list of all departments
-    public List<Departments> getDepartments();
+    List<Departments> getDepartments();
 
 }

@@ -22,7 +22,7 @@
         where b.id_location = c.id_location
           and a.id_departament = c.id_departament
           and d.id_datatype = b.id_datatype
-          and a.id_departament = #{departmentId}
+          and a.id_departament = #{idDepartment}
     </select>
 
     <select id="getDepartments" resultType="com.example.demo.domain.Departments">

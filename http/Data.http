@@ -1,4 +1,3 @@
-
 ### Add new data
 POST http://localhost:8080/data/new/single
 Accept: application/json
@@ -20,15 +19,15 @@ GET http://localhost:8080/data/Bolivia
 Accept: application/json
 Content-Type: application/json
 
+### Get general data by Country ID
+GET http://localhost:8080/data/general/29
+Accept: application/json
+
 ### Last date
 GET http://localhost:8080/data/dataRecent
 Accept: application/json
 Content-Type: application/json
 
-###
-GET http://localhost:8080/data/dataOfDepartmentAndTypeDate/1/6
-Accept: application/json
-Content-Type: application/json
 
 ###
 GET http://localhost:8080/data/municipios/1/20101

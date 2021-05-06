@@ -5,14 +5,14 @@
 <mapper namespace="com.example.demo.dao.DataRepository">
 
     <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">
-        <result column="idDato" property="idDato"/>
+        <result column="idData" property="idData"/>
         <result column="data" property="data"/>
-        <result column="fecha" property="fecha"/>
-        <result column="tipoDeDato" property="tipoDeDato"/>
-        <result column="txUser" property="txUser"/>
+        <result column="inDate" property="inDate"/>
+        <result column="datatype" property="datatype"/>
+        <result column="txUserId" property="txUserId"/>
         <result column="txHost" property="txHost"/>
         <result column="txDate" property="txDate"/>
-        <result column="idZona" property="idZona"/>
+        <result column="idLocation" property="idLocation"/>
     </resultMap>
 
     <select id="getDatos" resultType="com.example.demo.dto.DataDto">
@@ -113,8 +113,9 @@
     </select>
 
     <insert id="addSingleData" parameterType="com.example.demo.domain.Data">
-        INSERT INTO `data` (`data`, `in_date`, `id_location`, `id_datatype`, `tx_user_id`, `tx_host`, `tx_date`)
-        VALUES (#{data}, #{fecha}, #{zonaId}, #{tipodedatoId}, #{txUser}, #{txHost}, #{txDate});
+        INSERT INTO `data`
+        (`data`, `in_date`, `id_location`, `id_datatype`, `active`, `tx_user_id`, `tx_host`, `tx_date`)
+        VALUES (#{data}, #{inDate}, #{idLocation}, #{datatype}, 1, #{txUserId}, #{txHost}, #{txDate});
     </insert>
 
     <select id="mostRecentDateOfCovidData" resultType="com.example.demo.dto.DataSimpleDto">

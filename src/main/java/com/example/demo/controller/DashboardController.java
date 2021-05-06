@@ -24,7 +24,7 @@ public class DashboardController {
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DashboardDto> getDashboard() {
-        return dashboardService.getdashboard();
+        return dashboardService.getDashboard();
     }
 
 }

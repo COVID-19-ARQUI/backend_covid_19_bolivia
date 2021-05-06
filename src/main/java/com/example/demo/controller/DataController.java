@@ -39,14 +39,9 @@ public class DataController {
         return dataService.mostRecentDateOfCovidData();
     }
 
-    @RequestMapping(value = "/dataOfDepartmentAndTypeDate/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
-        return dataService.listDataOfDepartmentAndTypeDate(tipoDatoId, departmentId);
-    }
-
-    @RequestMapping(value = "/Bolivia", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataDto> getGeneral() {
-        return dataService.getdatos();
+    @RequestMapping(value = "/general/{idCountry}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataDto> getGeneralDataCountry(@PathVariable String idCountry) {
+        return dataService.getDataByCountryId(idCountry);
     }
 
     @RequestMapping(value = "/municipios/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

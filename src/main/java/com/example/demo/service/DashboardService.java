@@ -31,8 +31,7 @@ public class DashboardService {
     }
 
 
-    public List<DashboardDto> getdashboard() {
-
+    public List<DashboardDto> getDashboard() {
         List<Departments> departments = departmentRepository.getDepartments();
         List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
             DashboardDto dashboard = new DashboardDto();

@@ -50,20 +50,24 @@ public class DepartmentController {
         return dataService.sumdatos(departmentId);
     }
 
-    //vacunas
-    @RequestMapping(value = "/departmentvacuna/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public DataDto vacunasdatos(@PathVariable Integer departmentId) {
-        return dataService.getdatosvac1(departmentId);
+    @RequestMapping(value = "/first/vaccinated/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DataDto getVaccinatedFirstDose(@PathVariable Integer idDepartment) {
+        return dataService.getSumDataFirstVaccinated(idDepartment);
     }
 
-    @RequestMapping(value = "/departmentvacuna2/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public DataDto vacunas2datos(@PathVariable Integer departmentId) {
-        return dataService.getdatosvac2(departmentId);
+    @RequestMapping(value = "/second/vaccinated/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public DataDto getVaccinatedSecondDose(@PathVariable Integer idDepartment) {
+        return dataService.getSumDataSecondVaccinated(idDepartment);
     }
 
 
     @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> getDataByDepartmentsId(@PathVariable Integer departmentId) {
         return dataService.getDataByDepartmentsId(departmentId);
+    }
+
+    @RequestMapping(value = "datatype/{idDatatype}/department/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(@PathVariable Integer idDatatype, @PathVariable Integer idDepartment) {
+        return dataService.listDataOfDepartmentAndTypeDate(idDatatype, idDepartment);
     }
 }
