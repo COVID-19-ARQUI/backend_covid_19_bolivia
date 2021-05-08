@@ -6,7 +6,6 @@ import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.domain.Departments;
 import com.example.demo.dto.DashboardDto;
-import com.example.demo.dto.DepartmentDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +32,12 @@ public class DashboardService {
 
     public List<DashboardDto> getDashboard() {
         List<Departments> departments = departmentRepository.getDepartments();
+        LOGGER.error(departments.toString());
         List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
             DashboardDto dashboard = new DashboardDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
             dashboard.setDepartment(departmentDto.getDepartment());
-            dashboard.setDatoDto(dataRepository.getDatos(departmentDto.getIdDepartment()));
+            dashboard.setDatoDto(dataRepository.getData(departmentDto.getIdDepartment()));
             return dashboard;
         }).collect(Collectors.toList());
         LOGGER.debug(dashboardDepartments.toString());

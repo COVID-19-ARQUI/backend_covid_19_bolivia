@@ -31,66 +31,62 @@ public class DataService {
     }
 
     public DataDto getSumDataFirstVaccinated(Integer departmentId) {
-        return dataRepository.vacuna1final(departmentId);
+        return dataRepository.generalFirstVaccinated(departmentId);
     }
 
     public DataDto getSumDataSecondVaccinated(Integer departmentId) {
-        return dataRepository.vacuna2final(departmentId);
+        return dataRepository.generalSecondVaccinated(departmentId);
     }
 
     public DailyDataDto pushSingleData(DailyDataDto dailyDataDto, Transaction transaction) {
-        Integer zoneId = locationRepository.getZoneByDepartment(dailyDataDto.getDepartment(), dailyDataDto.getMunicipality());
-        LOGGER.warn(zoneId != null ? zoneId.toString() : null);
+        Integer idLocation = locationRepository.getLocationByDepartment(dailyDataDto.getDepartment(), dailyDataDto.getMunicipality());
+        LOGGER.warn(idLocation != null ? idLocation.toString() : null);
         if (dailyDataDto.getConfirmed() != null) {
-            Data contagiados = new Data(null, dailyDataDto.getConfirmed().toString(), dailyDataDto.getDate(), zoneId, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data contagiados = new Data(null, dailyDataDto.getConfirmed().toString(), dailyDataDto.getDate(), idLocation, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(contagiados);
         }
         if (dailyDataDto.getDeaths() != null) {
-            Data muertos = new Data(null, dailyDataDto.getDeaths().toString(), dailyDataDto.getDate(), zoneId, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data muertos = new Data(null, dailyDataDto.getDeaths().toString(), dailyDataDto.getDate(), idLocation, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(muertos);
         }
         if (dailyDataDto.getRecovered() != null) {
-            Data recuperados = new Data(null, dailyDataDto.getRecovered().toString(), dailyDataDto.getDate(), zoneId, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data recuperados = new Data(null, dailyDataDto.getRecovered().toString(), dailyDataDto.getDate(), idLocation, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(recuperados);
         }
         if (dailyDataDto.getVaccinated() != null) {
-            Data vacunados = new Data(null, dailyDataDto.getVaccinated().toString(), dailyDataDto.getDate(), zoneId, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            Data vacunados = new Data(null, dailyDataDto.getVaccinated().toString(), dailyDataDto.getDate(), idLocation, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(vacunados);
         }
 
-//        Dato activos = new Dato(null, dataDto.getActives().toString(), dataDto.getDate(), zoneId, 6, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
+//        Dato activos = new Dato(null, dataDto.getActives().toString(), dataDto.getDate(), idLocation, 6, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
 //        if (activos.getDato() != null)
 //            datoRepository.addSingleData(activos);
 
-        assert zoneId != null;
-        LOGGER.warn(zoneId.toString());
+        assert idLocation != null;
+        LOGGER.warn(idLocation.toString());
         return dailyDataDto;
     }
 
     public List<DataDto> listDataofDepartament(Integer departmentId) {
-        List<DataDto> dataDtoList = dataRepository.getDatos(departmentId);
+        List<DataDto> dataDtoList = dataRepository.getData(departmentId);
         LOGGER.warn(dataDtoList.toString());
         return dataDtoList;
     }
 
-    public List<DataDto> sumdatos(Integer departmentId) {
-        return dataRepository.sumdato(departmentId);
+    public List<DataDto> departmentStatistics(Integer departmentId) {
+        return dataRepository.departmentStatistics(departmentId);
     }
 
     public List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId) {
         return departmentRepository.getDataByDepartmentsId(departmentId);
     }
 
-    public List<DataSimpleDto> mostRecentDateOfCovidData() {
-        return dataRepository.mostRecentDateOfCovidData();
+    public List<DataSimpleDto> lastDataByLocation(Integer idLocation) {
+        return dataRepository.lastDataByLocation(idLocation);
     }
 
-    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(Integer idDatatype, Integer idDepartment) {
-        return dataRepository.listDataOfDepartmentAndTypeDate(idDatatype, idDepartment);
-    }
-
-    public List<DataSimpleDto> getDataByMunicipioId(Integer tipoDatoId, Integer municipioId) {
-        return municipalityRepository.getDataByMunicipioId(tipoDatoId, municipioId);
+    public List<DataSimpleDto> listSpecificDataByIdDepartment(Integer idDatatype, Integer idDepartment) {
+        return dataRepository.listSpecificDataByIdDepartment(idDatatype, idDepartment);
     }
 
     public List<DataDto> getDataByCountryId(String idCountry) {

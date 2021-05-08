@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.MunicipalityRepository">
 
-    <select id="getDataByMunicipioId" resultType="com.example.demo.dto.DataSimpleDto">
+    <select id="getDataByIdMunicipality" resultType="com.example.demo.dto.DataSimpleDto">
         SELECT c.data as data, c.in_date as inDate
         FROM municipalities a,
              locations b,

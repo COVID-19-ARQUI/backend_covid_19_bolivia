@@ -34,7 +34,7 @@
         WHERE a.id_location = l.id_location
           AND a.id_datatype = d.id_datatype
           AND c.id_country = l.id_country
-          AND l.id_departament = 0 -- id_department must be 'All' if not will repeat
+          AND l.id_departament = 0 -- id_department must be 'All' if not will repeat in the sum
           AND c.id_country = #{idCountry}
         GROUP BY d.type
     </select>

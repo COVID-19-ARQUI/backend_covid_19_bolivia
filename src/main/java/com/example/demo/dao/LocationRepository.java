@@ -8,8 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface LocationRepository {
-    // Get Zone id by department and municipality
-    Integer getZoneByDepartment(String department, String municipalities);
+    // Get Location id by department and municipality
+    Integer getLocationByDepartment(String department, String municipalities);
 
     // Get list of all countries
     List<Countries> getCountries();

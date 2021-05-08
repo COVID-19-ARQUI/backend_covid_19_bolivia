@@ -14,8 +14,8 @@ Content-Type: application/json
   "vaccinated": 100
 }
 
-###
-GET http://localhost:8080/data/Bolivia
+### Last data by location id
+GET http://localhost:8080/data/last/day/29
 Accept: application/json
 Content-Type: application/json
 
@@ -23,13 +23,3 @@ Content-Type: application/json
 GET http://localhost:8080/data/general/29
 Accept: application/json
 
-### Last date
-GET http://localhost:8080/data/dataRecent
-Accept: application/json
-Content-Type: application/json
-
-
-###
-GET http://localhost:8080/data/municipios/1/20101
-Accept: application/json
-Content-Type: application/json

@@ -1,3 +1,9 @@
 ###
 GET http://localhost:8080/municipalities/2
 Accept: application/json
+
+
+###
+GET http://localhost:8080/municipalities/1/datatype/2
+Accept: application/json
+Content-Type: application/json

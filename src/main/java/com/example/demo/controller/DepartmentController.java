@@ -29,25 +29,25 @@ public class DepartmentController {
     }
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Departments> getDepartments() {
         return departmentService.getDepartments();
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/all/details", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentDto> getAllDepartments() {
         return departmentService.getDepartmentsWithMunicipalities();
     }
 
-    @RequestMapping(value = "single/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "single/list/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> listDataByDepartment(@PathVariable("departmentId") Integer departmentId) {
         return dataService.listDataofDepartament(departmentId);
     }
 
-    //sumdatos
-    @RequestMapping(value = "/departmentgeneral/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataDto> sumadedatos(@PathVariable Integer departmentId) {
-        return dataService.sumdatos(departmentId);
+    // General department data by department id.
+    @RequestMapping(value = "general/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataDto> departmentStatistics(@PathVariable Integer departmentId) {
+        return dataService.departmentStatistics(departmentId);
     }
 
     @RequestMapping(value = "/first/vaccinated/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -67,7 +67,7 @@ public class DepartmentController {
     }
 
     @RequestMapping(value = "datatype/{idDatatype}/department/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataSimpleDto> listDataOfDepartmentAndTypeDate(@PathVariable Integer idDatatype, @PathVariable Integer idDepartment) {
-        return dataService.listDataOfDepartmentAndTypeDate(idDatatype, idDepartment);
+    public List<DataSimpleDto> listSpecificDataByIdDepartment(@PathVariable Integer idDatatype, @PathVariable Integer idDepartment) {
+        return dataService.listSpecificDataByIdDepartment(idDatatype, idDepartment);
     }
 }

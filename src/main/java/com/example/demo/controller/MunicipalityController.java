@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.dto.MunicipalityDataDto;
 import com.example.demo.service.MunicipalitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,8 @@ public class MunicipalityController {
         return municipalitiesService.getMunicipalityByDepartment(departmentId);
     }
 
-
+    @RequestMapping(value = "/{idMunicipality}/datatype/{idDatatype}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> getDataByIdMunicipality(@PathVariable Integer idDatatype, @PathVariable Integer idMunicipality) {
+        return municipalitiesService.getDataByIdMunicipality(idDatatype, idMunicipality);
+    }
 }

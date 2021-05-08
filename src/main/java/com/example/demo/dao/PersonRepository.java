@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PersonRepository {
     //
-    public void createUser(Persons persons);
+    void createUser(Persons persons);
 }

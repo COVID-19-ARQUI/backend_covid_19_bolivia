@@ -32,21 +32,16 @@ public class DataController {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
         return dataService.pushSingleData(dailyDataDto, transaction);
-    }
+    } // TODO: FIX THIS
 
-    @RequestMapping(value = "/dataRecent", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataSimpleDto> mostRecentDateOfCovidData() {
-        return dataService.mostRecentDateOfCovidData();
+    @RequestMapping(value = "/last/day/{idLocation}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> mostRecentDateOfCovidData(@PathVariable Integer idLocation) {
+        return dataService.lastDataByLocation(idLocation);
     }
 
     @RequestMapping(value = "/general/{idCountry}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> getGeneralDataCountry(@PathVariable String idCountry) {
         return dataService.getDataByCountryId(idCountry);
-    }
-
-    @RequestMapping(value = "/municipios/{tipoDatoId}/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataSimpleDto> getDataByMunicipioId(@PathVariable Integer tipoDatoId, @PathVariable Integer departmentId) {
-        return dataService.getDataByMunicipioId(tipoDatoId, departmentId);
     }
 
 }

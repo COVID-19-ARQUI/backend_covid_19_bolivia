@@ -29,6 +29,7 @@
         SELECT d.id_departament as idDepartment,
                d.department     as department
         FROM departaments d
+        WHERE d.id_departament > 0
     </select>
 
 
