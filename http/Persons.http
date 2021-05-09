@@ -3,11 +3,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "nicknameUser":"DaniXd",
-  "name":"Daniel",
-  "secondName":"Alberto",
-  "lastName":"Salazar",
-  "secondLastName":"Dominguez",
-  "email":"dani@gmail.com",
-  "password":"123"
+  "nickname": "qwerty1234",
+  "firstName": "Zi",
+  "secondName": "Alberto",
+  "firstLastName": "Salazar",
+  "secondLastName": "Dominguez",
+  "email": "algo@gmail.com",
+  "password": "123",
+  "urlPhoto": "https://YonoSe/AlgunaFoto/EnUnaURL"
 }

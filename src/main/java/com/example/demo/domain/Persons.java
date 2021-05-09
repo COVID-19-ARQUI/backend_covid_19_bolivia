@@ -12,7 +12,7 @@ public class Persons {
     private String email;
     private String password;
     private String urlPhoto;
-    private String active;
+    private Integer active;
     private String txUserId;
     private String txHost;
     private Date txDate;
@@ -112,11 +112,11 @@ public class Persons {
         this.urlPhoto = urlPhoto;
     }
 
-    public String getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 

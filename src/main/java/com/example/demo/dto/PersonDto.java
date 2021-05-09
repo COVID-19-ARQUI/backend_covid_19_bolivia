@@ -2,70 +2,67 @@ package com.example.demo.dto;
 
 public class PersonDto {
     private Integer idUser;
-    private String nicknameUser;
-    private String name;
+    private String nickname;
+    private String firstName;
     private String secondName;
-    private String lastName;
+    private String firstLastName;
     private String secondLastName;
-    private String mail;
+    private String email;
     private String password;
     private String urlImage;
-    private String nameImage;
 
     public PersonDto() {
     }
 
-    public PersonDto(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password, String urlImage, String nameImage) {
+    public PersonDto(Integer idUser, String nickname, String firstName, String secondName, String firstLastName, String secondLastName, String email, String password, String urlImage) {
         this.idUser = idUser;
-        this.nicknameUser = nicknameUser;
-        this.name = name;
+        this.nickname = nickname;
+        this.firstName = firstName;
         this.secondName = secondName;
-        this.lastName = lastName;
+        this.firstLastName = firstLastName;
         this.secondLastName = secondLastName;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
         this.urlImage = urlImage;
-        this.nameImage = nameImage;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    @Override
+    public String toString() {
+        return "PersonDto{" +
+                "idUser=" + idUser +
+                ", nickname='" + nickname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", firstLastName='" + firstLastName + '\'' +
+                ", secondLastName='" + secondLastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", urlImage='" + urlImage + '\'' +
+                '}';
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public String getNameImage() {
-        return nameImage;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
-    public void setNameImage(String nameImage) {
-        this.nameImage = nameImage;
+    public String getNickname() {
+        return nickname;
     }
 
-    public String getNicknameUser() {
-        return nicknameUser;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public void setNicknameUser(String nicknameUser) {
-        this.nicknameUser = nicknameUser;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSecondName() {
@@ -76,12 +73,12 @@ public class PersonDto {
         this.secondName = secondName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFirstLastName() {
+        return firstLastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFirstLastName(String firstLastName) {
+        this.firstLastName = firstLastName;
     }
 
     public String getSecondLastName() {
@@ -92,20 +89,28 @@ public class PersonDto {
         this.secondLastName = secondLastName;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public String getPassword() {
+        return password;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 }
 
