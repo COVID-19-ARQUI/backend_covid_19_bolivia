@@ -5,22 +5,22 @@ import java.util.Date;
 public class DailyDataDto {
     private String department;
     private String municipality;
-    private Date date;
+    private Date inDate;
     private Integer confirmed;
     private Integer deaths;
     private Integer recovered;
-    private Integer actives;
-    private Integer vaccinated;
+    private Integer firstDose;
+    private Integer secondDose;
 
-    public DailyDataDto(String department, String municipality, Date date, Integer confirmed, Integer deaths, Integer recovered, Integer actives, Integer vaccinated) {
+    public DailyDataDto(String department, String municipality, Date inDate, Integer confirmed, Integer deaths, Integer recovered, Integer firstDose, Integer secondDose) {
         this.department = department;
         this.municipality = municipality;
-        this.date = date;
+        this.inDate = inDate;
         this.confirmed = confirmed;
         this.deaths = deaths;
         this.recovered = recovered;
-        this.actives = actives;
-        this.vaccinated = vaccinated;
+        this.firstDose = firstDose;
+        this.secondDose = secondDose;
     }
 
     public DailyDataDto() {
@@ -28,15 +28,15 @@ public class DailyDataDto {
 
     @Override
     public String toString() {
-        return "DataDto{" +
+        return "DailyDataDto{" +
                 "department='" + department + '\'' +
                 ", municipality='" + municipality + '\'' +
-                ", date=" + date +
+                ", date=" + inDate +
                 ", confirmed=" + confirmed +
                 ", deaths=" + deaths +
                 ", recovered=" + recovered +
-                ", actives=" + actives +
-                ", vaccinated=" + vaccinated +
+                ", firstDose=" + firstDose +
+                ", secondDose=" + secondDose +
                 '}';
     }
 
@@ -56,12 +56,12 @@ public class DailyDataDto {
         this.municipality = municipality;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getInDate() {
+        return inDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setInDate(Date inDate) {
+        this.inDate = inDate;
     }
 
     public Integer getConfirmed() {
@@ -88,19 +88,19 @@ public class DailyDataDto {
         this.recovered = recovered;
     }
 
-    public Integer getActives() {
-        return actives;
+    public Integer getFirstDose() {
+        return firstDose;
     }
 
-    public void setActives(Integer actives) {
-        this.actives = actives;
+    public void setFirstDose(Integer firstDose) {
+        this.firstDose = firstDose;
     }
 
-    public Integer getVaccinated() {
-        return vaccinated;
+    public Integer getSecondDose() {
+        return secondDose;
     }
 
-    public void setVaccinated(Integer vaccinated) {
-        this.vaccinated = vaccinated;
+    public void setSecondDose(Integer secondDose) {
+        this.secondDose = secondDose;
     }
 }

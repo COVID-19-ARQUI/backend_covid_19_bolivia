@@ -18,7 +18,7 @@
     <insert id="addSingleData" parameterType="com.example.demo.domain.Data">
         INSERT INTO `data`
         (`data`, `in_date`, `id_location`, `id_datatype`, `active`, `tx_user_id`, `tx_host`, `tx_date`)
-        VALUES (#{data}, #{inDate}, #{idLocation}, #{datatype}, 1, #{txUserId}, #{txHost}, #{txDate});
+        VALUES (#{data}, #{inDate}, #{idLocation}, #{idDatatype}, 1, #{txUserId}, #{txHost}, #{txDate});
     </insert>
 
     <select id="getData" resultType="com.example.demo.dto.DataDto">

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Data {
     private Integer idData;
-    private String data;
+    private Integer data;
     private Date inDate;
     private Integer idLocation;
     private Integer idDatatype;
@@ -16,7 +16,7 @@ public class Data {
     public Data() {
     }
 
-    public Data(Integer idData, String data, Date inDate, Integer idLocation, Integer idDatatype, Integer active, String txUserId, String txHost, Date txDate) {
+    public Data(Integer idData, Integer data, Date inDate, Integer idLocation, Integer idDatatype, Integer active, String txUserId, String txHost, Date txDate) {
         this.idData = idData;
         this.data = data;
         this.inDate = inDate;
@@ -51,11 +51,11 @@ public class Data {
         this.idData = idData;
     }
 
-    public String getData() {
+    public Integer getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Integer data) {
         this.data = data;
     }
 

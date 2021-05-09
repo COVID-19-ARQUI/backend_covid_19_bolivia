@@ -5,13 +5,14 @@ Content-Type: application/json
 
 {
   "department": "La Paz",
-  "municipality": "default",
-  "date": "2021-12-31T16:00:00Z",
+  "municipality": "All",
+  "inDate": "2021-12-31T16:00:00Z",
   "confirmed": 100,
   "deaths": 100,
   "recovered": 100,
-  "actives": null,
-  "vaccinated": 100
+  "actives": 100,
+  "firstDose": 100,
+  "secondDose": 100
 }
 
 ### Last data by location id

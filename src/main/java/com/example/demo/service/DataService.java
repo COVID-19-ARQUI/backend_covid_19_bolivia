@@ -10,7 +10,9 @@ import com.example.demo.dto.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -40,29 +42,32 @@ public class DataService {
 
     public DailyDataDto pushSingleData(DailyDataDto dailyDataDto, Transaction transaction) {
         Integer idLocation = locationRepository.getLocationByDepartment(dailyDataDto.getDepartment(), dailyDataDto.getMunicipality());
+
         LOGGER.warn(idLocation != null ? idLocation.toString() : null);
+        if (idLocation == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find location");
+        }
         if (dailyDataDto.getConfirmed() != null) {
-            Data contagiados = new Data(null, dailyDataDto.getConfirmed().toString(), dailyDataDto.getDate(), idLocation, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(contagiados);
+            Data confirmed = new Data(null, dailyDataDto.getConfirmed(), dailyDataDto.getInDate(), idLocation, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            dataRepository.addSingleData(confirmed);
         }
         if (dailyDataDto.getDeaths() != null) {
-            Data muertos = new Data(null, dailyDataDto.getDeaths().toString(), dailyDataDto.getDate(), idLocation, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(muertos);
+            Data deaths = new Data(null, dailyDataDto.getDeaths(), dailyDataDto.getInDate(), idLocation, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            dataRepository.addSingleData(deaths);
         }
         if (dailyDataDto.getRecovered() != null) {
-            Data recuperados = new Data(null, dailyDataDto.getRecovered().toString(), dailyDataDto.getDate(), idLocation, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(recuperados);
+            Data recovered = new Data(null, dailyDataDto.getRecovered(), dailyDataDto.getInDate(), idLocation, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            dataRepository.addSingleData(recovered);
         }
-        if (dailyDataDto.getVaccinated() != null) {
-            Data vacunados = new Data(null, dailyDataDto.getVaccinated().toString(), dailyDataDto.getDate(), idLocation, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(vacunados);
+        if (dailyDataDto.getFirstDose() != null) {
+            Data firstDose = new Data(null, dailyDataDto.getFirstDose(), dailyDataDto.getInDate(), idLocation, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            dataRepository.addSingleData(firstDose);
+        }
+        if (dailyDataDto.getSecondDose() != null) {
+            Data secondDose = new Data(null, dailyDataDto.getSecondDose(), dailyDataDto.getInDate(), idLocation, 5, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            dataRepository.addSingleData(secondDose);
         }
 
-//        Dato activos = new Dato(null, dataDto.getActives().toString(), dataDto.getDate(), idLocation, 6, transaction.getTxUserUd().toString(), transaction.getTxHost(), transaction.getTxDate());
-//        if (activos.getDato() != null)
-//            datoRepository.addSingleData(activos);
-
-        assert idLocation != null;
         LOGGER.warn(idLocation.toString());
         return dailyDataDto;
     }

@@ -32,7 +32,7 @@ public class DataController {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
         return dataService.pushSingleData(dailyDataDto, transaction);
-    } // TODO: FIX THIS
+    }
 
     @RequestMapping(value = "/last/day/{idLocation}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> mostRecentDateOfCovidData(@PathVariable Integer idLocation) {
