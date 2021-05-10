@@ -13,9 +13,8 @@ GET http://localhost:8080/department/single/list/2
 Accept: application/json
 Content-Type: application/json
 
-
 ### General department data by department id.
-GET http://localhost:8080/department/general/2
+GET http://localhost:8080/department/general/3
 Accept: application/json
 Content-Type: application/json
 

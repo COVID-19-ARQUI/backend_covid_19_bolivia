@@ -6,7 +6,6 @@ import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.dto.DepartmentDto;
 import com.example.demo.service.DataService;
 import com.example.demo.service.DepartmentService;
-import com.example.demo.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +16,12 @@ import java.util.List;
 @RequestMapping(value = "/department")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DepartmentController {
-    private DataService dataService;
-    private TransactionService transactionService;
-    private DepartmentService departmentService;
+    private final DataService dataService;
+    private final DepartmentService departmentService;
 
     @Autowired
-    public DepartmentController(DataService dataService, TransactionService transactionService, DepartmentService departmentService) {
+    public DepartmentController(DataService dataService, DepartmentService departmentService) {
         this.dataService = dataService;
-        this.transactionService = transactionService;
         this.departmentService = departmentService;
     }
 

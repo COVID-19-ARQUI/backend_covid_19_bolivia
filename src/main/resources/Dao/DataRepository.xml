@@ -4,17 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DataRepository">
 
-    <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">
-        <result column="idData" property="idData"/>
-        <result column="data" property="data"/>
-        <result column="inDate" property="inDate"/>
-        <result column="datatype" property="datatype"/>
-        <result column="txUserId" property="txUserId"/>
-        <result column="txHost" property="txHost"/>
-        <result column="txDate" property="txDate"/>
-        <result column="idLocation" property="idLocation"/>
-    </resultMap>
-
     <insert id="addSingleData" parameterType="com.example.demo.domain.Data">
         INSERT INTO `data`
         (`data`, `in_date`, `id_location`, `id_datatype`, `active`, `tx_user_id`, `tx_host`, `tx_date`)
@@ -120,6 +109,16 @@
 
     <!--  NOT USED  -->
     <!--
+       <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">
+        <result column="idData" property="idData"/>
+        <result column="data" property="data"/>
+        <result column="inDate" property="inDate"/>
+        <result column="datatype" property="datatype"/>
+        <result column="txUserId" property="txUserId"/>
+        <result column="txHost" property="txHost"/>
+        <result column="txDate" property="txDate"/>
+        <result column="idLocation" property="idLocation"/>
+    </resultMap>
         <select id="dataofDepartament" resultMap="listDataofDepartament">
             SELECT a.id_data     AS idData,
                    a.data        AS data,

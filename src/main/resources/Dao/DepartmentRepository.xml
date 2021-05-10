@@ -23,6 +23,7 @@
           and a.id_departament = c.id_departament
           and d.id_datatype = b.id_datatype
           and a.id_departament = #{idDepartment}
+          and a.id_departament > 0
     </select>
 
     <select id="getDepartments" resultType="com.example.demo.domain.Departments">
