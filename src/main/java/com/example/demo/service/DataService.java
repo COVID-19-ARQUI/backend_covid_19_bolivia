@@ -97,4 +97,7 @@ public class DataService {
     public List<DataDto> getDataByCountryId(String idCountry) {
         return locationRepository.getGeneralDataByCountry(idCountry);
     }
+    public List<DataDto> getByCountryId(String idCountry) {
+        return locationRepository.getDataByCountry(idCountry);
+    }
 }

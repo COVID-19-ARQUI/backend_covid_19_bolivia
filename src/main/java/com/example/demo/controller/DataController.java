@@ -44,4 +44,8 @@ public class DataController {
         return dataService.getDataByCountryId(idCountry);
     }
 
+    @RequestMapping(value = "/general/list/{idCountry}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataDto> getDataCountry(@PathVariable String idCountry) {
+        return dataService.getByCountryId(idCountry);
+    }
 }

@@ -16,4 +16,7 @@ public interface LocationRepository {
 
     // Get general general data by country id
     List<DataDto> getGeneralDataByCountry(String idCountry);
+    //Get list of general data by country id
+
+    List<DataDto> getDataByCountry(String idCountry);
 }
