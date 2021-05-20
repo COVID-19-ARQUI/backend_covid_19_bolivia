@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class DashboardService {
-    private DashboardRepository dashboardRepository;
-    private DataRepository dataRepository;
-    private DepartmentRepository departmentRepository;
+    private final DashboardRepository dashboardRepository;
+    private final DataRepository dataRepository;
+    private final DepartmentRepository departmentRepository;
     //    private TransactionRepository transactionRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
 
@@ -29,10 +29,9 @@ public class DashboardService {
         this.departmentRepository = departmentRepository;
     }
 
-
     public List<DashboardDto> getDashboard() {
         List<Departments> departments = departmentRepository.getDepartments();
-        LOGGER.error(departments.toString());
+//        LOGGER.error(departments.toString());
         List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
             DashboardDto dashboard = new DashboardDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
@@ -40,7 +39,7 @@ public class DashboardService {
             dashboard.setDatoDto(dataRepository.getData(departmentDto.getIdDepartment()));
             return dashboard;
         }).collect(Collectors.toList());
-        LOGGER.debug(dashboardDepartments.toString());
+//        LOGGER.debug(dashboardDepartments.toString());
         return dashboardDepartments;
     }
 
