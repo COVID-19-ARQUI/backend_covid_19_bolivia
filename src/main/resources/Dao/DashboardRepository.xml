@@ -3,5 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.DashboardRepository">
+    <insert id="newDashboard" parameterType="com.example.demo.domain.Dashboard">
+        INSERT INTO dashboards (name, active, id_user, tx_user_id, tx_host, tx_date)
+            VALUE (#{name}, #{active}, #{idUser}, #{txUserId}, #{txHost}, #{txDate});
+    </insert>
+
+    <select id="getDashboardsByUserId" resultType="com.example.demo.dto.DashboardDto">
+        SELECT d.id_dashboard AS idDashboard,
+               d.name         AS name,
+               d.active       AS active,
+               p.id_user      AS idUser
+        FROM dashboards d,
+             persons p
+        WHERE d.id_user = p.id_user
+          AND p.id_user = #{idUser}
+    </select>
 
 </mapper>

@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Dashboard;
+import com.example.demo.dto.DashboardDataDto;
 import com.example.demo.dto.DashboardDto;
 import com.example.demo.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,8 +22,17 @@ public class DashboardController {
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DashboardDto> getDashboard() {
+    public List<DashboardDataDto> getDashboard() {
         return dashboardService.getDashboard();
     }
 
+//    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public Dashboard addNewDashboard(@RequestBody Dashboard dashboard) {
+//        return dashboardService.addNewDashboard(dashboard);
+//    }
+
+    @RequestMapping(value = "/{idUser}/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DashboardDto> getDashboardsByUser(@PathVariable Integer idUser) {
+        return dashboardService.getDashboardsByUser(idUser);
+    }
 }

@@ -5,6 +5,7 @@ import com.example.demo.dao.DashboardRepository;
 import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.domain.Departments;
+import com.example.demo.dto.DashboardDataDto;
 import com.example.demo.dto.DashboardDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,18 +30,25 @@ public class DashboardService {
         this.departmentRepository = departmentRepository;
     }
 
-    public List<DashboardDto> getDashboard() {
+    public List<DashboardDataDto> getDashboard() {
         List<Departments> departments = departmentRepository.getDepartments();
 //        LOGGER.error(departments.toString());
-        List<DashboardDto> dashboardDepartments = departments.stream().map(departmentDto -> {
-            DashboardDto dashboard = new DashboardDto();
+        List<DashboardDataDto> dashboardDepartments = departments.stream().map(departmentDto -> {
+            DashboardDataDto dashboard = new DashboardDataDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
             dashboard.setDepartment(departmentDto.getDepartment());
-            dashboard.setDatoDto(dataRepository.getData(departmentDto.getIdDepartment()));
+            dashboard.setDataDto(dataRepository.getData(departmentDto.getIdDepartment()));
             return dashboard;
         }).collect(Collectors.toList());
 //        LOGGER.debug(dashboardDepartments.toString());
         return dashboardDepartments;
     }
+
+    public List<DashboardDto> getDashboardsByUser(Integer idUser) {
+        return dashboardRepository.getDashboardsByUserId(idUser);
+    }
+
+//    public DashboardDto addNewDashboard(DashboardDto dashboardDto) {
+//    }
 
 }

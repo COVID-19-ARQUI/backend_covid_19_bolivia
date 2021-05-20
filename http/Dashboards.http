@@ -1,3 +1,7 @@
+###
 GET http://localhost:8080/dashboard
 Accept: application/json
-Content-Type: application/json
+
+### Get list of dashboards by user id
+GET http://localhost:8080/dashboard/1/list
+Accept: application/json
