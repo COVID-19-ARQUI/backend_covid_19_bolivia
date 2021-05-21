@@ -31,8 +31,10 @@ public interface DataRepository {
     //
     List<DataSimpleDto> lastDataByLocation(Integer idLocation);
 
-    // Get general accumulate data
+    // Get general list data of a department
     List<DataSimpleDto> listSpecificDataByIdDepartment(Integer idDatatype, Integer idDepartment);
+    //Ger general list data of a contry
+    List<DataSimpleDto> listSpecificDataByIdCountry(Integer idDatatype, Integer idCountry);
 
 
 }

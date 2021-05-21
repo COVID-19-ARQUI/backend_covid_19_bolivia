@@ -257,11 +257,11 @@ public class Modelado {
         double[][] yDesintegrada=deltaY(y);
 
         double[][] yt=y_n(yDesintegrada,n);
-        System.out.println("Yt");
-        matriz.mostrarMatriz(yt);
+       // System.out.println("Yt");
+        //matriz.mostrarMatriz(yt);
         double[][] yt_n= auteregrecionN(yDesintegrada,n);
-        System.out.println("Yt-n");
-        matriz.mostrarMatriz(yt_n);
+        //System.out.println("Yt-n");
+       // matriz.mostrarMatriz(yt_n);
 
         double[][] gamai=gamai(yt_n,yt);
         double[][] datosPronosticados=new double[cantidadpronosticos][1];
@@ -272,7 +272,7 @@ public class Modelado {
         }
 
         yMasPronostico=matriz.agregarColaMatriz(y,datosPronosticados);
-        return yMasPronostico;
+        return datosPronosticados;
     }
 
 

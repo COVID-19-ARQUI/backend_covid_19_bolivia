@@ -1,0 +1,10 @@
+### Predict data by deparment
+GET http://localhost:8080/predict/department/2?cant=10
+Accept: application/json
+Content-Type: application/json
+
+
+### Predict data by country
+GET http://localhost:8080/predict/Country/29?cant=10
+Accept: application/json
+Content-Type: application/json

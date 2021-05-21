@@ -107,6 +107,16 @@
           and b.id_location = l.id_location
     </select>
 
+
+    <select id="listSpecificDataByIdCountry" resultType="com.example.demo.dto.DataSimpleDto">
+        select b.data as data, b.in_date as inDate, a.type as datatype
+        from datatypes a,
+             data b,
+             locations l
+        where a.id_datatype = #{idDatatype}
+          and l.id_country= #{idCountry}
+          and b.id_location = l.id_location
+    </select>
     <!--  NOT USED  -->
     <!--
        <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">

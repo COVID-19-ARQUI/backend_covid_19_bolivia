@@ -28,4 +28,8 @@ public class PredictorController {
     public List<DataSimpleDto> predictdata(@RequestParam ("cant")  Integer cant, @PathVariable("departmentid") Integer departmentId ) throws ParseException {
         return predictorService.datapredicted(departmentId, cant);
     }
+    @RequestMapping(value = "/Country/{idCountry}",params = {"cant"},method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictdatacountry(@RequestParam ("cant")  Integer cant, @PathVariable("idCountry") Integer idCountry ) throws ParseException {
+        return predictorService.datapredictedcountry(idCountry, cant);
+    }
 }
