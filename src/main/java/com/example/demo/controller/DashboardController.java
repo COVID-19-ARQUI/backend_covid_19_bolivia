@@ -26,13 +26,18 @@ public class DashboardController {
         return dashboardService.getDashboard();
     }
 
-//    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public Dashboard addNewDashboard(@RequestBody Dashboard dashboard) {
-//        return dashboardService.addNewDashboard(dashboard);
-//    }
+    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Dashboard addNewDashboard(@RequestBody Dashboard dashboard) {
+        return dashboardService.addNewDashboard(dashboard);
+    }
 
     @RequestMapping(value = "/{idUser}/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DashboardDto> getDashboardsByUser(@PathVariable Integer idUser) {
         return dashboardService.getDashboardsByUser(idUser);
+    }
+
+    @RequestMapping(value = "/{idDashboard}/user/{idUser}", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Dashboard updateDashboard(@PathVariable Integer idDashboard, @PathVariable Integer idUser) {
+        return dashboardService.updateDashboard(idDashboard, idUser);
     }
 }

@@ -4,6 +4,7 @@ package com.example.demo.service;
 import com.example.demo.dao.DashboardRepository;
 import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
+import com.example.demo.domain.Dashboard;
 import com.example.demo.domain.Departments;
 import com.example.demo.dto.DashboardDataDto;
 import com.example.demo.dto.DashboardDto;
@@ -48,7 +49,17 @@ public class DashboardService {
         return dashboardRepository.getDashboardsByUserId(idUser);
     }
 
-//    public DashboardDto addNewDashboard(DashboardDto dashboardDto) {
-//    }
+    public Dashboard addNewDashboard(Dashboard dashboard) {
+        //  TODO: Add new dashboard
+        return dashboard;
+    }
 
+
+    public Dashboard updateDashboard(Integer idDashboard, Integer idUser) {
+        Dashboard dashboard = new Dashboard();
+        dashboard.setIdDashboard(idDashboard);
+        dashboard.setIdUser(idUser);
+        // TODO: Update dashboard
+        return dashboard;
+    }
 }
