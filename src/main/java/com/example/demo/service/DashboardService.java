@@ -50,13 +50,13 @@ public class DashboardService {
     }
 
     public Dashboard addNewDashboard(Dashboard dashboard) {
+        dashboard.setIdDashboard(1);
         //  TODO: Add new dashboard
         return dashboard;
     }
 
 
-    public Dashboard updateDashboard(Integer idDashboard, Integer idUser) {
-        Dashboard dashboard = new Dashboard();
+    public Dashboard updateDashboard(Integer idDashboard, Integer idUser, Dashboard dashboard) {
         dashboard.setIdDashboard(idDashboard);
         dashboard.setIdUser(idUser);
         // TODO: Update dashboard

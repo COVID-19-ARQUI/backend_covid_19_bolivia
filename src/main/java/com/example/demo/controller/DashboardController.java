@@ -37,7 +37,7 @@ public class DashboardController {
     }
 
     @RequestMapping(value = "/{idDashboard}/user/{idUser}", method = RequestMethod.PATCH, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Dashboard updateDashboard(@PathVariable Integer idDashboard, @PathVariable Integer idUser) {
-        return dashboardService.updateDashboard(idDashboard, idUser);
+    public Dashboard updateDashboard(@PathVariable Integer idDashboard, @PathVariable Integer idUser, @RequestBody Dashboard dashboard) {
+        return dashboardService.updateDashboard(idDashboard, idUser, dashboard);
     }
 }
