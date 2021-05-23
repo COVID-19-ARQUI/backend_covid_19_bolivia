@@ -10,10 +10,7 @@ Content-Type: application/json
 {
   "name": "Dashboard Name",
   "active": 1,
-  "idUser": 1,
-  "txUserId": 1,
-  "txHost": "127.0.0.1",
-  "txDate": "2021-05-26"
+  "idUser": 1
 }
 
 ### Get list of dashboards by user id
@@ -21,11 +18,12 @@ GET http://localhost:8080/dashboard/1/list
 Accept: application/json
 
 
-### Update dashboard by dashboard id and user id
-PATCH http://localhost:8080/dashboard/1/user/1
+### Update dashboard by user id
+PATCH http://localhost:8080/dashboard/user/1
 Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Dashboard Name"
+  "idDashboard": 1,
+  "name": "Dashboard"
 }

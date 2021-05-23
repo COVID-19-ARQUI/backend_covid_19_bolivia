@@ -1,7 +1,6 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Dashboard;
-import com.example.demo.dto.DashboardDataDto;
 import com.example.demo.dto.DashboardDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,5 +16,6 @@ public interface DashboardRepository {
     List<DashboardDto> getDashboardsByUserId(Integer idUser);
 
 
+    void updateDashboard(Integer idUser, String name, Integer idDashboard);
 }
 

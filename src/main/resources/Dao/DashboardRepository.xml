@@ -19,4 +19,10 @@
           AND p.id_user = #{idUser}
     </select>
 
+    <update id="updateDashboard">
+        UPDATE dashboards
+        SET name = #{name}
+        WHERE id_dashboard = #{idDashboard}
+          AND id_user = #{idUser}
+    </update>
 </mapper>

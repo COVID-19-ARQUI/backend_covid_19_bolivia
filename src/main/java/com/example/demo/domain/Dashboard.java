@@ -7,14 +7,14 @@ public class Dashboard {
     private String name;
     private Integer active;
     private Integer idUser;
-    private String txUserId;
+    private Integer txUserId;
     private String txHost;
     private Date txDate;
 
     public Dashboard() {
     }
 
-    public Dashboard(Integer idDashboard, String name, Integer active, Integer idUser, String txUser, String txHost, Date txDate) {
+    public Dashboard(Integer idDashboard, String name, Integer active, Integer idUser, Integer txUser, String txHost, Date txDate) {
         this.idDashboard = idDashboard;
         this.name = name;
         this.active = active;
@@ -69,11 +69,11 @@ public class Dashboard {
         this.idUser = idUser;
     }
 
-    public String getTxUserId() {
+    public Integer getTxUserId() {
         return txUserId;
     }
 
-    public void setTxUserId(String txUserId) {
+    public void setTxUserId(Integer txUserId) {
         this.txUserId = txUserId;
     }
 
