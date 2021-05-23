@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.DataRepository">
+
+    <insert id="addSingleData" parameterType="com.example.demo.domain.Views">
+        INSERT INTO `views`
+        (`name`, `active`, `id_dashboard`,`tx_user_id`, `tx_host`, `tx_date`)
+        VALUES (#{name}, 1, #{txUserId}, #{txUserId}, #{txHost}, #{txDate});
+    </insert>
+
+
+
+</mapper>
