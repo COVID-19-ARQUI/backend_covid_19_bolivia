@@ -6,19 +6,19 @@ public class Views {
     private Integer idView;
     private String name;
     private Integer active;
-    private Integer idDashboard;
-    private String txUserId;
+    private Integer idUser;
+    private Integer txUserId;
     private String txHost;
     private Date txDate;
 
     public Views() {
     }
 
-    public Views(Integer idView, String name, Integer active, Integer idDashboard, String txUser, String txHost, Date txDate) {
+    public Views(Integer idView, String name, Integer active, Integer idUser, Integer txUser, String txHost, Date txDate) {
         this.idView = idView;
         this.name = name;
         this.active = active;
-        this.idDashboard = idDashboard;
+        this.idUser = idUser;
         this.txUserId = txUser;
         this.txHost = txHost;
         this.txDate = txDate;
@@ -26,11 +26,11 @@ public class Views {
 
     @Override
     public String toString() {
-        return "View{" +
-                "idView=" + idView +
+        return "Dashboard{" +
+                "idDashboard=" + idView +
                 ", name='" + name + '\'' +
                 ", active=" + active +
-                ", idDashboard=" + idDashboard +
+                ", idUser=" + idUser +
                 ", txUser='" + txUserId + '\'' +
                 ", txHost='" + txHost + '\'' +
                 ", txDate=" + txDate +
@@ -61,19 +61,19 @@ public class Views {
         this.active = active;
     }
 
-    public Integer getIdDashboard() {
-        return idDashboard;
+    public Integer getIdUser() {
+        return idUser;
     }
 
-    public void setIdDashboard(Integer idDashboard) {
-        this.idDashboard = idDashboard;
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
-    public String getTxUserId() {
+    public Integer getTxUserId() {
         return txUserId;
     }
 
-    public void setTxUserId(String txUserId) {
+    public void setTxUserId(Integer txUserId) {
         this.txUserId = txUserId;
     }
 

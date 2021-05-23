@@ -22,7 +22,7 @@ public class DataService {
     private DepartmentRepository departmentRepository;
     private LocationRepository locationRepository;
     private MunicipalityRepository municipalityRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(DashboardService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ViewService.class);
 
     @Autowired
     public DataService(DataRepository dataRepository, DepartmentRepository departmentRepository, LocationRepository locationRepository, MunicipalityRepository municipalityRepository) {

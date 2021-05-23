@@ -1,0 +1,29 @@
+###
+GET http://localhost:8080/view
+Accept: application/json
+
+### Add new views
+POST http://localhost:8080/view/new
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "View Name",
+  "active": 1,
+  "idUser": 1
+}
+
+### Get list of dashboards by user id
+GET http://localhost:8080/view/1/list
+Accept: application/json
+
+
+### Update views by user id
+PATCH http://localhost:8080/view/user/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "idView": 1,
+  "name": "View updated"
+}

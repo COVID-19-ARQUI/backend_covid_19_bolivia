@@ -18,7 +18,7 @@
 
     </select>
 
-    <select id="getMunicipalitiesByDepartmentId" resultType="com.example.demo.dto.MunicipalityDataDto">
+    <select id="getMunicipalitiesById" resultType="com.example.demo.dto.MunicipalityDataDto">
         SELECT SUM(data.data) as data, m.municipality as municipality, t.type as type
         FROM locations z,
              municipalities m,

@@ -2,14 +2,29 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.DataRepository">
+<mapper namespace="com.example.demo.dao.ViewRepository">
 
-    <insert id="addNewView" parameterType="com.example.demo.domain.Views">
-        INSERT INTO `views`
-        (`name`, `active`, `id_dashboard`,`tx_user_id`, `tx_host`, `tx_date`)
-        VALUES (#{name}, 1, #{txUserId}, #{txUserId}, #{txHost}, #{txDate});
+    <insert id="newDashboard" parameterType="com.example.demo.domain.Views">
+        INSERT INTO views (name, active, id_user, tx_user_id, tx_host, tx_date)
+            VALUE (#{name}, #{active}, #{idUser}, #{txUserId}, #{txHost}, #{txDate});
     </insert>
 
+    <select id="getDashboardsByUserId" resultType="com.example.demo.dto.ViewDto">
+        SELECT v.id_view AS idView,
+               v.name    AS name,
+               v.active  AS active,
+               p.id_user AS idUser
+        FROM views v,
+             persons p
+        WHERE v.id_user = p.id_user
+          AND p.id_user = #{idUser}
+    </select>
 
+    <update id="updateDashboard">
+        UPDATE views
+        SET name = #{name}
+        WHERE id_view = #{idDashboard}
+          AND id_user = #{idUser}
+    </update>
 
 </mapper>

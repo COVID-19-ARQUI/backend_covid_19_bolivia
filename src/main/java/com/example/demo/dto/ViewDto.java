@@ -3,23 +3,35 @@ package com.example.demo.dto;
 public class ViewDto {
     private Integer idView;
     private String name;
-    private String txUser;
-    private String txHost;
-    private String txDate;
-    private int active;
-    private int idDashboard;
+    private Integer active;
+    private Integer idUser;
 
     public ViewDto() {
     }
 
-    public ViewDto(Integer idView, String name, String txUser, String txHost, String txDate, int active, int idDashboard) {
+    public ViewDto(Integer idView, String name, Integer active, Integer idUser) {
         this.idView = idView;
         this.name = name;
-        this.txUser = txUser;
-        this.txHost = txHost;
-        this.txDate = txDate;
         this.active = active;
-        this.idDashboard = idDashboard;
+        this.idUser = idUser;
+    }
+
+    @Override
+    public String toString() {
+        return "DashboardDto{" +
+                "idDashboard=" + idView +
+                ", name='" + name + '\'' +
+                ", active=" + active +
+                ", idUser=" + idUser +
+                '}';
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
     public Integer getIdView() {
@@ -38,56 +50,11 @@ public class ViewDto {
         this.name = name;
     }
 
-    public String getTxUser() {
-        return txUser;
-    }
-
-    public void setTxUser(String txUser) {
-        this.txUser = txUser;
-    }
-
-    public String getTxHost() {
-        return txHost;
-    }
-
-    public void setTxHost(String txHost) {
-        this.txHost = txHost;
-    }
-
-    public String getTxDate() {
-        return txDate;
-    }
-
-    public void setTxDate(String txDate) {
-        this.txDate = txDate;
-    }
-
-    public int getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
-
-    public int getIdDashboard() {
-        return idDashboard;
-    }
-
-    public void setIdDashboard(int idDashboard) {
-        this.idDashboard = idDashboard;
-    }
-
-    @Override
-    public String toString() {
-        return "ViewDto{" +
-                "idView=" + idView +
-                ", name='" + name + '\'' +
-                ", txUser='" + txUser + '\'' +
-                ", txHost='" + txHost + '\'' +
-                ", txDate='" + txDate + '\'' +
-                ", active=" + active +
-                '}';
-    }
 }
-
