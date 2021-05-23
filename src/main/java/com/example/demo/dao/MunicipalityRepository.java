@@ -13,8 +13,11 @@ public interface MunicipalityRepository {
     List<DataSimpleDto> getDataByIdMunicipality(Integer idDatatype, Integer idMunicipality);
 
     // Get general data of municipalities by department
-    List<MunicipalityDataDto> getMunicipalitiesByDepartmentId(Integer idDepartment);
+    List<MunicipalityDataDto> getMunicipalitiesById(Integer idMunicipality);
 
     // Get list of all municipalities
     List<Municipalities> getMunicipalities();
+
+    // Get list of all municipalities by department id
+    List<Municipalities> getMunicipalitiesByDepartment(Integer idDepartment);
 }

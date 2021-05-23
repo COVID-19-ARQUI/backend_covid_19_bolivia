@@ -30,7 +30,7 @@
           AND z.id_location = data.id_location
           AND m.id_municipality > 0
           AND t.id_datatype = data.id_datatype
-          AND d.id_departament = #{idDepartment}
+          AND d.id_departament = #{idMunicipality}
         GROUP BY m.municipality
     </select>
 
@@ -38,6 +38,16 @@
         SELECT m.id_municipality as idMunicipality,
                m.municipality    as municipality
         FROM municipalities m
+    </select>
+
+    <select id="getMunicipalitiesByDepartment" resultType="com.example.demo.domain.Municipalities">
+        SELECT m.id_municipality as idMunicipality,
+               m.municipality    as municipality
+        FROM municipalities m,
+             locations l
+        WHERE m.id_municipality = l.id_municipality
+          AND l.id_departament = #{idDepartment}
+          AND m.id_municipality > 0
     </select>
 
 </mapper>
