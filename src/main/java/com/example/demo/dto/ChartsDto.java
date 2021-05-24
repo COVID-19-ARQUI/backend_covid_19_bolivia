@@ -1,19 +1,18 @@
 package com.example.demo.dto;
 
 
-public class GraphicDto {
-
+public class ChartsDto {
     private Integer idChart;
     private String name;
     private int active;
-    private int idView;
+    private Integer idView;
     private int idChartType;
 
-    public GraphicDto() {
+    public ChartsDto() {
     }
 
 
-    public GraphicDto(Integer idChart, String name, int active, int idView, int idChartType) {
+    public ChartsDto(Integer idChart, String name, int active, Integer idView, int idChartType) {
         this.idChart = idChart;
         this.name = name;
         this.active = active;
@@ -56,11 +55,11 @@ public class GraphicDto {
         this.active = active;
     }
 
-    public int getIdView() {
+    public Integer getIdView() {
         return idView;
     }
 
-    public void setIdView(int idView) {
+    public void setIdView(Integer idView) {
         this.idView = idView;
     }
 

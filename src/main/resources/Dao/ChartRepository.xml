@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.ChartRepository">
+
+    <insert id="addNewChart" parameterType="com.example.demo.domain.Charts">
+        INSERT INTO charts
+        (name, active, id_chart_type, id_view, `tx_user_id`, `tx_host`, `tx_date`)
+        VALUES (#{name}, #{active}, #{idChartType}, #{idView}, #{txUserId}, #{txHost}, #{txDate});
+    </insert>
+
+    <select id="getChartsByIdView" resultType="com.example.demo.dto.ChartsDto">
+        SELECT c.id_chart      AS idChart,
+               c.name          AS name,
+               c.active        AS active,
+               c.id_view      AS idView,
+               c.id_chart_type AS idChartType
+        FROM charts c
+        WHERE c.id_view = #{idView}
+    </select>
+
+</mapper>
