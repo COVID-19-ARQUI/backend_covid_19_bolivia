@@ -1,17 +1,26 @@
 spring:
   application:
     name: covid_Bolivia
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-tnvggww.us.auth0.com/
   datasource:
-    name: covid_Database
+    name: arqui_soft
     platform: mysql
-    url: jdbc:mysql://localhost:3306/covid_database
+    url: jdbc:mysql://localhost:3306/arqui
     username: root
+    password: root
 
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       connectionTestQuery: select 1
       maximum-pool-size: 2
       connection-timeout: 60000
+
+auth0:
+  audience: http://localhost:8080
 
 logging:
   level:
