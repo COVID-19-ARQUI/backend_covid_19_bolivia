@@ -31,9 +31,9 @@ public class PredictorService {
         List<DataSimpleDto> recuperados=dataRepository.listSpecificDataByIdDepartment(3,iddepartment);
 
         List<DataSimpleDto> response= new ArrayList<>();
-        response.addAll(mostrarMatriz(1,contagiados,predictAmount));
-        response.addAll(mostrarMatriz(2,muertos,predictAmount));
-        response.addAll(mostrarMatriz(3,recuperados,predictAmount));
+        response.addAll(mostrarMatriz(contagiados,predictAmount));
+        response.addAll(mostrarMatriz(muertos,predictAmount));
+        response.addAll(mostrarMatriz(recuperados,predictAmount));
         return response;
     }
     public List<DataSimpleDto> datapredictedcountry(Integer idcountry, Integer predictAmount) throws ParseException {
@@ -42,12 +42,12 @@ public class PredictorService {
         List<DataSimpleDto> recuperados=dataRepository.listSpecificDataByIdCountry(3,idcountry);
 
         List<DataSimpleDto> response= new ArrayList<>();
-        response.addAll(mostrarMatriz(1,contagiados,predictAmount));
-        response.addAll(mostrarMatriz(2,muertos,predictAmount));
-        response.addAll(mostrarMatriz(3,recuperados,predictAmount));
+        response.addAll(mostrarMatriz(contagiados,predictAmount));
+        response.addAll(mostrarMatriz(muertos,predictAmount));
+        response.addAll(mostrarMatriz(recuperados,predictAmount));
         return response;
     }
-    public List<DataSimpleDto> mostrarMatriz(Integer dataType,List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
+    public List<DataSimpleDto> mostrarMatriz(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
         Modelado modelado = new Modelado();
         Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size()-1).getInDate());
         double[][] as= new double[data.size()][1];

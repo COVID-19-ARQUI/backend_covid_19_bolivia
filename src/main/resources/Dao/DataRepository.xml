@@ -104,22 +104,24 @@
              locations l
         where a.id_datatype = #{idDatatype}
           and l.id_departament = #{idDepartment}
+          and l.id_municipality=0
           and b.id_location = l.id_location
     </select>
 
 
     <select id="listSpecificDataByIdCountry" resultType="com.example.demo.dto.DataSimpleDto">
-        select b.data as data, b.in_date as inDate, a.type as datatype
-        from datatypes a,
-             data b,
-             locations l
-        where a.id_datatype = #{idDatatype}
+        select b.data as data, b.in_date as inDate, b.id_datatype as datatype
+        from
+             data b join
+             locations l on b.id_location = l.id_location
+        where b.id_datatype = #{idDatatype}
           and l.id_country= #{idCountry}
-          and b.id_location = l.id_location
+          and l.id_departament=0
+          and l.id_municipality=0
     </select>
     <!--  NOT USED  -->
     <!--
-       <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">
+    <resultMap id="listDataofDepartament" type="com.example.demo.dto.DataDto">
         <result column="idData" property="idData"/>
         <result column="data" property="data"/>
         <result column="inDate" property="inDate"/>
