@@ -32,14 +32,6 @@ public class DataService {
         this.municipalityRepository = municipalityRepository;
     }
 
-    public DataDto getSumDataFirstVaccinated(Integer departmentId) {
-        return dataRepository.generalFirstVaccinated(departmentId);
-    }
-
-    public DataDto getSumDataSecondVaccinated(Integer departmentId) {
-        return dataRepository.generalSecondVaccinated(departmentId);
-    }
-
     public DailyDataDto pushSingleData(DailyDataDto dailyDataDto, Transaction transaction) {
         Integer idLocation = locationRepository.getLocationByDepartment(dailyDataDto.getDepartment(), dailyDataDto.getMunicipality());
 
@@ -72,31 +64,18 @@ public class DataService {
         return dailyDataDto;
     }
 
-    public List<DataDto> listDataofDepartament(Integer departmentId) {
-        List<DataDto> dataDtoList = dataRepository.getData(departmentId);
-        LOGGER.warn(dataDtoList.toString());
-        return dataDtoList;
-    }
-
-    public List<DataDto> departmentStatistics(Integer departmentId) {
-        return dataRepository.departmentStatistics(departmentId);
-    }
-
-    public List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId) {
-        return departmentRepository.getDataByDepartmentsId(departmentId);
-    }
-
     public List<DataSimpleDto> lastDataByLocation(Integer idLocation) {
         return dataRepository.lastDataByLocation(idLocation);
     }
 
     public List<DataSimpleDto> listSpecificDataByIdDepartment(Integer idDatatype, Integer idDepartment) {
-        return dataRepository.listSpecificDataByIdDepartment(idDatatype, idDepartment);
+        return departmentRepository.listSpecificDataByIdDepartment(idDatatype, idDepartment);
     }
 
     public List<DataDto> getDataByCountryId(String idCountry) {
         return locationRepository.getGeneralDataByCountry(idCountry);
     }
+
     public List<DataDto> getByCountryId(String idCountry) {
         return locationRepository.getDataByCountry(idCountry);
     }

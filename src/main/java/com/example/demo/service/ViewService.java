@@ -41,7 +41,7 @@ public class ViewService {
             DashboardDataDto dashboard = new DashboardDataDto();
             dashboard.setIdDepartment(departmentDto.getIdDepartment());
             dashboard.setDepartment(departmentDto.getDepartment());
-            dashboard.setDataDto(dataRepository.getData(departmentDto.getIdDepartment()));
+            dashboard.setDataDto(departmentRepository.getDataByDepartmentId(departmentDto.getIdDepartment()));
             return dashboard;
         }).collect(Collectors.toList());
 //        LOGGER.debug(dashboardDepartments.toString());

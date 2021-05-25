@@ -5,6 +5,6 @@ Content-Type: application/json
 
 
 ### Predict data by country
-GET http://localhost:8080/predict/Country/29?cant=10
+GET http://localhost:8080/predict/country/29?cant=10
 Accept: application/json
 Content-Type: application/json

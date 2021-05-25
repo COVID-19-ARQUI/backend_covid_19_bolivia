@@ -65,7 +65,6 @@
           AND m.id_municipality = b.id_municipality
           AND m.id_municipality > 0
         GROUP BY a.id_datatype
-
     </select>
 
 </mapper>

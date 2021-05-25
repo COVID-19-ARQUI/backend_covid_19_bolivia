@@ -3,7 +3,11 @@ package com.example.demo.service;
 import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dao.MunicipalityRepository;
 import com.example.demo.domain.Departments;
+import com.example.demo.dto.DataDto;
+import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.dto.DepartmentDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,7 @@ import java.util.List;
 @Service
 public class DepartmentService {
     private DepartmentRepository departmentRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ViewService.class);
 
     @Autowired
     public DepartmentService(DepartmentRepository departmentRepository) {
@@ -34,6 +39,29 @@ public class DepartmentService {
             result.add(dto);
         });
         return result;
+    }
 
+    public DataDto getSumDataFirstVaccinated(Integer departmentId) {
+        return departmentRepository.generalFirstVaccinated(departmentId);
+    }
+
+    public DataDto getSumDataSecondVaccinated(Integer departmentId) {
+        return departmentRepository.generalSecondVaccinated(departmentId);
+    }
+
+    public List<DataDto> departmentStatistics(Integer departmentId) {
+        return departmentRepository.departmentStatistics(departmentId);
+    }
+
+
+    public List<DataSimpleDto> getDataByDepartmentsId(Integer departmentId) {
+        return departmentRepository.getDataByDepartmentsId(departmentId);
+    }
+
+
+    public List<DataDto> listDataDepartment(Integer departmentId) {
+        List<DataDto> dataDtoList = departmentRepository.getDataByDepartmentId(departmentId);
+        LOGGER.warn(dataDtoList.toString());
+        return dataDtoList;
     }
 }

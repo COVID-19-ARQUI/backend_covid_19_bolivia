@@ -14,7 +14,9 @@
     </select>
 
     <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DataSimpleDto">
-        select b.data as data, b.in_date as inDate, d.id_datatype as datatype
+        select b.data        as data,
+               b.in_date     as inDate,
+               d.type as datatype
         from departaments a,
              data b,
              locations c,
@@ -33,5 +35,79 @@
         WHERE d.id_departament > 0
     </select>
 
+    <select id="departmentStatistics" resultType="com.example.demo.dto.DataDto">
+        SELECT SUM(a.data)                           AS data,
+               MAX(a.in_date)                        AS inDate,
+               a.id_location                         AS idLocation,
+               (SELECT c.type
+                FROM datatypes c
+                WHERE a.id_datatype = c.id_datatype) AS datatype
+        FROM data a,
+             locations b
+        WHERE b.id_location = a.id_location
+          AND b.id_departament = #{idDepartment}
+        GROUP BY a.id_datatype
+    </select>
+
+    <select id="generalFirstVaccinated" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
+               SUM(a.data)                           AS data,
+               MAX(a.in_date)                        AS inDate,
+               a.id_location                         AS idLocation,
+               (SELECT c.type
+                FROM datatypes c
+                WHERE a.id_datatype = c.id_datatype) AS datatype
+        FROM data a,
+             locations b
+        WHERE b.id_location = a.id_location
+          AND b.id_departament = #{idDepartment}
+          AND a.id_datatype = 4
+        GROUP BY a.data
+        ORDER BY a.data DESC
+        LIMIT 1
+    </select>
+
+    <select id="generalSecondVaccinated" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
+               SUM(a.data)                           AS data,
+               MAX(a.in_date)                        AS inDate,
+               a.id_location                         AS idLocation,
+               (SELECT c.type
+                FROM datatypes c
+                WHERE a.id_datatype = c.id_datatype) AS datatype
+        FROM data a,
+             locations b
+        WHERE b.id_location = a.id_location
+          AND b.id_departament = #{idDepartment}
+          AND a.id_datatype = 5
+        GROUP BY a.data
+        ORDER BY a.data DESC
+        LIMIT 1
+    </select>
+
+    <select id="listSpecificDataByIdDepartment" resultType="com.example.demo.dto.DataSimpleDto">
+        select b.data as data, b.in_date as inDate, a.type as datatype
+        from datatypes a,
+             data b,
+             locations l
+        where a.id_datatype = #{idDatatype}
+          and l.id_departament = #{idDepartment}
+          and l.id_municipality = 0
+          and b.id_location = l.id_location
+    </select>
+
+    <select id="getDataByDepartmentId" resultType="com.example.demo.dto.DataDto">
+        SELECT a.id_data                             AS idData,
+               a.data                                AS data,
+               a.in_date                             AS inDate,
+               a.id_location                         AS idLocation,
+               (SELECT c.type
+                FROM datatypes c
+                WHERE a.id_datatype = c.id_datatype) AS datatype
+        FROM data a,
+             locations b
+        WHERE b.id_location = a.id_location
+          AND b.id_departament = #{idDepartment}
+    </select>
 
 </mapper>

@@ -38,29 +38,29 @@ public class DepartmentController {
 
     @RequestMapping(value = "/data/single/list/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> listDataByDepartment(@PathVariable("departmentId") Integer departmentId) {
-        return dataService.listDataofDepartament(departmentId);
+        return departmentService.listDataDepartment(departmentId);
     }
 
     // General department data by department id.
     @RequestMapping(value = "general/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> departmentStatistics(@PathVariable Integer departmentId) {
-        return dataService.departmentStatistics(departmentId);
+        return departmentService.departmentStatistics(departmentId);
     }
 
     @RequestMapping(value = "/first/vaccinated/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataDto getVaccinatedFirstDose(@PathVariable Integer idDepartment) {
-        return dataService.getSumDataFirstVaccinated(idDepartment);
+        return departmentService.getSumDataFirstVaccinated(idDepartment);
     }
 
     @RequestMapping(value = "/second/vaccinated/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataDto getVaccinatedSecondDose(@PathVariable Integer idDepartment) {
-        return dataService.getSumDataSecondVaccinated(idDepartment);
+        return departmentService.getSumDataSecondVaccinated(idDepartment);
     }
 
 
     @RequestMapping(value = "/data/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> getDataByDepartmentsId(@PathVariable Integer departmentId) {
-        return dataService.getDataByDepartmentsId(departmentId);
+        return departmentService.getDataByDepartmentsId(departmentId);
     }
 
     @RequestMapping(value = "datatype/{idDatatype}/department/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -1,11 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Transaction;
-import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DataSimpleDto;
-import com.example.demo.dto.RegisterUserDto;
 import com.example.demo.service.PredictorService;
-import com.example.demo.util.TransactionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -17,19 +13,20 @@ import java.util.List;
 @RequestMapping(value = "/predict")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PredictorController {
-    private PredictorService predictorService;
+    private final PredictorService predictorService;
 
     @Autowired
     public PredictorController(PredictorService predictorService) {
         this.predictorService = predictorService;
     }
 
-    @RequestMapping(value = "/department/{departmentid}",params = {"cant"},method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataSimpleDto> predictdata(@RequestParam ("cant")  Integer cant, @PathVariable("departmentid") Integer departmentId ) throws ParseException {
-        return predictorService.datapredicted(departmentId, cant);
+    @RequestMapping(value = "/department/{idDepartment}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictData(@RequestParam("cant") Integer cant, @PathVariable("idDepartment") Integer departmentId) throws ParseException {
+        return predictorService.dataPredicted(departmentId, cant);
     }
-    @RequestMapping(value = "/Country/{idCountry}",params = {"cant"},method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DataSimpleDto> predictdatacountry(@RequestParam ("cant")  Integer cant, @PathVariable("idCountry") Integer idCountry ) throws ParseException {
-        return predictorService.datapredictedcountry(idCountry, cant);
+
+    @RequestMapping(value = "/country/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictDataCountry(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
+        return predictorService.dataPredictedCountry(idCountry, cant);
     }
 }
