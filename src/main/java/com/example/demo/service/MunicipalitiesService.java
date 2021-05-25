@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.MunicipalityRepository;
 import com.example.demo.domain.Municipalities;
+import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.dto.MunicipalityDataDto;
 import com.example.demo.dto.MunicipalityDto;
@@ -35,5 +36,9 @@ public class MunicipalitiesService {
             response.add(new MunicipalityDto(municipality.getIdMunicipality(), municipality.getMunicipality()));
         });
         return response;
+    }
+
+    public List<DataDto> municipalityStatistics(Integer idMunicipality) {
+        return municipalityRepository.municipalityStatistics(idMunicipality);
     }
 }

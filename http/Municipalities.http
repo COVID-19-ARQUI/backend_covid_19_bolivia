@@ -10,3 +10,6 @@ Accept: application/json
 GET http://localhost:8080/municipalities/list/department/2
 Accept: application/json
 
+### General municipality data by department id. (TOTAL)
+GET http://localhost:8080/municipalities/general/1
+Accept: application/json

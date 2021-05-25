@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.dto.MunicipalityDataDto;
 import com.example.demo.dto.MunicipalityDto;
@@ -7,6 +8,7 @@ import com.example.demo.service.MunicipalitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -33,5 +35,10 @@ public class MunicipalityController {
     @RequestMapping(value = "/list/department/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MunicipalityDto> getMunicipalities(@PathVariable Integer idDepartment) {
         return municipalitiesService.getMunicipalitiesList(idDepartment);
+    }  // TODO: ENHANCE THIS
+
+    @RequestMapping(value = "general/{idMunicipality}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataDto> departmentStatistics(@PathVariable Integer idMunicipality) {
+        return municipalitiesService.municipalityStatistics(idMunicipality);
     }
 }

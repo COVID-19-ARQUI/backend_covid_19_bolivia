@@ -31,12 +31,12 @@ public class DepartmentController {
         return departmentService.getDepartments();
     }
 
-    @RequestMapping(value = "/all/details", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/list/details", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DepartmentDto> getAllDepartments() {
         return departmentService.getDepartmentsWithMunicipalities();
     }
 
-    @RequestMapping(value = "single/list/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/data/single/list/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> listDataByDepartment(@PathVariable("departmentId") Integer departmentId) {
         return dataService.listDataofDepartament(departmentId);
     }
@@ -58,7 +58,7 @@ public class DepartmentController {
     }
 
 
-    @RequestMapping(value = "/departmentData/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/data/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> getDataByDepartmentsId(@PathVariable Integer departmentId) {
         return dataService.getDataByDepartmentsId(departmentId);
     }

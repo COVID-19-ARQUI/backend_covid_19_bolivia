@@ -30,7 +30,7 @@
           AND z.id_location = data.id_location
           AND m.id_municipality > 0
           AND t.id_datatype = data.id_datatype
-          AND d.id_departament = #{idMunicipality}
+          AND m.id_municipality = #{idMunicipality}
         GROUP BY m.municipality
     </select>
 
@@ -48,6 +48,24 @@
         WHERE m.id_municipality = l.id_municipality
           AND l.id_departament = #{idDepartment}
           AND m.id_municipality > 0
+    </select>
+
+    <select id="municipalityStatistics" resultType="com.example.demo.dto.DataDto">
+        SELECT SUM(a.data)                           AS data,
+               MAX(a.in_date)                        AS inDate,
+               a.id_location                         AS idLocation,
+               (SELECT c.type
+                FROM datatypes c
+                WHERE a.id_datatype = c.id_datatype) AS datatype
+        FROM data a,
+             locations b,
+             municipalities m
+        WHERE b.id_location = a.id_location
+          AND b.id_municipality = #{idMunicipality}
+          AND m.id_municipality = b.id_municipality
+          AND m.id_municipality > 0
+        GROUP BY a.id_datatype
+
     </select>
 
 </mapper>

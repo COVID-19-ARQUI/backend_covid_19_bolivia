@@ -4,39 +4,32 @@ Accept: application/json
 Content-Type: application/json
 
 ### Department list with their municipalities.
-GET http://localhost:8080/department/all/details
+GET http://localhost:8080/department/list/details
 Accept: application/json
-Content-Type: application/json
 
 ### List of departments data by department id.
-GET http://localhost:8080/department/single/list/2
+GET http://localhost:8080/department/data/single/list/2
 Accept: application/json
-Content-Type: application/json
 
 ### General department data by department id.
 GET http://localhost:8080/department/general/5
 Accept: application/json
-Content-Type: application/json
 
 ### Vaccinated with first dose by department (TOTAL, not a list)
 GET http://localhost:8080/department/first/vaccinated/2
 Accept: application/json
-Content-Type: application/json
 
 ### Vaccinated with second dose by department (TOTAL, not a list)
 GET http://localhost:8080/department/second/vaccinated/2
 Accept: application/json
-Content-Type: application/json
 
 ### List of data by department id and datatype id
 GET http://localhost:8080/department/datatype/2/department/6
 Accept: application/json
-Content-Type: application/json
 
 ### Department details data (Line 12)
-GET http://localhost:8080/department/departmentData/2
+GET http://localhost:8080/department/data/2
 Accept: application/json
-Content-Type: application/json
 
 
 

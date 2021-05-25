@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Municipalities;
+import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.dto.MunicipalityDataDto;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +13,7 @@ public interface MunicipalityRepository {
     //
     List<DataSimpleDto> getDataByIdMunicipality(Integer idDatatype, Integer idMunicipality);
 
-    // Get general data of municipalities by department
+    // Get general data of municipalities by municipality id
     List<MunicipalityDataDto> getMunicipalitiesById(Integer idMunicipality);
 
     // Get list of all municipalities
@@ -20,4 +21,7 @@ public interface MunicipalityRepository {
 
     // Get list of all municipalities by department id
     List<Municipalities> getMunicipalitiesByDepartment(Integer idDepartment);
+
+    // Get total data by municipality id
+    List<DataDto> municipalityStatistics(Integer idMunicipality);
 }
