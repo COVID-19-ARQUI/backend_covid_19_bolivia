@@ -28,12 +28,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         */
         http.cors()
                 .and().authorizeRequests()
+//
+                .antMatchers(HttpMethod.GET, "/person/user/info/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/person/user/info/email").permitAll()
+//
                 .antMatchers(HttpMethod.GET, "/data/last/day/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/data/general/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/data/general/list/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/view/*/list").authenticated()
                 .antMatchers(HttpMethod.POST, "/view").hasAuthority("SCOPE_create:user_dashboards")
-                .antMatchers(HttpMethod.GET,"/department/general/*").hasAnyAuthority()
+                .antMatchers(HttpMethod.GET, "/department/general/*").hasAnyAuthority()
                 .anyRequest()
                 .authenticated().and().oauth2ResourceServer()
                 .jwt();

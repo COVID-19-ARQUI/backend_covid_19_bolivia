@@ -11,5 +11,34 @@
                 #{email}, #{password}, #{urlPhoto}, #{active}, #{txUserId}, #{txHost}, #{txDate});
     </insert>
 
+    <select id="getUserByEmail" resultType="com.example.demo.dto.UserInfoDto">
+        SELECT p.id_user          AS idUser,
+               p.nickname         AS nickname,
+               p.first_name       AS firstName,
+               p.second_name      AS secondName,
+               p.first_last_name  AS firstLastName,
+               p.second_last_name AS secondLastName,
+               p.email            AS email,
+               p.password         AS password,
+               p.url_photo        AS urlPhoto,
+               p.active           AS active
+        FROM persons p
+        WHERE p.email = #{email}
+    </select>
+
+    <select id="getUserById" resultType="com.example.demo.dto.UserInfoDto">
+        SELECT p.id_user          AS idUser,
+               p.nickname         AS nickname,
+               p.first_name       AS firstName,
+               p.second_name      AS secondName,
+               p.first_last_name  AS firstLastName,
+               p.second_last_name AS secondLastName,
+               p.email            AS email,
+               p.password         AS password,
+               p.url_photo        AS urlPhoto,
+               p.active           AS active
+        FROM persons p
+        WHERE p.id_user = #{idUser}
+    </select>
 
 </mapper>

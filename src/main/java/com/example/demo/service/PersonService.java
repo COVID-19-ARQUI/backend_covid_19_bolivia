@@ -4,6 +4,7 @@ import com.example.demo.dao.*;
 import com.example.demo.domain.Persons;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.RegisterUserDto;
+import com.example.demo.dto.UserInfoDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,13 @@ public class PersonService {
         LOGGER.warn(persons.toString());
         personRepository.createUser(persons);
         return registerUserDto;
+    }
+
+    public UserInfoDto getUserById(Integer idUser) {
+        return personRepository.getUserById(idUser);
+    }
+
+    public UserInfoDto getUserByEmail(String email) {
+        return personRepository.getUserByEmail(email);
     }
 }
