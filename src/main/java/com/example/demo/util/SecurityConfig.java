@@ -1,9 +1,16 @@
 package com.example.demo.util;
 
+import com.example.demo.security.AudienceValidator;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
+import org.springframework.security.oauth2.core.OAuth2TokenValidator;
+import org.springframework.security.oauth2.jwt.*;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,28 +33,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/data/general/list/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/view/*/list").authenticated()
                 .antMatchers(HttpMethod.POST, "/view").hasAuthority("SCOPE_create:user_dashboards")
+                .antMatchers(HttpMethod.GET,"/department/general/*").hasAnyAuthority()
                 .anyRequest()
                 .authenticated().and().oauth2ResourceServer()
                 .jwt();
     }
 
-//    @Bean
-//    ReactiveJwtDecoder jwtDecoder() {
-//        /*
-//        By default, Spring Security does not validate the "aud" claim of the token, to ensure that this token is
-//        indeed intended for our app. Adding our own validator is easy to do:
-//        */
-//
-//        NimbusReactiveJwtDecoder jwtDecoder = (NimbusReactiveJwtDecoder)
-//                ReactiveJwtDecoders.fromOidcIssuerLocation(issuer);
-//
-//        OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(audience);
-//        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
-//        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator,
-//                new JwtTimestampValidator());
-//
-//        jwtDecoder.setJwtValidator(withAudience);
-//
-//        return jwtDecoder;
-//    }
+    @Bean
+    JwtDecoder jwtDecoder(OAuth2ResourceServerProperties properties, @Value("${auth0.audience}") String audience) {
+
+        String issuerUri = properties.getJwt().getIssuerUri();
+        NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder) JwtDecoders.fromOidcIssuerLocation(issuerUri);
+
+        OAuth2TokenValidator<Jwt> audienceValidator = AudienceValidator.of(audience);
+        OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuerUri);
+        OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
+
+        jwtDecoder.setJwtValidator(withAudience);
+
+        return jwtDecoder;
+    }
 }
