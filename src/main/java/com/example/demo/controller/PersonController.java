@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Transaction;
+import com.example.demo.dto.LoginUserDto;
 import com.example.demo.dto.RegisterUserDto;
 import com.example.demo.dto.UserInfoDto;
 import com.example.demo.service.PersonService;
@@ -45,4 +46,10 @@ public class PersonController {
     public UserInfoDto getUserByEmail(@RequestParam("email") String email) {
         return personService.getUserByEmail(email);
     }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public LoginUserDto loginUser(@RequestBody LoginUserDto user) {
+        return personService.loginUser(user);
+    }
+
 }

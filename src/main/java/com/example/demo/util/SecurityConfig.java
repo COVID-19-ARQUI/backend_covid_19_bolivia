@@ -7,14 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.*;
 
 @Configuration
-@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
 //    private String issuer;
@@ -28,7 +26,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         This is where we configure the security required for our endpoints and setup our app to serve as
         an OAuth2 Resource Server, using JWT validation.
         */
-        http.csrf().disable().authorizeRequests()
+        http
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/person").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/person/user/info/*").permitAll()
@@ -43,7 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.anyRequest()
                 //.authenticated()
                 .and().cors()
-
                 .and().oauth2ResourceServer()
                 .jwt();
 

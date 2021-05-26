@@ -18,5 +18,18 @@ GET http://localhost:8080/person/user/info/1
 Accept: application/json
 
 ###
-GET http://localhost:8080/person/user/info/email?email=algo@gmail.com
+GET http://localhost:8080/person/user/info/email?email=agowland0@nationalgeographic.com
 Accept: application/json
+
+###
+POST http://127.0.0.1:8080/person/profile
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "agowland0@nationalgeographic.com",
+  "password": "2hhfYvvf6kEH"
+}
+
+
+
