@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.dao.*;
 import com.example.demo.domain.Persons;
 import com.example.demo.domain.Transaction;
+import com.example.demo.dto.LoginUserDto;
 import com.example.demo.dto.RegisterUserDto;
 import com.example.demo.dto.UserInfoDto;
 import org.slf4j.Logger;
@@ -46,5 +47,9 @@ public class PersonService {
 
     public UserInfoDto getUserByEmail(String email) {
         return personRepository.getUserByEmail(email);
+    }
+
+    public LoginUserDto loginUser(LoginUserDto user) {
+        return personRepository.loginUser(user.getUsername(), user.getPassword());
     }
 }
