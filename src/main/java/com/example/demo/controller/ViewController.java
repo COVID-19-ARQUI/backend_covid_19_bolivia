@@ -49,4 +49,6 @@ public class ViewController {
     public void updateDashboard(@PathVariable Integer idUser, @RequestBody ViewDto dashboard) {
         viewService.updateDashboard(idUser, dashboard);
     }
+
+
 }
