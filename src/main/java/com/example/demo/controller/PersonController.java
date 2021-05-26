@@ -30,7 +30,7 @@ public class PersonController {
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public RegisterUserDto createUser(@RequestBody RegisterUserDto registerUserDto, HttpServletRequest request) {
+    public UserInfoDto createUser(@RequestBody RegisterUserDto registerUserDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
         return personService.createUser(registerUserDto, transaction);
@@ -38,13 +38,11 @@ public class PersonController {
 
     @RequestMapping(value = "/user/info/{idUser}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserInfoDto getUserById(@PathVariable Integer idUser) {
-        LOGGER.error(idUser.toString());
         return personService.getUserById(idUser);
     }
 
     @RequestMapping(value = "/user/info/email", params = {"email"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserInfoDto getUserByEmail(@RequestParam("email") String email) {
-        LOGGER.error(email);
         return personService.getUserByEmail(email);
     }
 }

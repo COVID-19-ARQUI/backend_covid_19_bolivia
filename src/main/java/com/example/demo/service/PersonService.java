@@ -14,14 +14,17 @@ import org.springframework.stereotype.Service;
 public class PersonService {
 
     PersonRepository personRepository;
+    TransactionRepository transactionRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, TransactionRepository transactionRepository) {
         this.personRepository = personRepository;
+        this.transactionRepository = transactionRepository;
     }
 
-    public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
+
+    public UserInfoDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
         Persons persons = new Persons();
         persons.setNickname(registerUserDto.getNickname());
         persons.setFirstName(registerUserDto.getFirstName());
@@ -37,7 +40,7 @@ public class PersonService {
         persons.setTxDate(transaction.getTxDate());
         LOGGER.warn(persons.toString());
         personRepository.createUser(persons);
-        return registerUserDto;
+        return  personRepository.getUserById(transactionRepository.getLastInsertId());
     }
 
     public UserInfoDto getUserById(Integer idUser) {
