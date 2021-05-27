@@ -24,7 +24,7 @@ public interface DataRepository {
     //Ger general list data of a contry
     List<DataSimpleDto> listSpecificDataByIdCountry(Integer idDatatype, Integer idCountry);
 
-    List<DataDto> verifyExistenceOfData(String date, Integer idDataType, Integer idLocation);
+    List<DataDto> verifyExistenceOfData(Date date, Integer idDataType, Integer idLocation);
 
 
 }

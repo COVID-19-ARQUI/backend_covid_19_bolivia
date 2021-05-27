@@ -22,6 +22,8 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,12 +66,12 @@ public class FileService {
             for(String[]item : rows){
 
                 Integer data = Integer.parseInt(item[0]);
-                String inDate = item[1];
+                Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(item[1]);
                 String dataType = item[2];
                 String country = item[3];
                 String department = item[4];
                 String municipality = item[5];
-                DataLoadedDto dataLoadedDto = new DataLoadedDto(data,inDate,dataType,country,department,municipality);
+                DataLoadedDto dataLoadedDto = new DataLoadedDto(data,date1,dataType,country,department,municipality);
                 dataLoadedDtos.add(dataLoadedDto);
             }
             for(DataLoadedDto data: dataLoadedDtos){
@@ -79,15 +81,14 @@ public class FileService {
                 Datatypes datatypes = dataTypeRepository.getDataTypeByName(data.getDataType());
 
                 List<DataDto> listaData= dataRepository.verifyExistenceOfData(data.getInDate(),datatypes.getIdDatatype(),locations.getIdLocation());
-                logger.info("EL TAMAÑO ES: "+listaData.size());
+                /**logger.info(""+data.getInDate());*/
+
+
+
                 if(listaData.isEmpty()){
 
-                    String date[] = data.getInDate().split("-");
-                    int year = Integer.parseInt(date[0]);
-                    int month = Integer.parseInt(date[1]);
-                    int day = Integer.parseInt(date[2]);
-
-                    Data newDate = new Data(null, data.getData(), new Date(year,month,day), locations.getIdLocation(),
+                    /***/
+                    Data newDate = new Data(null, data.getData(), data.getInDate(), locations.getIdLocation(),
                             datatypes.getIdDatatype(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
                     dataRepository.addSingleData(newDate);
                 }else{
@@ -96,7 +97,7 @@ public class FileService {
 
             }
 
-        }catch (IOException e){
+        }catch (IOException | ParseException e){
             logger.info("HA OCURRIDO UN ERROR");
         }
     }

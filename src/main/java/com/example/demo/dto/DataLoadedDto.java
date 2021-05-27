@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DataLoadedDto {
     private Integer data;
-    private String inDate;
+    private Date inDate;
     private String dataType;
     private String country;
     private String department;
@@ -15,7 +15,7 @@ public class DataLoadedDto {
 
     }
 
-    public DataLoadedDto(Integer data, String inDate, String dataType, String country, String department, String municipality) {
+    public DataLoadedDto(Integer data, Date inDate, String dataType, String country, String department, String municipality) {
         this.data = data;
         this.inDate = inDate;
         this.dataType = dataType;
@@ -32,11 +32,11 @@ public class DataLoadedDto {
         this.data = data;
     }
 
-    public String getInDate() {
+    public Date getInDate() {
         return inDate;
     }
 
-    public void setInDate(String inDate) {
+    public void setInDate(Date inDate) {
         this.inDate = inDate;
     }
 
