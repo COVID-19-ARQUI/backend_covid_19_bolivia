@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.example.demo.domain.Data;
 import com.example.demo.dto.DataDto;
+import com.example.demo.dto.DataLoadedDto;
 import com.example.demo.dto.DataSimpleDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -22,6 +23,8 @@ public interface DataRepository {
 
     //Ger general list data of a contry
     List<DataSimpleDto> listSpecificDataByIdCountry(Integer idDatatype, Integer idCountry);
+
+    List<DataDto> verifyExistenceOfData(String date, Integer idDataType, Integer idLocation);
 
 
 }

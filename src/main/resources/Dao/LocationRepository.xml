@@ -53,4 +53,18 @@
           AND l.id_departament = 0 -- id_department must be 'All' if not will repeat in the sum
           AND c.id_country = #{idCountry}
     </select>
+
+    <select id="getLocationsByCountryDepartmentMuniciplaity" resultType="com.example.demo.domain.Locations">
+        select a.id_location as idLocation, a.id_departament as idDepartment, a.id_municipality as idMunicipality,
+               a.id_country as idCountry
+        from locations a, countries b, departaments c, municipalities d
+        where a.id_country = b.id_country
+          and a.id_departament = c.id_departament
+          and a.id_municipality = d.id_municipality
+          and b.country = #{country}
+          and c.department = #{department}
+          and d.municipality = #{municipality}
+            LIMIT 1;
+    </select>
+
 </mapper>

@@ -1,8 +1,10 @@
 package com.example.demo.dao;
 
 import com.example.demo.domain.Countries;
+import com.example.demo.domain.Locations;
 import com.example.demo.dto.DataDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.relational.core.sql.In;
 
 import java.util.List;
 
@@ -19,4 +21,7 @@ public interface LocationRepository {
     //Get list of general data by country id
 
     List<DataDto> getDataByCountry(String idCountry);
+
+    Locations getLocationsByCountryDepartmentMuniciplaity(String country, String department, String municipality);
+
 }
