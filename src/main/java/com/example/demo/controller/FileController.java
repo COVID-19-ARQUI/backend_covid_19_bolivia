@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.service.FileReaderService;
 import com.example.demo.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,8 @@ public class FileController {
         logger.info("contentType: " + contentType);
         logger.info("size: " + size);
         fileService.saveFile(file);
+        FileReaderService fileReaderService = new FileReaderService();
+        fileReaderService.readDataFromCsv(file);
         // Do processing with uploaded file data in Service layer
         return new ResponseEntity<String>(originalName, HttpStatus.OK);
     }
