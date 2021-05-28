@@ -5,7 +5,9 @@
 <mapper namespace="com.example.demo.dao.MunicipalityRepository">
 
     <select id="getDataByIdMunicipality" resultType="com.example.demo.dto.DataSimpleDto">
-        SELECT c.data as data, c.in_date as inDate
+        SELECT c.data    as data,
+               c.in_date as inDate,
+               d.type    as datatype
         FROM municipalities a,
              locations b,
              data c,

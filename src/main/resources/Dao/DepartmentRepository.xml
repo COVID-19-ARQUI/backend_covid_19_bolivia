@@ -108,6 +108,7 @@
              locations b
         WHERE b.id_location = a.id_location
           AND b.id_departament = #{idDepartment}
+        ORDER BY inDate, datatype;
     </select>
 
 </mapper>

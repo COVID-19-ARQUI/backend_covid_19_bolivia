@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
 @RestController
 @RequestMapping(value = "/file")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FileController {
 
     private final FileService fileService;

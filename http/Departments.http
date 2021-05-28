@@ -12,7 +12,7 @@ GET http://localhost:8080/department/data/single/list/2
 Accept: application/json
 
 ### General department data by department id.
-GET http://localhost:8080/department/general/5
+GET http://localhost:8080/department/general/1
 Accept: application/json
 
 ### Vaccinated with first dose by department (TOTAL, not a list)

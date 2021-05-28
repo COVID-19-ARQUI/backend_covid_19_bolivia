@@ -3,13 +3,13 @@ GET http://localhost:8080/municipalities/2
 Accept: application/json
 
 ### Get municipality data by municipality id and datatype id
-GET http://localhost:8080/municipalities/1/datatype/2
+GET http://localhost:8080/municipalities/1/datatype/1
 Accept: application/json
 
 ### Get list of municipalities by id department
-GET http://localhost:8080/municipalities/list/department/2
+GET http://localhost:8080/municipalities/list/department/0
 Accept: application/json
 
 ### General municipality data by department id. (TOTAL)
-GET http://localhost:8080/municipalities/general/1
+GET http://localhost:8080/municipalities/general/5
 Accept: application/json
