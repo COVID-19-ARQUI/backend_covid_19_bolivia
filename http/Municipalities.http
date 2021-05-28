@@ -7,9 +7,13 @@ GET http://localhost:8080/municipalities/1/datatype/1
 Accept: application/json
 
 ### Get list of municipalities by id department
-GET http://localhost:8080/municipalities/list/department/0
+GET http://localhost:8080/municipalities/list/department/1
 Accept: application/json
 
 ### General municipality data by department id. (TOTAL)
-GET http://localhost:8080/municipalities/general/5
+GET http://localhost:8080/municipalities/general/1
+Accept: application/json
+
+###list of data of municipalitios by deparmente
+GET http://localhost:8080/municipalities/deparmeten/1
 Accept: application/json
