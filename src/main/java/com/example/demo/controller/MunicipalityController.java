@@ -37,7 +37,7 @@ public class MunicipalityController {
         return municipalitiesService.getMunicipalitiesList(idDepartment);
     }  // TODO: ENHANCE THIS
 
-    @RequestMapping(value = "general/{idMunicipality}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/general/{idMunicipality}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> departmentStatistics(@PathVariable Integer idMunicipality) {
         return municipalitiesService.municipalityStatistics(idMunicipality);
     }

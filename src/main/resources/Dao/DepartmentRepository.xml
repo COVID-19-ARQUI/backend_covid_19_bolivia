@@ -14,9 +14,9 @@
     </select>
 
     <select id="getDataByDepartmentsId" resultType="com.example.demo.dto.DataSimpleDto">
-        select b.data        as data,
-               b.in_date     as inDate,
-               d.type as datatype
+        select b.data    as data,
+               b.in_date as inDate,
+               d.type    as datatype
         from departaments a,
              data b,
              locations c,
@@ -108,6 +108,7 @@
              locations b
         WHERE b.id_location = a.id_location
           AND b.id_departament = #{idDepartment}
+          AND b.id_municipality = 0
         ORDER BY inDate, datatype;
     </select>
 

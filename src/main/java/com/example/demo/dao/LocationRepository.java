@@ -13,17 +13,19 @@ public interface LocationRepository {
     // Get Location id by department and municipality
     Integer getLocationByDepartment(String department, String municipalities);
 
-    //Get Location id by iddepartment and idmunicipality
-    Integer getLocationIds(Integer iddepartment,String idmunicipalities,Integer idcountry);
+    // Get Location id by department id and municipality id
+    Integer getLocationIds(Integer idDepartment, String idMunicipality, Integer idCountry);
+
     // Get list of all countries
     List<Countries> getCountries();
 
     // Get general general data by country id
     List<DataDto> getGeneralDataByCountry(String idCountry);
-    //Get list of general data by country id
 
+    // Get list of general data by country id
     List<DataDto> getDataByCountry(String idCountry);
 
-    Locations getLocationsByCountryDepartmentMuniciplaity(String country, String department, String municipality);
+    //
+    Locations getLocationsByCountryDepartmentMunicipality(String country, String department, String municipality);
 
 }

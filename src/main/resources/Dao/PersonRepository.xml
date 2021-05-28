@@ -5,10 +5,12 @@
 <mapper namespace="com.example.demo.dao.PersonRepository">
 
     <insert id="createUser" parameterType="com.example.demo.domain.Persons">
-        insert into persons (nickname, first_name, second_name, first_last_name,
-                             second_last_name, email, password, url_photo, active, tx_user_id, tx_host, tx_date)
-        values (#{nickname}, #{firstName}, #{secondName}, #{firstLastName}, #{secondLastName},
-                #{email}, #{password}, #{urlPhoto}, #{active}, #{txUserId}, #{txHost}, #{txDate});
+        insert into persons (username, name, surname, email,
+                             password, url_photo, role, active,
+                             tx_user_id, tx_host, tx_date)
+        values (#{username}, #{name}, #{surname}, #{email},
+                #{password}, #{urlPhoto}, #{role}, #{active},
+                #{txUserId}, #{txHost}, #{txDate});
     </insert>
 
 

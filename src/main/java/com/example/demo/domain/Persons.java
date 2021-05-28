@@ -4,14 +4,13 @@ import java.util.Date;
 
 public class Persons {
     private Integer idUser;
-    private String nickname;
-    private String firstName;
-    private String secondName;
-    private String firstLastName;
-    private String secondLastName;
+    private String username;
+    private String name;
+    private String surname;
     private String email;
     private String password;
     private String urlPhoto;
+    private String role;
     private Integer active;
     private String txUserId;
     private String txHost;
@@ -24,21 +23,19 @@ public class Persons {
     public String toString() {
         return "Persons{" +
                 "idUser=" + idUser +
-                ", nickname='" + nickname + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", firstLastName='" + firstLastName + '\'' +
-                ", secondLastName='" + secondLastName + '\'' +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", urlPhoto='" + urlPhoto + '\'' +
-                ", active='" + active + '\'' +
+                ", role='" + role + '\'' +
+                ", active=" + active +
                 ", txUserId='" + txUserId + '\'' +
                 ", txHost='" + txHost + '\'' +
                 ", txDate=" + txDate +
                 '}';
     }
-
 
     public Integer getIdUser() {
         return idUser;
@@ -48,44 +45,28 @@ public class Persons {
         this.idUser = idUser;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getFirstLastName() {
-        return firstLastName;
-    }
-
-    public void setFirstLastName(String firstLastName) {
-        this.firstLastName = firstLastName;
-    }
-
-    public String getSecondLastName() {
-        return secondLastName;
-    }
-
-    public void setSecondLastName(String secondLastName) {
-        this.secondLastName = secondLastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {
@@ -110,6 +91,14 @@ public class Persons {
 
     public void setUrlPhoto(String urlPhoto) {
         this.urlPhoto = urlPhoto;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Integer getActive() {

@@ -20,10 +20,10 @@
         SELECT l.id_location
         FROM locations l,
              municipalities m
-        WHERE l.id_departament = #{iddepartment}
+        WHERE l.id_departament = #{idDepartment}
           AND l.id_municipality = m.id_municipality
-          AND l.id_country=#{idcountry}
-          AND m.municipality = #{municipalities}
+          AND l.id_country=#{idCountry}
+          AND m.municipality = #{idDepartment}
         LIMIT 1;
     </select>
 

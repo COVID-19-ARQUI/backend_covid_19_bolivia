@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DataTypeRepository;
-import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dao.LocationRepository;
 import com.example.demo.domain.Data;
 import com.example.demo.domain.Datatypes;
@@ -75,7 +74,7 @@ public class FileService {
                 dataLoadedDtos.add(dataLoadedDto);
             }
             for(DataLoadedDto data: dataLoadedDtos){
-                Locations locations = locationRepository.getLocationsByCountryDepartmentMuniciplaity(
+                Locations locations = locationRepository.getLocationsByCountryDepartmentMunicipality(
                         data.getCountry(),data.getDepartment(),data.getMunicipality());
 
                 Datatypes datatypes = dataTypeRepository.getDataTypeByName(data.getDataType());

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
+
 @RestController
 @RequestMapping(value = "/file")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -23,12 +24,12 @@ public class FileController {
     private final TransactionService transactionService;
 
     @Autowired
-    public FileController(FileService fileService, TransactionService transactionService){
+    public FileController(FileService fileService, TransactionService transactionService) {
         this.fileService = fileService;
         this.transactionService = transactionService;
     }
 
-    private static Logger logger = LoggerFactory.getLogger(FileController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FileController.class);
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadData(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws Exception {
@@ -41,20 +42,18 @@ public class FileController {
         String contentType = file.getContentType();
 
         long size = file.getSize();
-        logger.info("inputStream: " + inputStream);
-        logger.info("originalName: " + originalName);
-        logger.info("name: " + name);
-        logger.info("contentType: " + contentType);
-        logger.info("size: " + size);
-        //fileService.saveFile(file);
+        LOGGER.info("inputStream: " + inputStream);
+        LOGGER.info("originalName: " + originalName);
+        LOGGER.info("name: " + name);
+        LOGGER.info("contentType: " + contentType);
+        LOGGER.info("size: " + size);
+//        fileService.saveFile(file);
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
-        fileService.addDatafromCsvFile(file,transaction);
+        fileService.addDatafromCsvFile(file, transaction);
         // Do processing with uploaded file data in Service layer
         return new ResponseEntity<String>(originalName, HttpStatus.OK);
     }
-
-
 
 
 }

@@ -10,9 +10,8 @@ import java.util.*;
 
 @Mapper
 public interface DataRepository {
-    // Add sigle row on table Dato
+    // Add single row on table Data
     void addSingleData(Data data);
-
 
     //
     List<DataDto> getGeneralData();
@@ -20,11 +19,10 @@ public interface DataRepository {
     //
     List<DataSimpleDto> lastDataByLocation(Integer idLocation);
 
-
     //Ger general list data of a contry
     List<DataSimpleDto> listSpecificDataByIdCountry(Integer idDatatype, Integer idCountry);
 
+    //
     List<DataDto> verifyExistenceOfData(Date date, Integer idDataType, Integer idLocation);
-
 
 }

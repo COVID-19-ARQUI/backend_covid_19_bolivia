@@ -22,11 +22,9 @@ public class PersonService {
 
     public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
         Persons persons = new Persons();
-        persons.setNickname(registerUserDto.getNickname());
-        persons.setFirstName(registerUserDto.getFirstName());
-        persons.setSecondName(registerUserDto.getSecondName());
-        persons.setFirstLastName(registerUserDto.getFirstLastName());
-        persons.setSecondLastName(registerUserDto.getSecondLastName());
+        persons.setUsername(registerUserDto.getNickname());
+        persons.setName(registerUserDto.getFirstName());
+        persons.setSurname(registerUserDto.getSecondName());
         persons.setEmail(registerUserDto.getEmail());
         persons.setPassword(registerUserDto.getPassword());
         persons.setUrlPhoto(registerUserDto.getUrlPhoto());
