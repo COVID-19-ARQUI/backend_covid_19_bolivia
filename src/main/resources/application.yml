@@ -2,7 +2,7 @@ spring:
   application:
     name: covid_Bolivia
   datasource:
-    name: arqui_soft
+    name: covid_Database
     platform: mysql
     url: jdbc:mysql://us-cdbr-east-03.cleardb.com/heroku_fe1b8c9c4911eaf
     username: b8c0c234043a4f
