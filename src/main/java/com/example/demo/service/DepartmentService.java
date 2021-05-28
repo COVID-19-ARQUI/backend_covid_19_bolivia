@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class DepartmentService {
     private DepartmentRepository departmentRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ViewService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DepartmentService.class);
 
     @Autowired
     public DepartmentService(DepartmentRepository departmentRepository) {
@@ -61,7 +61,6 @@ public class DepartmentService {
 
     public List<DataDto> listDataDepartment(Integer departmentId) {
         List<DataDto> dataDtoList = departmentRepository.getDataByDepartmentId(departmentId);
-        LOGGER.warn(dataDtoList.toString());
         return dataDtoList;
     }
 }

@@ -7,13 +7,22 @@ import com.example.demo.dto.RegisterUserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.List;
 @Service
-public class PersonService {
+public class PersonService implements UserDetailsService {
 
     PersonRepository personRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
     public PersonService(PersonRepository personRepository) {
@@ -32,8 +41,23 @@ public class PersonService {
         persons.setTxUserId(transaction.getTxUserId().toString());
         persons.setTxHost(transaction.getTxHost());
         persons.setTxDate(transaction.getTxDate());
-        LOGGER.warn(persons.toString());
         personRepository.createUser(persons);
         return registerUserDto;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Persons userM = personRepository.findUserByUserName(username);
+        if(userM != null){
+            List<String> roles = new ArrayList<>();
+            roles.add(userM.getRole());
+            List<GrantedAuthority> authorities = roles.stream()
+                    .map(role -> new SimpleGrantedAuthority(role))
+                    .peek(authority -> logger.info("Role: " + authority.getAuthority()))
+                    .collect(Collectors.toList());
+            return new User(userM.getUsername(), userM.getPassword(), authorities);
+        } else {
+            throw new UsernameNotFoundException("User '"+username+"' not found!");
+        }
     }
 }
