@@ -26,10 +26,6 @@ public class MunicipalityController {
     public List<MunicipalityDataDto> getMunicipalityData(@PathVariable Integer idMunicipality) {
         return municipalitiesService.getMunicipalityById(idMunicipality);
     }
-    @RequestMapping(value = "/deparmeten/{iddep}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MunicipalityDataDto> getMunicipalityDatabydep(@PathVariable Integer iddep) {
-        return municipalitiesService.getMunicipalityByIdDep(iddep);
-    }
 
     @RequestMapping(value = "/{idMunicipality}/datatype/{idDatatype}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> getDataByIdMunicipality(@PathVariable Integer idDatatype, @PathVariable Integer idMunicipality) {
@@ -44,5 +40,10 @@ public class MunicipalityController {
     @RequestMapping(value = "general/{idMunicipality}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataDto> departmentStatistics(@PathVariable Integer idMunicipality) {
         return municipalitiesService.municipalityStatistics(idMunicipality);
+    }
+
+    @RequestMapping(value = "/department/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MunicipalityDataDto> getMunicipalityDataByDepartment(@PathVariable Integer idDepartment) {
+        return municipalitiesService.getMunicipalityByIdDepartment(idDepartment);
     }
 }

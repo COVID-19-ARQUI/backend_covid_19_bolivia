@@ -35,21 +35,7 @@
           AND m.id_municipality = #{idMunicipality}
         GROUP BY m.municipality
     </select>
-    <select id="getMunicipalitiesByIddep" resultType="com.example.demo.dto.MunicipalityDataDto">
-        SELECT SUM(data.data) as data, m.municipality as municipality, t.type as type
-        FROM locations z,
-             municipalities m,
-             departaments d,
-             data,
-             datatypes t
-        WHERE d.id_departament = z.id_departament
-          AND z.id_municipality = m.id_municipality
-          AND z.id_location = data.id_location
-          AND m.id_municipality > 0
-          AND t.id_datatype = data.id_datatype
-          AND d.id_departament = #{idDeparment}
-        GROUP BY m.municipality
-    </select>
+
     <select id="getMunicipalities" resultType="com.example.demo.domain.Municipalities">
         SELECT m.id_municipality as idMunicipality,
                m.municipality    as municipality
@@ -81,6 +67,24 @@
           AND m.id_municipality = b.id_municipality
           AND m.id_municipality > 0
         GROUP BY a.id_datatype
+    </select>
+
+    <select id="getMunicipalitiesByIdDepartment" resultType="com.example.demo.dto.MunicipalityDataDto">
+        SELECT SUM(data.data) as data,
+               m.municipality as municipality,
+               t.type         as type
+        FROM locations z,
+             municipalities m,
+             departaments d,
+             data,
+             datatypes t
+        WHERE d.id_departament = z.id_departament
+          AND z.id_municipality = m.id_municipality
+          AND z.id_location = data.id_location
+          AND m.id_municipality > 0
+          AND t.id_datatype = data.id_datatype
+          AND d.id_departament = #{idDeparment}
+        GROUP BY m.municipality
     </select>
 
 </mapper>

@@ -15,8 +15,7 @@ public interface MunicipalityRepository {
 
     // Get general data of municipalities by municipality id
     List<MunicipalityDataDto> getMunicipalitiesById(Integer idMunicipality);
-    // get Get general data of municipalities by id deparmetp
-    List<MunicipalityDataDto> getMunicipalitiesByIddep(Integer idDeparment);
+
     // Get list of all municipalities
     List<Municipalities> getMunicipalities();
 
@@ -25,4 +24,8 @@ public interface MunicipalityRepository {
 
     // Get total data by municipality id
     List<DataDto> municipalityStatistics(Integer idMunicipality);
+
+    // Get general data of municipalities by id department
+    List<MunicipalityDataDto> getMunicipalitiesByIdDepartment(Integer idDepartment);
+
 }

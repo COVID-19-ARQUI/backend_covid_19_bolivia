@@ -14,6 +14,6 @@ Accept: application/json
 GET http://localhost:8080/municipalities/general/1
 Accept: application/json
 
-###list of data of municipalitios by deparmente
-GET http://localhost:8080/municipalities/deparmeten/1
+### List of data of municipalitios by department
+GET http://localhost:8080/municipalities/department/1
 Accept: application/json

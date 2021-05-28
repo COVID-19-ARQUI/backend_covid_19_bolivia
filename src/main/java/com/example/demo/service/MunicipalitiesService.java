@@ -24,9 +24,11 @@ public class MunicipalitiesService {
     public List<MunicipalityDataDto> getMunicipalityById(Integer idMunicipality) {
         return municipalityRepository.getMunicipalitiesById(idMunicipality);
     }
-    public List<MunicipalityDataDto> getMunicipalityByIdDep(Integer idDep) {
-        return municipalityRepository.getMunicipalitiesByIddep(idDep);
+
+    public List<MunicipalityDataDto> getMunicipalityByIdDepartment(Integer idDepartment) {
+        return municipalityRepository.getMunicipalitiesByIdDepartment(idDepartment);
     }
+
     public List<DataSimpleDto> getDataByIdMunicipality(Integer idDatatype, Integer idMunicipality) {
         return municipalityRepository.getDataByIdMunicipality(idDatatype, idMunicipality);
     }
