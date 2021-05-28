@@ -14,7 +14,7 @@ public interface LocationRepository {
     Integer getLocationByDepartment(String department, String municipalities);
 
     //Get Location id by iddepartment and idmunicipality
-    Integer getLocationIds(Integer iddepartment,Integer idmunicipalities,Integer idcountry);
+    Integer getLocationIds(Integer iddepartment,String idmunicipalities,Integer idcountry);
     // Get list of all countries
     List<Countries> getCountries();
 

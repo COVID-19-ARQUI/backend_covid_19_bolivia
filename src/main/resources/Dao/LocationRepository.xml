@@ -18,10 +18,12 @@
 
     <select id="getLocationIds" resultType="java.lang.Integer">
         SELECT l.id_location
-        FROM locations l
+        FROM locations l,
+             municipalities m
         WHERE l.id_departament = #{iddepartment}
-          AND l.id_municipality = #{idmunicipalities}
+          AND l.id_municipality = m.id_municipality
           AND l.id_country=#{idcountry}
+          AND m.municipality = #{municipalities}
         LIMIT 1;
     </select>
 

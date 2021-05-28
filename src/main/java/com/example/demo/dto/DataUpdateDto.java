@@ -8,12 +8,12 @@ public class DataUpdateDto {
     private Integer dataType;
     private Integer idcountry;
     private Integer iddepartment;
-    private Integer idmunicipality;
+    private String idmunicipality;
     public DataUpdateDto(){
 
     }
 
-    public DataUpdateDto(Integer data, Date inDate, Integer dataType, Integer idcountry, Integer iddepartment, Integer idmunicipality) {
+    public DataUpdateDto(Integer data, Date inDate, Integer dataType, Integer idcountry, Integer iddepartment, String idmunicipality) {
         this.data = data;
         this.inDate = inDate;
         this.dataType = dataType;
@@ -62,11 +62,11 @@ public class DataUpdateDto {
         this.iddepartment = iddepartment;
     }
 
-    public Integer getIdmunicipality() {
+    public String getIdmunicipality() {
         return idmunicipality;
     }
 
-    public void setIdmunicipality(Integer idmunicipality) {
+    public void setIdmunicipality(String idmunicipality) {
         this.idmunicipality = idmunicipality;
     }
 }
