@@ -16,6 +16,15 @@
         LIMIT 1;
     </select>
 
+    <select id="getLocationIds" resultType="java.lang.Integer">
+        SELECT l.id_location
+        FROM locations l
+        WHERE l.id_departament = #{iddepartment}
+          AND l.id_municipality = #{idmunicipalities}
+          AND l.id_country=#{idcountry}
+        LIMIT 1;
+    </select>
+
     <select id="getCountries" resultType="com.example.demo.domain.Countries">
         SELECT c.id_country as idCountry,
                c.country    as country
