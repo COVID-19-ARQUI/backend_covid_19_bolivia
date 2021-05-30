@@ -4,7 +4,7 @@ import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.util.Modelado;
-import com.example.demo.util.regresion;
+import com.example.demo.util.Regresion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -95,7 +95,7 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddatalineal(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        regresion regresion = new regresion();
+        Regresion regresion = new Regresion();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
@@ -132,7 +132,7 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddatalog(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        regresion regresion = new regresion();
+        Regresion regresion = new Regresion();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
@@ -168,7 +168,7 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddataexp(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        regresion regresion = new regresion();
+        Regresion regresion = new Regresion();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
@@ -205,7 +205,7 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddatapow(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        regresion regresion = new regresion();
+        Regresion regresion = new Regresion();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];

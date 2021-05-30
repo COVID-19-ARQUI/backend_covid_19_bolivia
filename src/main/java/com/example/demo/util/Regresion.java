@@ -1,17 +1,15 @@
 package com.example.demo.util;
 
-import com.example.demo.service.ViewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class regresion {
-    private static final Logger LOGGER = LoggerFactory.getLogger(regresion.class);
-    public  regresion(){
+public class Regresion {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Regresion.class);
 
+    public Regresion(){
     }
 
     public List<Double> lineal(List<Double> x,List<Double> y, Integer cant){
