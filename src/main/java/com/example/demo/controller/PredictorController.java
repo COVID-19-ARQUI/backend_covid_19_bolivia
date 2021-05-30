@@ -29,4 +29,29 @@ public class PredictorController {
     public List<DataSimpleDto> predictDataCountry(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
         return predictorService.dataPredictedCountry(idCountry, cant);
     }
+
+
+    //dataPredictedCountrylineal
+
+    @RequestMapping(value = "/country/lineal/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictDataCountrylineal(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
+        return predictorService.dataPredictedCountrylineal(idCountry, cant);
+    }
+
+    //dataPredictedCountrylog
+    @RequestMapping(value = "/country/log/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictDataCountrylog(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
+        return predictorService.dataPredictedCountrylog(idCountry, cant);
+    }
+    //dataPredictedCountryexp
+    @RequestMapping(value = "/country/exp/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictDataCountryexp(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
+        return predictorService.dataPredictedCountryexp(idCountry, cant);
+    }
+
+    //dataPredictedCountryhiper
+    @RequestMapping(value = "/country/pow/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DataSimpleDto> predictDataCountryhiper(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
+        return predictorService.dataPredictedCountrypow(idCountry, cant);
+    }
 }
