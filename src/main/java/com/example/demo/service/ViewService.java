@@ -68,7 +68,6 @@ public class ViewService {
 
 
     public void updateDashboard(Integer idUser, ViewDto dashboard) {
-        LOGGER.warn(dashboard.toString());
         viewRepository.updateDashboard(idUser, dashboard.getName(), dashboard.getIdView());
     }
 }

@@ -8,4 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PersonRepository {
     //
     void createUser(Persons persons);
+
+    //find user by username
+    Persons findUserByUserName(String username);
 }
