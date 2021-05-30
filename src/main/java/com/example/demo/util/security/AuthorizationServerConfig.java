@@ -1,6 +1,8 @@
 package com.example.demo.util.security;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -22,12 +24,11 @@ import java.util.Arrays;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    private final String secret_key = "TestCovid12345";
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationServerConfig.class);
 
+    private final String SECRET_KEY = "TestCovid12345";
     private final BCryptPasswordEncoder passwordEncoder;
-
     private final AuthenticationManager authenticationManager;
-
     private final InfoAdditionalToken infoAdditionalToken;
 
     @Autowired
@@ -37,18 +38,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         this.infoAdditionalToken = infoAdditionalToken;
     }
 
-
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-
+    public void configure(AuthorizationServerSecurityConfigurer security) {
         security.tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
-
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("covidtracerapp")
+        LOGGER.warn(passwordEncoder.encode("testcovid12345"));
+        clients.inMemory().withClient("testcovid")
                 .secret(passwordEncoder.encode("testcovid12345"))
                 .scopes("read", "write")
                 .authorizedGrantTypes("password", "refresh_token")
@@ -75,7 +74,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey(secret_key);
+        jwtAccessTokenConverter.setSigningKey(SECRET_KEY);
         return jwtAccessTokenConverter;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.demo.util.security;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +12,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private final UserDetailsService userService;
 
     @Autowired
-    private UserDetailsService userService;
+    public SecurityConfig(UserDetailsService userService) {
+        this.userService = userService;
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

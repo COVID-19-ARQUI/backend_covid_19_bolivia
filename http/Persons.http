@@ -3,12 +3,19 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "nickname": "qwerty1234",
-  "firstName": "Zi",
-  "secondName": "Alberto",
-  "firstLastName": "Salazar",
-  "secondLastName": "Dominguez",
+  "username": "qwerty1234",
+  "name": "Zi",
+  "surname": "Alberto",
+  "role": "user",
   "email": "algo@gmail.com",
   "password": "123",
   "urlPhoto": "https://YonoSe/AlgunaFoto/EnUnaURL"
 }
+
+###
+POST http://localhost:8080/oauth/token
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic dGVzdGNvdmlkOnRlc3Rjb3ZpZDEyMzQ1
+
+grant_type=password&username=qwerty1234&password=$2a$10$KmxNKzxcQY7.64KsrQaMx.I1Ka4wDQczChMcZ1bLrHDhHri.T/gFK
+

@@ -1,6 +1,5 @@
 package com.example.demo.util.security;
 
-
 import com.example.demo.dao.PersonRepository;
 import com.example.demo.domain.Persons;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +20,12 @@ public class InfoAdditionalToken implements TokenEnhancer {
     @Autowired
     private PersonRepository personRepository;
 
-
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
         Map<String, Object> info = new HashMap<>();
-
         Persons userM = personRepository.findUserByUserName(oAuth2Authentication.getName());
-        info.put("userId", userM.getIdUser());
-        info.put("userName", userM.getUsername());
+        info.put("idUser", userM.getIdUser());
+        info.put("username", userM.getUsername());
         List<String> role = new ArrayList<>();
         role.add(userM.getRole());
         info.put("role", role);

@@ -18,24 +18,22 @@ import java.util.Arrays;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .csrf().disable()
+        http
+                .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/person").permitAll()
-
                 .antMatchers(HttpMethod.GET, "/person/user/info/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/person/user/info/email").permitAll()
-
                 .antMatchers(HttpMethod.GET, "/data/last/day/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/data/general/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/department/general/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/data/general/list/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/view/*/list").authenticated()
                 .antMatchers(HttpMethod.POST, "/view").hasRole("user")
+                .antMatchers("/oauth/token").permitAll()
 //                .anyRequest().authenticated()
-                //.and().cors().disable();
+//                .and().cors().disable();
                 .and().cors().configurationSource(corsConfigurationSource());
                 /*.and()
                 .oauth2Login()
@@ -56,7 +54,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     }
 
     @Bean
-    public FilterRegistrationBean<CorsFilter> corsFilter(){
+    public FilterRegistrationBean<CorsFilter> corsFilter() {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;

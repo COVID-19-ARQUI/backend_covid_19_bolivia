@@ -1,24 +1,22 @@
 package com.example.demo.dto;
 
 public class RegisterUserDto {
-    private String nickname;
-    private String firstName;
-    private String secondName;
-    private String firstLastName;
-    private String secondLastName;
+    private String username;
+    private String name;
+    private String surname;
     private String email;
     private String password;
     private String urlPhoto;
+    private String role;
 
     public RegisterUserDto() {
     }
 
-    public RegisterUserDto(String nickname, String firstName, String secondName, String firstLastName, String secondLastName, String email, String password, String urlPhoto) {
-        this.nickname = nickname;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.firstLastName = firstLastName;
-        this.secondLastName = secondLastName;
+    public RegisterUserDto(String username, String name, String surname, String role, String email, String password, String urlPhoto) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.role = role;
         this.email = email;
         this.password = password;
         this.urlPhoto = urlPhoto;
@@ -27,55 +25,46 @@ public class RegisterUserDto {
     @Override
     public String toString() {
         return "RegisterUserDto{" +
-                "nickname='" + nickname + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", firstLastName='" + firstLastName + '\'' +
-                ", secondLastName='" + secondLastName + '\'' +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", urlPhoto='" + urlPhoto + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getFirstLastName() {
-        return firstLastName;
+    public String getRole() {
+        return role;
     }
 
-    public void setFirstLastName(String firstLastName) {
-        this.firstLastName = firstLastName;
-    }
-
-    public String getSecondLastName() {
-        return secondLastName;
-    }
-
-    public void setSecondLastName(String secondLastName) {
-        this.secondLastName = secondLastName;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getEmail() {

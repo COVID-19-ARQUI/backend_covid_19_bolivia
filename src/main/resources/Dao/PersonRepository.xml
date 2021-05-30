@@ -13,5 +13,12 @@
                 #{txUserId}, #{txHost}, #{txDate});
     </insert>
 
+    <select id="findUserByUserName" resultType="com.example.demo.domain.Persons">
+        SELECT *
+        FROM persons
+        WHERE username = #{username}
+        LIMIT 1;
+    </select>
+
 
 </mapper>

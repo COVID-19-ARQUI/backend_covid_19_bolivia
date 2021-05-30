@@ -26,6 +26,7 @@
           and d.id_datatype = b.id_datatype
           and a.id_departament = #{idDepartment}
           and a.id_departament > 0
+          and c.id_municipality = 0
     </select>
 
     <select id="getDepartments" resultType="com.example.demo.domain.Departments">
@@ -46,6 +47,7 @@
              locations b
         WHERE b.id_location = a.id_location
           AND b.id_departament = #{idDepartment}
+          AND b.id_municipality = 0
         GROUP BY a.id_datatype
     </select>
 
