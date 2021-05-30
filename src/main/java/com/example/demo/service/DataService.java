@@ -35,61 +35,102 @@ public class DataService {
     public DailyDataDto pushSingleData(DailyDataDto dailyDataDto, Transaction transaction) {
         Integer idLocation = locationRepository.getLocationByDepartment(dailyDataDto.getDepartment(), dailyDataDto.getMunicipality());
 
+        LOGGER.warn("EL RESULTADO");
+
         LOGGER.warn(idLocation != null ? idLocation.toString() : null);
+        LOGGER.warn("resultado: "+dailyDataDto.getConfirmed());
         if (idLocation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find location");
         }
         if (dailyDataDto.getConfirmed() != null) {
             Data confirmed = new Data(null, dailyDataDto.getConfirmed(), dailyDataDto.getInDate(), idLocation, 1, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            LOGGER.info("DATOS REGISTRADOS");
             dataRepository.addSingleData(confirmed);
+
         }
         if (dailyDataDto.getDeaths() != null) {
             Data deaths = new Data(null, dailyDataDto.getDeaths(), dailyDataDto.getInDate(), idLocation, 2, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            LOGGER.info("DATOS REGISTRADOS");
             dataRepository.addSingleData(deaths);
         }
         if (dailyDataDto.getRecovered() != null) {
             Data recovered = new Data(null, dailyDataDto.getRecovered(), dailyDataDto.getInDate(), idLocation, 3, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            LOGGER.info("DATOS REGISTRADOS");
             dataRepository.addSingleData(recovered);
+
         }
         if (dailyDataDto.getFirstDose() != null) {
             Data firstDose = new Data(null, dailyDataDto.getFirstDose(), dailyDataDto.getInDate(), idLocation, 4, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            LOGGER.info("DATOS REGISTRADOS");
             dataRepository.addSingleData(firstDose);
+
         }
         if (dailyDataDto.getSecondDose() != null) {
             Data secondDose = new Data(null, dailyDataDto.getSecondDose(), dailyDataDto.getInDate(), idLocation, 5, 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+            LOGGER.info("DATOS REGISTRADOS");
             dataRepository.addSingleData(secondDose);
         }
-
         LOGGER.warn(idLocation.toString());
         return dailyDataDto;
     }
 
     public DataUpdateDto dataid(DataUpdateDto dataUpdateDto, Transaction transaction) {
 
-        Integer idLocation = locationRepository.getLocationIds(dataUpdateDto.getIddepartment(), dataUpdateDto.getIdmunicipality(), dataUpdateDto.getIdcountry());
+        Integer idLocation = locationRepository.getLocationIds(dataUpdateDto.getIddepartment(),dataUpdateDto.getIdmunicipality(),dataUpdateDto.getIdcountry());
 
         LOGGER.warn(idLocation != null ? idLocation.toString() : null);
+        LOGGER.warn("el dato es: "+dataUpdateDto.getDataType());
         if (idLocation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find location");
         }
-        if (dataUpdateDto.getDataType() == 1) {
-            Data confirmed = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(confirmed);
-        } else if (dataUpdateDto.getDataType() == 2) {
-            Data Deaths = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(Deaths);
-        } else if (dataUpdateDto.getDataType() == 3) {
-            Data Recovered = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(Recovered);
+        if(dataUpdateDto.getDataType()==1){
+            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
+            if(listaData.isEmpty()){
+                Data confirmed = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+                dataRepository.addSingleData(confirmed);
+            }else{
+                LOGGER.info("ERROR");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
+            }
 
-        } else if (dataUpdateDto.getDataType() == 4) {
-            Data firstDose = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(firstDose);
-        } else if (dataUpdateDto.getDataType() == 5) {
-            Data secondDose = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
-            dataRepository.addSingleData(secondDose);
+        }else if(dataUpdateDto.getDataType()==2){
+            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
+            if(listaData.isEmpty()){
+                Data Deaths = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+                dataRepository.addSingleData(Deaths);
+            }else{
+                LOGGER.info("ERROR");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
+            }
+
+        }else if(dataUpdateDto.getDataType()==3){
+            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
+            if(listaData.isEmpty()){
+                Data Recovered = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+                dataRepository.addSingleData(Recovered);
+            }else{
+                LOGGER.info("ERROR");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
+            }
+        }else if(dataUpdateDto.getDataType()==4){
+            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
+            if(listaData.isEmpty()){
+                Data firstDose = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+                dataRepository.addSingleData(firstDose);
+            }else{
+                LOGGER.info("ERROR");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
+            }
+        }else if(dataUpdateDto.getDataType()==5){
+            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
+            if(listaData.isEmpty()){
+                Data secondDose = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+                dataRepository.addSingleData(secondDose);
+            }else{
+                LOGGER.info("ERROR");
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
+            }
         }
-
         LOGGER.warn(idLocation.toString());
         return dataUpdateDto;
     }
