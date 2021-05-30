@@ -13,11 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/person")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PersonController {
 
-    private final PersonService personService;
-    private final TransactionService transactionService;
+    private PersonService personService;
+    private TransactionService transactionService;
 
     @Autowired
     public PersonController(PersonService personService, TransactionService transactionService) {

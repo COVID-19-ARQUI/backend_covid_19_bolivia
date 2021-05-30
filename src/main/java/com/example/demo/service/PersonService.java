@@ -4,6 +4,7 @@ import com.example.demo.dao.PersonRepository;
 import com.example.demo.domain.Persons;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.RegisterUserDto;
+import com.example.demo.util.Regresion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class PersonService  {
 
     private final PersonRepository personRepository;
     private final BCryptPasswordEncoder passwordEncoder;
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
     public PersonService(PersonRepository personRepository, BCryptPasswordEncoder passwordEncoder) {
@@ -24,6 +25,7 @@ public class PersonService  {
     }
 
     public RegisterUserDto createUser(RegisterUserDto registerUserDto, Transaction transaction) {
+        LOGGER.warn(registerUserDto.toString());
         Persons persons = new Persons();
         persons.setUsername(registerUserDto.getUsername());
         persons.setName(registerUserDto.getName());
@@ -31,7 +33,7 @@ public class PersonService  {
         persons.setEmail(registerUserDto.getEmail());
         persons.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
         persons.setUrlPhoto(registerUserDto.getUrlPhoto());
-        persons.setRole(registerUserDto.getRole());
+        persons.setRole("user");
         persons.setActive(1);
         persons.setTxUserId(transaction.getTxUserId().toString());
         persons.setTxHost(transaction.getTxHost());
