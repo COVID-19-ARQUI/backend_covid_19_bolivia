@@ -11,6 +11,21 @@ public class DashboardDataDto {
     public DashboardDataDto() {
     }
 
+    public DashboardDataDto(Integer idDepartment, String department, List<DataDto> dataDto) {
+        this.idDepartment = idDepartment;
+        this.department = department;
+        this.dataDto = dataDto;
+    }
+
+    @Override
+    public String toString() {
+        return "DashboardDataDto{" +
+                "idDepartment=" + idDepartment +
+                ", department='" + department + '\'' +
+                ", dataDto=" + dataDto +
+                '}';
+    }
+
     public Integer getIdDepartment() {
         return idDepartment;
     }

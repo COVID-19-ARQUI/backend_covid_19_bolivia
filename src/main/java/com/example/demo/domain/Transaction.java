@@ -11,6 +11,22 @@ public class Transaction {
     public Transaction() {
     }
 
+    public Transaction(Integer txId, String txHost, Integer txUserId, Date txDate) {
+        this.txId = txId;
+        this.txHost = txHost;
+        this.txUserId = txUserId;
+        this.txDate = txDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "txId=" + txId +
+                ", txHost='" + txHost + '\'' +
+                ", txUserUd=" + txUserId +
+                ", txDate=" + txDate +
+                '}';
+    }
     public Integer getTxId() {
         return txId;
     }
@@ -43,13 +59,5 @@ public class Transaction {
         this.txDate = txDate;
     }
 
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "txId=" + txId +
-                ", txHost='" + txHost + '\'' +
-                ", txUserUd=" + txUserId +
-                ", txDate=" + txDate +
-                '}';
-    }
+
 }

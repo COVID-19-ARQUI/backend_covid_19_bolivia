@@ -8,6 +8,9 @@ public class Locations {
     private Double latitude;
     private Double longitude;
 
+    public Locations() {
+    }
+
     public Locations(Integer idLocation, Integer idDepartment, Integer idMunicipality, Integer idCountry, Double latitude, Double longitude) {
         this.idLocation = idLocation;
         this.idDepartment = idDepartment;
@@ -16,10 +19,6 @@ public class Locations {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
-    public Locations() {
-    }
-
 
     @Override
     public String toString() {

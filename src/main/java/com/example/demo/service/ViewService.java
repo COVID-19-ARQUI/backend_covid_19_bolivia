@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-
 import com.example.demo.dao.ViewRepository;
 import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
@@ -21,15 +20,13 @@ import java.util.stream.Collectors;
 @Service
 public class ViewService {
     private final ViewRepository viewRepository;
-    private final DataRepository dataRepository;
     private final DepartmentRepository departmentRepository;
     private final TransactionRepository transactionRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(ViewService.class);
 
     @Autowired
-    public ViewService(ViewRepository viewRepository, DataRepository dataRepository, DepartmentRepository departmentRepository, TransactionRepository transactionRepository) {
+    public ViewService(ViewRepository viewRepository, DepartmentRepository departmentRepository, TransactionRepository transactionRepository) {
         this.viewRepository = viewRepository;
-        this.dataRepository = dataRepository;
         this.departmentRepository = departmentRepository;
         this.transactionRepository = transactionRepository;
     }
@@ -44,7 +41,7 @@ public class ViewService {
             dashboard.setDataDto(departmentRepository.getDataByDepartmentId(departmentDto.getIdDepartment()));
             return dashboard;
         }).collect(Collectors.toList());
-//        LOGGER.debug(dashboardDepartments.toString());
+        LOGGER.debug(dashboardDepartments.get(0).toString());
         return dashboardDepartments;
     }
 

@@ -9,8 +9,8 @@ public class DataUpdateDto {
     private Integer idcountry;
     private Integer iddepartment;
     private String idmunicipality;
-    public DataUpdateDto(){
 
+    public DataUpdateDto() {
     }
 
     public DataUpdateDto(Integer data, Date inDate, Integer dataType, Integer idcountry, Integer iddepartment, String idmunicipality) {
@@ -20,6 +20,18 @@ public class DataUpdateDto {
         this.idcountry = idcountry;
         this.iddepartment = iddepartment;
         this.idmunicipality = idmunicipality;
+    }
+
+    @Override
+    public String toString() {
+        return "DataUpdateDto{" +
+                "data=" + data +
+                ", inDate=" + inDate +
+                ", dataType=" + dataType +
+                ", idcountry=" + idcountry +
+                ", iddepartment=" + iddepartment +
+                ", idmunicipality='" + idmunicipality + '\'' +
+                '}';
     }
 
     public Integer getData() {

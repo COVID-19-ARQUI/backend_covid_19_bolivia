@@ -33,13 +33,14 @@ public class DataController {
         transactionService.createTransaction(transaction);
         return dataService.pushSingleData(dailyDataDto, transaction);
     }
-    //dataid
+
     @RequestMapping(value = "/new", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public DataUpdateDto pushDatabyids(@RequestBody DataUpdateDto dataUpdateDto, HttpServletRequest request) {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
         return dataService.dataid(dataUpdateDto, transaction);
     }
+
     @RequestMapping(value = "/last/day/{idLocation}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> mostRecentDateOfCovidData(@PathVariable Integer idLocation) {
         return dataService.lastDataByLocation(idLocation);

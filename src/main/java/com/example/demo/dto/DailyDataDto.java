@@ -12,6 +12,9 @@ public class DailyDataDto {
     private Integer firstDose;
     private Integer secondDose;
 
+    public DailyDataDto() {
+    }
+
     public DailyDataDto(String department, String municipality, Date inDate, Integer confirmed, Integer deaths, Integer recovered, Integer firstDose, Integer secondDose) {
         this.department = department;
         this.municipality = municipality;
@@ -21,9 +24,6 @@ public class DailyDataDto {
         this.recovered = recovered;
         this.firstDose = firstDose;
         this.secondDose = secondDose;
-    }
-
-    public DailyDataDto() {
     }
 
     @Override

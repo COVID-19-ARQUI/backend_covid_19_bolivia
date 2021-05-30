@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.dao.DepartmentRepository;
-import com.example.demo.dao.MunicipalityRepository;
 import com.example.demo.domain.Departments;
 import com.example.demo.dto.DataDto;
 import com.example.demo.dto.DataSimpleDto;
@@ -60,7 +59,6 @@ public class DepartmentService {
 
 
     public List<DataDto> listDataDepartment(Integer departmentId) {
-        List<DataDto> dataDtoList = departmentRepository.getDataByDepartmentId(departmentId);
-        return dataDtoList;
+        return departmentRepository.getDataByDepartmentId(departmentId);
     }
 }

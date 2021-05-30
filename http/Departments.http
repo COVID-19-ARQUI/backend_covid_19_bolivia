@@ -1,7 +1,6 @@
 ### Department list.
 GET http://localhost:8080/department/list
 Accept: application/json
-Content-Type: application/json
 
 ### Department list with their municipalities.
 GET http://localhost:8080/department/list/details

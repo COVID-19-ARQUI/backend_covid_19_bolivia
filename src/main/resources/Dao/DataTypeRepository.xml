@@ -7,7 +7,7 @@
     <select id="getDataTypeByName" resultType="com.example.demo.domain.Datatypes">
         select a.id_datatype as idDatatype, a.type as type
         from datatypes a
-        where a.type=#{nameType}
+        where a.type = #{nameType}
         limit 1
     </select>
 

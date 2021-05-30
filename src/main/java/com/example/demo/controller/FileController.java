@@ -36,23 +36,19 @@ public class FileController {
         if (file == null) {
             throw new RuntimeException("You must select the a file for uploading");
         }
-        InputStream inputStream = file.getInputStream();
-        String originalName = file.getOriginalFilename();
-        String name = file.getName();
-        String contentType = file.getContentType();
 
-        long size = file.getSize();
-        LOGGER.info("inputStream: " + inputStream);
-        LOGGER.info("originalName: " + originalName);
-        LOGGER.info("name: " + name);
-        LOGGER.info("contentType: " + contentType);
-        LOGGER.info("size: " + size);
+        LOGGER.info("inputStream: " + file.getInputStream());
+        LOGGER.info("originalName: " + file.getOriginalFilename());
+        LOGGER.info("name: " + file.getName());
+        LOGGER.info("contentType: " + file.getContentType());
+        LOGGER.info("size: " + file.getSize());
+
 //        fileService.saveFile(file);
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
         fileService.addDatafromCsvFile(file, transaction);
-        // Do processing with uploaded file data in Service layer
-        return new ResponseEntity<String>(originalName, HttpStatus.OK);
+
+        return new ResponseEntity<String>(file.getOriginalFilename(), HttpStatus.OK);
     }
 
 

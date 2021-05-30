@@ -28,6 +28,7 @@ public class InfoAdditionalToken implements TokenEnhancer {
     }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(InfoAdditionalToken.class);
+
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken oAuth2AccessToken, OAuth2Authentication oAuth2Authentication) {
 

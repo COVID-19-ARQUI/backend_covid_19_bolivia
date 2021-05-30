@@ -4,7 +4,6 @@ import com.example.demo.dao.PersonRepository;
 import com.example.demo.domain.Persons;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.RegisterUserDto;
-import com.example.demo.util.Regresion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonService  {
+public class PersonService {
 
     private final PersonRepository personRepository;
     private final BCryptPasswordEncoder passwordEncoder;

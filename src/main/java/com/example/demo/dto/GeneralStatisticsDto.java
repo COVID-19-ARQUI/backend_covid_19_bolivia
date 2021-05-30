@@ -10,6 +10,14 @@ public class GeneralStatisticsDto {
     public GeneralStatisticsDto() {
     }
 
+    public GeneralStatisticsDto(Integer confirmed, Integer deaths, Integer recovered, Integer actives, Integer vaccinated) {
+        this.confirmed = confirmed;
+        this.deaths = deaths;
+        this.recovered = recovered;
+        this.actives = actives;
+        this.vaccinated = vaccinated;
+    }
+
     @Override
     public String toString() {
         return "GeneralData{" +

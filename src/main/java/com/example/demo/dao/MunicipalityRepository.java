@@ -10,7 +10,8 @@ import java.util.List;
 
 @Mapper
 public interface MunicipalityRepository {
-    //
+
+    // Obtains data by municipality id
     List<DataSimpleDto> getDataByIdMunicipality(Integer idDatatype, Integer idMunicipality);
 
     // Get general data of municipalities by municipality id

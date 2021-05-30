@@ -3,8 +3,8 @@ package com.example.demo.service;
 import com.example.demo.dao.DataRepository;
 import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dto.DataSimpleDto;
-import com.example.demo.util.Modelado;
-import com.example.demo.util.Regresion;
+import com.example.demo.util.PredictorUtil;
+import com.example.demo.util.RegressionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,13 +51,13 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> showMatrix(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        Modelado modelado = new Modelado();
+        PredictorUtil predictorUtil = new PredictorUtil();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
         double[][] as = new double[data.size()][1];
         List<DataSimpleDto> response = new ArrayList<>();
 
         data.forEach(dataSimpleDto -> as[data.indexOf(dataSimpleDto)][0] = dataSimpleDto.getData());
-        double[][] result = modelado.pronosticar(as, 3, predictAmount);
+        double[][] result = predictorUtil.pronosticar(as, 3, predictAmount);
 
         for (int i = 0; i < result.length; i++) {
             DataSimpleDto dataSimpleDto = new DataSimpleDto();
@@ -82,7 +82,7 @@ public class PredictorService {
 
     }
 
-//lineal
+    //lineal
     public List<DataSimpleDto> dataPredictedCountrylineal(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
@@ -95,18 +95,18 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddatalineal(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        Regresion regresion = new Regresion();
+        RegressionUtil regressionUtil = new RegressionUtil();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
         List<DataSimpleDto> response = new ArrayList<>();
         List<Double> y = new ArrayList<Double>();
         List<Double> x = new ArrayList<Double>();
-        for(int i=0;i<data.size();i++){
-            y.add((double)data.get(i).getData());
-            x.add((double)i+1);
+        for (int i = 0; i < data.size(); i++) {
+            y.add((double) data.get(i).getData());
+            x.add((double) i + 1);
         }
-        List<Double> predict =regresion.lineal(x,y,predictAmount);
+        List<Double> predict = regressionUtil.lineal(x, y, predictAmount);
         for (int i = 0; i < predict.size(); i++) {
             DataSimpleDto dataSimpleDto = new DataSimpleDto();
             dataSimpleDto.setData((int) Math.round(predict.get(i)));
@@ -119,7 +119,7 @@ public class PredictorService {
         return data;
     }
 
-//log
+    //log
     public List<DataSimpleDto> dataPredictedCountrylog(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
@@ -132,18 +132,18 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddatalog(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        Regresion regresion = new Regresion();
+        RegressionUtil regressionUtil = new RegressionUtil();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
         List<DataSimpleDto> response = new ArrayList<>();
         List<Double> y = new ArrayList<Double>();
         List<Double> x = new ArrayList<Double>();
-        for(int i=0;i<data.size();i++){
-            y.add((double)data.get(i).getData());
-            x.add((double)i+1);
+        for (int i = 0; i < data.size(); i++) {
+            y.add((double) data.get(i).getData());
+            x.add((double) i + 1);
         }
-        List<Double> predict =regresion.logaritmica(x,y,predictAmount);
+        List<Double> predict = regressionUtil.logaritmica(x, y, predictAmount);
         for (int i = 0; i < predict.size(); i++) {
             DataSimpleDto dataSimpleDto = new DataSimpleDto();
             dataSimpleDto.setData((int) Math.round(predict.get(i)));
@@ -155,7 +155,8 @@ public class PredictorService {
         data.addAll(response);
         return data;
     }
-//exp
+
+    //exp
     public List<DataSimpleDto> dataPredictedCountryexp(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
@@ -168,18 +169,18 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddataexp(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        Regresion regresion = new Regresion();
+        RegressionUtil regressionUtil = new RegressionUtil();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
         List<DataSimpleDto> response = new ArrayList<>();
         List<Double> y = new ArrayList<Double>();
         List<Double> x = new ArrayList<Double>();
-        for(int i=0;i<data.size();i++){
-            y.add((double)data.get(i).getData());
-            x.add((double)i+1);
+        for (int i = 0; i < data.size(); i++) {
+            y.add((double) data.get(i).getData());
+            x.add((double) i + 1);
         }
-        List<Double> predict =regresion.Exponencial(x,y,predictAmount);
+        List<Double> predict = regressionUtil.Exponencial(x, y, predictAmount);
         for (int i = 0; i < predict.size(); i++) {
             DataSimpleDto dataSimpleDto = new DataSimpleDto();
             dataSimpleDto.setData((int) Math.round(predict.get(i)));
@@ -205,18 +206,18 @@ public class PredictorService {
     }
 
     public List<DataSimpleDto> senddatapow(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
-        Regresion regresion = new Regresion();
+        RegressionUtil regressionUtil = new RegressionUtil();
         Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(data.get(data.size() - 1).getInDate());
 
         double[][] as = new double[data.size()][1];
         List<DataSimpleDto> response = new ArrayList<>();
         List<Double> y = new ArrayList<Double>();
         List<Double> x = new ArrayList<Double>();
-        for(int i=0;i<data.size();i++){
-            y.add((double)data.get(i).getData());
-            x.add((double)i+1);
+        for (int i = 0; i < data.size(); i++) {
+            y.add((double) data.get(i).getData());
+            x.add((double) i + 1);
         }
-        List<Double> predict =regresion.potencial(x,y,predictAmount);
+        List<Double> predict = regressionUtil.potencial(x, y, predictAmount);
         for (int i = 0; i < predict.size(); i++) {
             DataSimpleDto dataSimpleDto = new DataSimpleDto();
             dataSimpleDto.setData((int) Math.round(predict.get(i)));

@@ -4,13 +4,14 @@ public class MunicipalityDto {
     private Integer idMunicipality;
     private String municipality;
 
+    public MunicipalityDto() {
+    }
+
     public MunicipalityDto(Integer idMunicipality, String municipality) {
         this.idMunicipality = idMunicipality;
         this.municipality = municipality;
     }
 
-    public MunicipalityDto() {
-    }
 
     @Override
     public String toString() {

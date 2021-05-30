@@ -30,9 +30,7 @@ public class PredictorController {
         return predictorService.dataPredictedCountry(idCountry, cant);
     }
 
-
     //dataPredictedCountrylineal
-
     @RequestMapping(value = "/country/lineal/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> predictDataCountrylineal(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
         return predictorService.dataPredictedCountrylineal(idCountry, cant);
@@ -43,6 +41,7 @@ public class PredictorController {
     public List<DataSimpleDto> predictDataCountrylog(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {
         return predictorService.dataPredictedCountrylog(idCountry, cant);
     }
+
     //dataPredictedCountryexp
     @RequestMapping(value = "/country/exp/{idCountry}", params = {"cant"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> predictDataCountryexp(@RequestParam("cant") Integer cant, @PathVariable("idCountry") Integer idCountry) throws ParseException {

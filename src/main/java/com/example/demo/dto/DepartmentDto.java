@@ -10,6 +10,21 @@ public class DepartmentDto {
     public DepartmentDto() {
     }
 
+    public DepartmentDto(Integer idDepartment, String department, List<String> municipalities) {
+        this.idDepartment = idDepartment;
+        this.department = department;
+        this.municipalities = municipalities;
+    }
+
+    @Override
+    public String toString() {
+        return "DepartmentDto{" +
+                "idDepartment=" + idDepartment +
+                ", department='" + department + '\'' +
+                ", municipalities=" + municipalities.toString() +
+                '}';
+    }
+
     public List<String> getMunicipalities() {
         return municipalities;
     }
@@ -34,12 +49,4 @@ public class DepartmentDto {
         this.department = department;
     }
 
-    @Override
-    public String toString() {
-        return "DepartmentDto{" +
-                "idDepartment=" + idDepartment +
-                ", department='" + department + '\'' +
-                ", municipalities=" + municipalities.toString() +
-                '}';
-    }
 }

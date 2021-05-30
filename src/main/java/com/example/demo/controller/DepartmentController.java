@@ -25,7 +25,6 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Departments> getDepartments() {
         return departmentService.getDepartments();
@@ -56,7 +55,6 @@ public class DepartmentController {
     public DataDto getVaccinatedSecondDose(@PathVariable Integer idDepartment) {
         return departmentService.getSumDataSecondVaccinated(idDepartment);
     }
-
 
     @RequestMapping(value = "/data/{departmentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DataSimpleDto> getDataByDepartmentsId(@PathVariable Integer departmentId) {

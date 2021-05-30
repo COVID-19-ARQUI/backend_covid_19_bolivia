@@ -5,13 +5,13 @@ public class ChartTypeDto {
     private String name;
     private int active;
 
+    public ChartTypeDto() {
+    }
+
     public ChartTypeDto(Integer idChartType, String name, int active) {
         this.idChartType = idChartType;
         this.name = name;
         this.active = active;
-    }
-
-    public ChartTypeDto() {
     }
 
     public Integer getIdChartType() {

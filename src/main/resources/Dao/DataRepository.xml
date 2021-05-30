@@ -46,22 +46,23 @@
     </select>
 
     <select id="verifyExistenceOfData" resultType="com.example.demo.dto.DataDto">
-        select a.id_data as idData, a.data as data, a.in_date as inDate, a.id_location as idLocation,
+        select a.id_data     as idData,
+               a.data        as data,
+               a.in_date     as inDate,
+               a.id_location as idLocation,
                a.id_datatype as datatype
         from data a
-        where a.id_location=#{idLocation}
-          and a.in_date=#{date}
-          and a.id_datatype=#{idDataType}
-          and a.active=1
+        where a.id_location = #{idLocation}
+          and a.in_date = #{date}
+          and a.id_datatype = #{idDataType}
+          and a.active = 1
     </select>
 
     <update id="deleteData">
         update data
         set active=0
-        where id_data=#{idData}
+        where id_data = #{idData}
     </update>
-
-
 
 
     <!--  NOT USED  -->

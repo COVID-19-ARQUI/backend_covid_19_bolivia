@@ -4,12 +4,12 @@ public class Municipalities {
     private Integer idMunicipality;
     private String municipality;
 
+    public Municipalities() {
+    }
+
     public Municipalities(Integer idMunicipality, String municipality) {
         this.idMunicipality = idMunicipality;
         this.municipality = municipality;
-    }
-
-    public Municipalities() {
     }
 
     @Override

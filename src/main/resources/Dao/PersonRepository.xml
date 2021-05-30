@@ -14,18 +14,18 @@
     </insert>
 
     <select id="findUserByUserName" resultType="com.example.demo.domain.Persons">
-        SELECT id_user as idUser,
-               username as username,
-               name as name,
-               surname as surname,
-               email as email,
-               password as password,
-               url_photo as urlPhoto,
-               role as role,
-               active as active,
+        SELECT id_user    as idUser,
+               username   as username,
+               name       as name,
+               surname    as surname,
+               email      as email,
+               password   as password,
+               url_photo  as urlPhoto,
+               role       as role,
+               active     as active,
                tx_user_id as txUserId,
-               tx_host as txHost,
-               tx_date as txDate
+               tx_host    as txHost,
+               tx_date    as txDate
         FROM persons
         WHERE username = #{username}
         LIMIT 1;

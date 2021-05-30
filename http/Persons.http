@@ -1,3 +1,4 @@
+### Creates a new user
 POST http://localhost:8080/person/
 Accept: application/json
 Content-Type: application/json
@@ -12,10 +13,10 @@ Content-Type: application/json
   "urlPhoto": "https://YonoSe/AlgunaFoto/EnUnaURL"
 }
 
-###
+### login with username and password with oauth
 POST http://localhost:8080/oauth/token
 Content-Type: application/x-www-form-urlencoded
 Authorization: Basic dGVzdGNvdmlkOnRlc3Rjb3ZpZDEyMzQ1
 
-grant_type=password&username=qwerty1234&password=$2a$10$KmxNKzxcQY7.64KsrQaMx.I1Ka4wDQczChMcZ1bLrHDhHri.T/gFK
+grant_type=password&username=qwerty1234&password=$2a$10$U94LHVamJP3PO32Gm91iT.VwITFRSgU.MDJiPLEhGb42YCtSgc60y
 

@@ -9,13 +9,13 @@ import java.util.List;
 @Mapper
 public interface ViewRepository {
 
-    // Add new dashboard
+    // Add new view
     void newDashboard(Views views);
 
     // Get dashboards by user id
     List<ViewDto> getDashboardsByUserId(Integer idUser);
 
-    //
+    // Update view name with user id and dashboard id
     void updateDashboard(Integer idUser, String name, Integer idDashboard);
 
 }

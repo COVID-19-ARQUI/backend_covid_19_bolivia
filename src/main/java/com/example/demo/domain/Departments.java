@@ -4,12 +4,12 @@ public class Departments {
     private Integer idDepartment;
     private String department;
 
+    public Departments() {
+    }
+
     public Departments(Integer idDepartment, String department) {
         this.idDepartment = idDepartment;
         this.department = department;
-    }
-
-    public Departments() {
     }
 
     @Override

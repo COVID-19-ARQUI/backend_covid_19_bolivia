@@ -11,8 +11,8 @@ public class DataLoadedDto {
     private String country;
     private String department;
     private String municipality;
-    public DataLoadedDto(){
 
+    public DataLoadedDto() {
     }
 
     public DataLoadedDto(Integer data, Date inDate, String dataType, String country, String department, String municipality) {
@@ -22,6 +22,18 @@ public class DataLoadedDto {
         this.country = country;
         this.department = department;
         this.municipality = municipality;
+    }
+
+    @Override
+    public String toString() {
+        return "DataLoadedDto{" +
+                "data='" + data + '\'' +
+                ", inDate=" + inDate +
+                ", country='" + country + '\'' +
+                ", type='" + dataType + '\'' +
+                ", department='" + department + '\'' +
+                ", municipality='" + municipality + '\'' +
+                '}';
     }
 
     public Integer getData() {
@@ -72,15 +84,4 @@ public class DataLoadedDto {
         this.municipality = municipality;
     }
 
-    @Override
-    public String toString() {
-        return "DataLoadedDto{" +
-                "data='" + data + '\'' +
-                ", inDate=" + inDate +
-                ", country='" + country + '\'' +
-                ", type='" + dataType + '\'' +
-                ", department='" + department + '\'' +
-                ", municipality='" + municipality + '\'' +
-                '}';
-    }
 }

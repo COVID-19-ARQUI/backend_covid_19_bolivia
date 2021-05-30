@@ -14,7 +14,7 @@
         SELECT c.id_chart      AS idChart,
                c.name          AS name,
                c.active        AS active,
-               c.id_view      AS idView,
+               c.id_view       AS idView,
                c.id_chart_type AS idChartType
         FROM charts c
         WHERE c.id_view = #{idView}

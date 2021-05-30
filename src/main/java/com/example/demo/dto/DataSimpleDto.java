@@ -8,6 +8,21 @@ public class DataSimpleDto {
     public DataSimpleDto() {
     }
 
+    public DataSimpleDto(Integer data, String inDate, String datatype) {
+        this.data = data;
+        this.inDate = inDate;
+        this.datatype = datatype;
+    }
+
+    @Override
+    public String toString() {
+        return "DepartmentDataDto{" +
+                "dato=" + data +
+                ", fecha='" + inDate + '\'' +
+                ", tipoDeDato='" + datatype + '\'' +
+                '}';
+    }
+
     public Integer getData() {
         return data;
     }
@@ -32,12 +47,5 @@ public class DataSimpleDto {
         this.datatype = datatype;
     }
 
-    @Override
-    public String toString() {
-        return "DepartmentDataDto{" +
-                "dato=" + data +
-                ", fecha='" + inDate + '\'' +
-                ", tipoDeDato='" + datatype + '\'' +
-                '}';
-    }
+
 }

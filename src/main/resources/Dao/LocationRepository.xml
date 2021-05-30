@@ -22,7 +22,7 @@
              municipalities m
         WHERE l.id_departament = #{idDepartment}
           AND l.id_municipality = m.id_municipality
-          AND l.id_country=#{idCountry}
+          AND l.id_country = #{idCountry}
           AND m.municipality = #{idDepartment}
         LIMIT 1;
     </select>
@@ -50,10 +50,10 @@
         GROUP BY d.type
     </select>
     <select id="getDataByCountry" resultType="com.example.demo.dto.DataDto">
-        SELECT a.data    AS data,
-               a.in_date AS inDate,
-               a.id_location  AS idLocation,
-               d.type         AS datatype
+        SELECT a.data        AS data,
+               a.in_date     AS inDate,
+               a.id_location AS idLocation,
+               d.type        AS datatype
         FROM data a,
              datatypes d,
              locations l,
@@ -66,16 +66,21 @@
     </select>
 
     <select id="getLocationsByCountryDepartmentMuniciplaity" resultType="com.example.demo.domain.Locations">
-        select a.id_location as idLocation, a.id_departament as idDepartment, a.id_municipality as idMunicipality,
-               a.id_country as idCountry
-        from locations a, countries b, departaments c, municipalities d
+        select a.id_location     as idLocation,
+               a.id_departament  as idDepartment,
+               a.id_municipality as idMunicipality,
+               a.id_country      as idCountry
+        from locations a,
+             countries b,
+             departaments c,
+             municipalities d
         where a.id_country = b.id_country
           and a.id_departament = c.id_departament
           and a.id_municipality = d.id_municipality
           and b.country = #{country}
           and c.department = #{department}
           and d.municipality = #{municipality}
-            LIMIT 1;
+        LIMIT 1;
     </select>
 
 </mapper>

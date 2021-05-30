@@ -22,7 +22,7 @@ public class DataService {
     private DepartmentRepository departmentRepository;
     private LocationRepository locationRepository;
     private MunicipalityRepository municipalityRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ViewService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DataService.class);
 
     @Autowired
     public DataService(DataRepository dataRepository, DepartmentRepository departmentRepository, LocationRepository locationRepository, MunicipalityRepository municipalityRepository) {
@@ -66,31 +66,31 @@ public class DataService {
 
     public DataUpdateDto dataid(DataUpdateDto dataUpdateDto, Transaction transaction) {
 
-        Integer idLocation = locationRepository.getLocationIds(dataUpdateDto.getIddepartment(),dataUpdateDto.getIdmunicipality(),dataUpdateDto.getIdcountry());
+        Integer idLocation = locationRepository.getLocationIds(dataUpdateDto.getIddepartment(), dataUpdateDto.getIdmunicipality(), dataUpdateDto.getIdcountry());
 
         LOGGER.warn(idLocation != null ? idLocation.toString() : null);
         if (idLocation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find location");
         }
-        if(dataUpdateDto.getDataType()==1){
-            Data confirmed = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        if (dataUpdateDto.getDataType() == 1) {
+            Data confirmed = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(confirmed);
-        }else if(dataUpdateDto.getDataType()==2){
-            Data Deaths = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 2) {
+            Data Deaths = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(Deaths);
-        }else if(dataUpdateDto.getDataType()==3){
-            Data Recovered = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 3) {
+            Data Recovered = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(Recovered);
 
-        }else if(dataUpdateDto.getDataType()==4){
-            Data firstDose = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 4) {
+            Data firstDose = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(firstDose);
-        }else if(dataUpdateDto.getDataType()==5){
-            Data secondDose = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 5) {
+            Data secondDose = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
             dataRepository.addSingleData(secondDose);
         }
 
-       LOGGER.warn(idLocation.toString());
+        LOGGER.warn(idLocation.toString());
         return dataUpdateDto;
     }
 

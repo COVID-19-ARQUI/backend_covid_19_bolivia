@@ -4,12 +4,12 @@ public class Countries {
     private Integer idCountry;
     private String country;
 
+    public Countries() {
+    }
+
     public Countries(Integer idCountry, String country) {
         this.idCountry = idCountry;
         this.country = country;
-    }
-
-    public Countries() {
     }
 
     @Override

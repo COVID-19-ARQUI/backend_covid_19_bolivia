@@ -12,6 +12,25 @@ public class DataDto {
     public DataDto() {
     }
 
+    public DataDto(Integer idData, Integer data, String inDate, Integer idLocation, String datatype) {
+        this.idData = idData;
+        this.data = data;
+        this.inDate = inDate;
+        this.idLocation = idLocation;
+        this.datatype = datatype;
+    }
+
+    @Override
+    public String toString() {
+        return "DataDto{" +
+                "idData=" + idData +
+                ", data=" + data +
+                ", inDate='" + inDate + '\'' +
+                ", idLocation=" + idLocation +
+                ", datatype='" + datatype + '\'' +
+                '}';
+    }
+
     public Integer getIdData() {
         return idData;
     }

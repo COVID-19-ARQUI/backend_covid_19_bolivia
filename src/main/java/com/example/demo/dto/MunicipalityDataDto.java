@@ -8,6 +8,12 @@ public class MunicipalityDataDto {
     public MunicipalityDataDto() {
     }
 
+    public MunicipalityDataDto(Integer data, String municipality, String type) {
+        this.data = data;
+        this.municipality = municipality;
+        this.type = type;
+    }
+
     @Override
     public String toString() {
         return "MunicipalityDataDto{" +
