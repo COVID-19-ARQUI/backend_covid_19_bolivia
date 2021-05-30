@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import java.util.List;
 public class PersonService implements UserDetailsService {
 
     PersonRepository personRepository;
+    BCryptPasswordEncoder passwordEncoder;
     private static final Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
@@ -35,9 +37,10 @@ public class PersonService implements UserDetailsService {
         persons.setName(registerUserDto.getFirstName());
         persons.setSurname(registerUserDto.getSecondName());
         persons.setEmail(registerUserDto.getEmail());
-        persons.setPassword(registerUserDto.getPassword());
+        persons.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
         persons.setUrlPhoto(registerUserDto.getUrlPhoto());
         persons.setActive(1);
+        persons.setRole("ROLE_USER");
         persons.setTxUserId(transaction.getTxUserId().toString());
         persons.setTxHost(transaction.getTxHost());
         persons.setTxDate(transaction.getTxDate());
