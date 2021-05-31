@@ -46,4 +46,9 @@ public class MunicipalityController {
     public List<MunicipalityDataDto> getMunicipalityDataByDepartment(@PathVariable Integer idDepartment) {
         return municipalitiesService.getMunicipalityByIdDepartment(idDepartment);
     }
+
+    @RequestMapping(value = "/{name}/{idDepartment}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<MunicipalityDataDto> getMunicipalityDataByDepartment(@PathVariable String name,@PathVariable Integer idDepartment) {
+        return municipalitiesService.getMunicipalityByNameAndIdDepartment(name,idDepartment);
+    }
 }

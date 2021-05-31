@@ -17,3 +17,7 @@ Accept: application/json
 ### List of data of municipalitios by department
 GET http://localhost:8080/municipalities/department/1
 Accept: application/json
+
+### List of data of municipalitios by department
+GET http://localhost:8080/municipalities/Achacachi/1
+Accept: application/json

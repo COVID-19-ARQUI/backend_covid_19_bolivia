@@ -45,4 +45,8 @@ public class MunicipalitiesService {
     public List<DataDto> municipalityStatistics(Integer idMunicipality) {
         return municipalityRepository.municipalityStatistics(idMunicipality);
     }
+
+    public List<MunicipalityDataDto> getMunicipalityByNameAndIdDepartment(String name, Integer idDepartment){
+        return municipalityRepository.getMunicipalityByNameAndIdDepartment(name,idDepartment);
+    }
 }
