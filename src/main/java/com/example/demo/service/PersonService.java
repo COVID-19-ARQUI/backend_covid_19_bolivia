@@ -31,7 +31,7 @@ public class PersonService {
         persons.setSurname(registerUserDto.getSurname());
         persons.setEmail(registerUserDto.getEmail());
         persons.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
-        persons.setUrlPhoto(registerUserDto.getUrlPhoto());
+        persons.setUrlPhoto("");
         persons.setRole("user");
         persons.setActive(1);
         persons.setTxUserId(transaction.getTxUserId().toString());
@@ -39,6 +39,9 @@ public class PersonService {
         persons.setTxDate(transaction.getTxDate());
         personRepository.createUser(persons);
         return registerUserDto;
+    }
+    public Persons getUserById(Integer userid){
+        return personRepository.findUserByUserId(userid);
     }
 
 

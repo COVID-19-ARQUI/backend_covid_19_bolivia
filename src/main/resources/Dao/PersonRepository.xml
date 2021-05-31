@@ -31,5 +31,15 @@
         LIMIT 1;
     </select>
 
-
+    <select id="findUserByUserId" resultType="com.example.demo.domain.Persons">
+        SELECT username as username,
+               name as name,
+               surname as surname,
+               email as email,
+               url_photo as urlPhoto,
+               role as role
+        FROM persons
+        WHERE id_user = #{iduser}
+        LIMIT 1;
+    </select>
 </mapper>

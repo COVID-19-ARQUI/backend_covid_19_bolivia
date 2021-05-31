@@ -11,4 +11,7 @@ public interface PersonRepository {
 
     //find user by username
     Persons findUserByUserName(String username);
+
+    //find user by userid
+    Persons findUserByUserId(Integer iduser);
 }

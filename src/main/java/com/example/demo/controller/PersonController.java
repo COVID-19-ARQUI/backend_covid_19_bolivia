@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Persons;
 import com.example.demo.domain.Transaction;
 import com.example.demo.dto.RegisterUserDto;
 import com.example.demo.service.PersonService;
@@ -29,6 +30,12 @@ public class PersonController {
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionService.createTransaction(transaction);
         return personService.createUser(registerUserDto, transaction);
+    }
+
+    @RequestMapping(value = "/{iduser}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Persons getuserbyid(@PathVariable("iduser") Integer iduser ){
+        return personService.getUserById(iduser);
+
     }
 
 }
