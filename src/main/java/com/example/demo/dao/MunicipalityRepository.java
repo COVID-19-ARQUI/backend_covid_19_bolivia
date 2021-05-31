@@ -29,4 +29,7 @@ public interface MunicipalityRepository {
     // Get general data of municipalities by id department
     List<MunicipalityDataDto> getMunicipalitiesByIdDepartment(Integer idDepartment);
 
+    //Get municipality data by id department and name of municipality
+    List<MunicipalityDataDto> getMunicipalityByNameAndIdDepartment(String name, Integer idDepartment);
+
 }

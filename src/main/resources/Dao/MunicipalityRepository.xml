@@ -87,4 +87,16 @@
         GROUP BY m.municipality
     </select>
 
+    <select id="getMunicipalityByNameAndIdDepartment" resultType="com.example.demo.dto.MunicipalityDataDto">
+        select a.municipality as municipality, sum(d.data) as dato, d.id_datatype as type
+        from municipalities a, departaments b, locations c, data d, datatypes e
+        where a.municipality = #{name}
+          and b.id_departament = #{idDepartment}
+          and c.id_departament = b.id_departament
+          and c.id_location = d.id_location
+          and e.id_datatype = d.id_datatype
+          and c.id_municipality = a.id_municipality
+          GROUP BY a.municipality
+    </select>
+
 </mapper>
