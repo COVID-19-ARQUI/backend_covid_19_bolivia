@@ -114,7 +114,6 @@ public class PredictorService {
             dataSimpleDto.setDatatype(data.get(1).getDatatype());
             response.add(dataSimpleDto);
         }
-
         data.addAll(response);
         return data;
     }
@@ -151,7 +150,6 @@ public class PredictorService {
             dataSimpleDto.setDatatype(data.get(1).getDatatype());
             response.add(dataSimpleDto);
         }
-
         data.addAll(response);
         return data;
     }
@@ -188,7 +186,6 @@ public class PredictorService {
             dataSimpleDto.setDatatype(data.get(1).getDatatype());
             response.add(dataSimpleDto);
         }
-
         data.addAll(response);
         return data;
     }
@@ -225,7 +222,6 @@ public class PredictorService {
             dataSimpleDto.setDatatype(data.get(1).getDatatype());
             response.add(dataSimpleDto);
         }
-
         data.addAll(response);
         return data;
     }

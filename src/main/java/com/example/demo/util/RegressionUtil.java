@@ -81,7 +81,6 @@ public class RegressionUtil {
                 ypirma.add(yy);
             }
         }
-        LOGGER.warn("y prima" + ypirma);
         double b = getb(ypirma, x);
         double a = geta(ypirma, x, b);
         List<Double> predict = new ArrayList<Double>();
@@ -117,8 +116,7 @@ public class RegressionUtil {
                 xpirma.add(1.0);
             }
         }
-        LOGGER.warn("y prima" + ypirma);
-        LOGGER.warn("x prima" + xpirma);
+
         double b = getb(ypirma, xpirma);
         double aprima = geta(ypirma, xpirma, b);
         double a = Math.pow(10, aprima);
