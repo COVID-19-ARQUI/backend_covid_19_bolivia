@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -38,7 +39,7 @@ public class DataService {
         LOGGER.warn("EL RESULTADO");
 
         LOGGER.warn(idLocation != null ? idLocation.toString() : null);
-        LOGGER.warn("resultado: "+dailyDataDto.getConfirmed());
+        LOGGER.warn("resultado: " + dailyDataDto.getConfirmed());
         if (idLocation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find location");
         }
@@ -76,57 +77,57 @@ public class DataService {
 
     public DataUpdateDto dataid(DataUpdateDto dataUpdateDto, Transaction transaction) {
 
-        Integer idLocation = locationRepository.getLocationIds(dataUpdateDto.getIddepartment(),dataUpdateDto.getIdmunicipality(),dataUpdateDto.getIdcountry());
+        Integer idLocation = locationRepository.getLocationIds(dataUpdateDto.getIddepartment(), dataUpdateDto.getIdmunicipality(), dataUpdateDto.getIdcountry());
 
         LOGGER.warn(idLocation != null ? idLocation.toString() : null);
-        LOGGER.warn("el dato es: "+dataUpdateDto.getDataType());
+        LOGGER.warn("el dato es: " + dataUpdateDto.getDataType());
         if (idLocation == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find location");
         }
-        if(dataUpdateDto.getDataType()==1){
-            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
-            if(listaData.isEmpty()){
-                Data confirmed = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        if (dataUpdateDto.getDataType() == 1) {
+            List<DataDto> listaData = dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(), dataUpdateDto.getDataType(), idLocation);
+            if (listaData.isEmpty()) {
+                Data confirmed = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
                 dataRepository.addSingleData(confirmed);
-            }else{
+            } else {
                 LOGGER.info("ERROR");
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
             }
 
-        }else if(dataUpdateDto.getDataType()==2){
-            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
-            if(listaData.isEmpty()){
-                Data Deaths = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 2) {
+            List<DataDto> listaData = dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(), dataUpdateDto.getDataType(), idLocation);
+            if (listaData.isEmpty()) {
+                Data Deaths = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
                 dataRepository.addSingleData(Deaths);
-            }else{
+            } else {
                 LOGGER.info("ERROR");
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
             }
 
-        }else if(dataUpdateDto.getDataType()==3){
-            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
-            if(listaData.isEmpty()){
-                Data Recovered = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 3) {
+            List<DataDto> listaData = dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(), dataUpdateDto.getDataType(), idLocation);
+            if (listaData.isEmpty()) {
+                Data Recovered = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
                 dataRepository.addSingleData(Recovered);
-            }else{
+            } else {
                 LOGGER.info("ERROR");
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
             }
-        }else if(dataUpdateDto.getDataType()==4){
-            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
-            if(listaData.isEmpty()){
-                Data firstDose = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 4) {
+            List<DataDto> listaData = dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(), dataUpdateDto.getDataType(), idLocation);
+            if (listaData.isEmpty()) {
+                Data firstDose = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
                 dataRepository.addSingleData(firstDose);
-            }else{
+            } else {
                 LOGGER.info("ERROR");
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
             }
-        }else if(dataUpdateDto.getDataType()==5){
-            List<DataDto> listaData= dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(),dataUpdateDto.getDataType(),idLocation);
-            if(listaData.isEmpty()){
-                Data secondDose = new Data(null,dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
+        } else if (dataUpdateDto.getDataType() == 5) {
+            List<DataDto> listaData = dataRepository.verifyExistenceOfData(dataUpdateDto.getInDate(), dataUpdateDto.getDataType(), idLocation);
+            if (listaData.isEmpty()) {
+                Data secondDose = new Data(null, dataUpdateDto.getData(), dataUpdateDto.getInDate(), idLocation, dataUpdateDto.getDataType(), 1, transaction.getTxUserId().toString(), transaction.getTxHost(), transaction.getTxDate());
                 dataRepository.addSingleData(secondDose);
-            }else{
+            } else {
                 LOGGER.info("ERROR");
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "the data already exists");
             }

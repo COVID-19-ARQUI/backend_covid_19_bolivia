@@ -34,4 +34,5 @@ public interface DepartmentRepository {
     // Get list of all data by department id
     List<DataDto> getDataByDepartmentId(Integer idDepartment);
 
+    List<DataDto> getAccumulatedByDepartmentId(Integer idDepartment);
 }

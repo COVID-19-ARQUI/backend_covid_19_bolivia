@@ -23,12 +23,13 @@ GET http://localhost:8080/department/second/vaccinated/2
 Accept: application/json
 
 ### List of data by department id and datatype id
-GET http://localhost:8080/department/datatype/2/department/6
+GET https://localhost:8080/department/datatype/2/department/6
 Accept: application/json
 
 ### Department details data (Line 12)
-GET http://localhost:8080/department/data/2
+GET https://localhost:8080/department/data/2
 Accept: application/json
 
-
-
+###
+GET https://localhost:8080/department/all/accumulated
+Accept: application/json
