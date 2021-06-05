@@ -1,5 +1,5 @@
 ### Add new data
-POST http://localhost:8080/data/new/single
+POST https://localhost:8080/data/new/single
 Accept: application/json
 Content-Type: application/json
 
