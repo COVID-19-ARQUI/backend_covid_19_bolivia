@@ -40,7 +40,8 @@ public class PersonService {
         personRepository.createUser(persons);
         return registerUserDto;
     }
-    public Persons getUserById(Integer userid){
+
+    public Persons getUserById(Integer userid) {
         return personRepository.findUserByUserId(userid);
     }
 
