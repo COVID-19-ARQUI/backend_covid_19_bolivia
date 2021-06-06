@@ -83,10 +83,24 @@ public class PredictorService {
     }
 
     //lineal
+        // Country
     public List<DataSimpleDto> dataPredictedCountrylineal(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
         List<DataSimpleDto> recovered = dataRepository.listSpecificDataByIdCountry(3, idCountry);
+        List<DataSimpleDto> response = new ArrayList<>();
+        response.addAll(senddatalineal(confirmed, predictAmount));
+        response.addAll(senddatalineal(deaths, predictAmount));
+        response.addAll(senddatalineal(recovered, predictAmount));
+        return response;
+    }
+        //deparment
+    public List<DataSimpleDto> dataPredictedDeparmetlineal(Integer idDepartment, Integer predictAmount) throws ParseException {
+
+        List<DataSimpleDto> deaths = departmentRepository.listSpecificDataByIdDepartment(2, idDepartment);
+        List<DataSimpleDto> recovered = departmentRepository.listSpecificDataByIdDepartment(3, idDepartment);
+        List<DataSimpleDto> confirmed = departmentRepository.listSpecificDataByIdDepartment(1, idDepartment);
+
         List<DataSimpleDto> response = new ArrayList<>();
         response.addAll(senddatalineal(confirmed, predictAmount));
         response.addAll(senddatalineal(deaths, predictAmount));
@@ -119,6 +133,7 @@ public class PredictorService {
     }
 
     //log
+        // Country
     public List<DataSimpleDto> dataPredictedCountrylog(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
@@ -129,6 +144,20 @@ public class PredictorService {
         response.addAll(senddatalog(recovered, predictAmount));
         return response;
     }
+        //Depatment
+   public List<DataSimpleDto> dataPredictedDeparmetlog(Integer idDepartment, Integer predictAmount) throws ParseException {
+
+            List<DataSimpleDto> confirmed = departmentRepository.listSpecificDataByIdDepartment(1, idDepartment);
+            List<DataSimpleDto> deaths = departmentRepository.listSpecificDataByIdDepartment(2, idDepartment);
+            List<DataSimpleDto> recovered = departmentRepository.listSpecificDataByIdDepartment(3, idDepartment);
+
+            List<DataSimpleDto> response = new ArrayList<>();
+            response.addAll(senddatalog(confirmed, predictAmount));
+            response.addAll(senddatalog(deaths, predictAmount));
+            response.addAll(senddatalog(recovered, predictAmount));
+            return response;
+        }
+
 
     public List<DataSimpleDto> senddatalog(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
         RegressionUtil regressionUtil = new RegressionUtil();
@@ -155,10 +184,24 @@ public class PredictorService {
     }
 
     //exp
+        // Country
     public List<DataSimpleDto> dataPredictedCountryexp(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
         List<DataSimpleDto> recovered = dataRepository.listSpecificDataByIdCountry(3, idCountry);
+        List<DataSimpleDto> response = new ArrayList<>();
+        response.addAll(senddataexp(confirmed, predictAmount));
+        response.addAll(senddataexp(deaths, predictAmount));
+        response.addAll(senddataexp(recovered, predictAmount));
+        return response;
+    }
+        //dep
+    public List<DataSimpleDto> dataPredictedDeparmetlexp(Integer idDepartment, Integer predictAmount) throws ParseException {
+
+        List<DataSimpleDto> confirmed = departmentRepository.listSpecificDataByIdDepartment(1, idDepartment);
+        List<DataSimpleDto> deaths = departmentRepository.listSpecificDataByIdDepartment(2, idDepartment);
+        List<DataSimpleDto> recovered = departmentRepository.listSpecificDataByIdDepartment(3, idDepartment);
+
         List<DataSimpleDto> response = new ArrayList<>();
         response.addAll(senddataexp(confirmed, predictAmount));
         response.addAll(senddataexp(deaths, predictAmount));
@@ -189,8 +232,8 @@ public class PredictorService {
         data.addAll(response);
         return data;
     }
-//hipebolica potencial
-
+// potencial
+    // Country
     public List<DataSimpleDto> dataPredictedCountrypow(Integer idCountry, Integer predictAmount) throws ParseException {
         List<DataSimpleDto> confirmed = dataRepository.listSpecificDataByIdCountry(1, idCountry);
         List<DataSimpleDto> deaths = dataRepository.listSpecificDataByIdCountry(2, idCountry);
@@ -201,6 +244,20 @@ public class PredictorService {
         response.addAll(senddatapow(recovered, predictAmount));
         return response;
     }
+    //dep
+    public List<DataSimpleDto> dataPredictedDeparmetpow(Integer idDepartment, Integer predictAmount) throws ParseException {
+
+        List<DataSimpleDto> confirmed = departmentRepository.listSpecificDataByIdDepartment(1, idDepartment);
+        List<DataSimpleDto> deaths = departmentRepository.listSpecificDataByIdDepartment(2, idDepartment);
+        List<DataSimpleDto> recovered = departmentRepository.listSpecificDataByIdDepartment(3, idDepartment);
+
+        List<DataSimpleDto> response = new ArrayList<>();
+        response.addAll(senddatapow(confirmed, predictAmount));
+        response.addAll(senddatapow(deaths, predictAmount));
+        response.addAll(senddatapow(recovered, predictAmount));
+        return response;
+    }
+
 
     public List<DataSimpleDto> senddatapow(List<DataSimpleDto> data, Integer predictAmount) throws ParseException {
         RegressionUtil regressionUtil = new RegressionUtil();

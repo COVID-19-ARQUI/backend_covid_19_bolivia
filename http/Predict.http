@@ -19,5 +19,5 @@ GET http://localhost:8080/predict/country/exp/29?cant=15
 Accept: application/json
 
 ### Predict data by country pow (Hiper)
-GET http://localhost:8080/predict/country/pow/29?cant=15
+GET https://localhost:8080/predict/country/pow/29?cant=15
 Accept: application/json

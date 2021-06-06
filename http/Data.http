@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Last data by location id
-GET http://localhost:8080/data/last/day/29
+GET https://localhost:8080/data/last/day/29
 Accept: application/json
 Content-Type: application/json
 
