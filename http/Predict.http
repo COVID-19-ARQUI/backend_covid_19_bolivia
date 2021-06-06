@@ -11,13 +11,13 @@ GET http://localhost:8080/predict/country/lineal/29?cant=10
 Accept: application/json
 
 ### Predict data by country log
-GET http://localhost:8080/predict/country/log/29?cant=15
+GET http://localhost:8080/predict/country/log/29?cant=10
 Accept: application/json
 
 ### Predict data by country exp
-GET http://localhost:8080/predict/country/exp/29?cant=15
+GET http://localhost:8080/predict/country/exp/29?cant=10
 Accept: application/json
 
 ### Predict data by country pow (Hiper)
-GET https://localhost:8080/predict/country/pow/29?cant=15
+GET http://localhost:8080/predict/country/pow/29?cant=15
 Accept: application/json

@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Departments;
-import com.example.demo.dto.DataDto;
-import com.example.demo.dto.DataSimpleDto;
-import com.example.demo.dto.DepartmentDto;
+import com.example.demo.dto.*;
 import com.example.demo.service.DataService;
 import com.example.demo.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,4 +63,10 @@ public class DepartmentController {
     public List<DataSimpleDto> listSpecificDataByIdDepartment(@PathVariable Integer idDatatype, @PathVariable Integer idDepartment) {
         return dataService.listSpecificDataByIdDepartment(idDatatype, idDepartment);
     }
+
+    @RequestMapping(value = "/all/accumulated", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DashboardChartsDto> getAccumulatedData() {
+        return departmentService.getAccumulatedDataByDepartment();
+    }
+
 }
