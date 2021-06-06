@@ -95,7 +95,9 @@
         where a.id_datatype = #{idDatatype}
           and l.id_departament = #{idDepartment}
           and l.id_municipality = 0
+          and a.id_datatype=b.id_datatype
           and b.id_location = l.id_location
+            order by b.in_date
     </select>
 
     <select id="getDataByDepartmentId" resultType="com.example.demo.dto.DataDto">

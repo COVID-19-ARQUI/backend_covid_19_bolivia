@@ -21,3 +21,6 @@ Accept: application/json
 ### Predict data by country pow (Hiper)
 GET http://localhost:8080/predict/country/pow/29?cant=15
 Accept: application/json
+###cities/log/
+GET https://localhost:8080/predict/cities/log/2?cant=15
+Accept: application/json

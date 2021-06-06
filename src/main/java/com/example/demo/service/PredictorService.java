@@ -5,6 +5,8 @@ import com.example.demo.dao.DepartmentRepository;
 import com.example.demo.dto.DataSimpleDto;
 import com.example.demo.util.PredictorUtil;
 import com.example.demo.util.RegressionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ import java.util.List;
 public class PredictorService {
     private final DepartmentRepository departmentRepository;
     private final DataRepository dataRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PredictorService.class);
 
     @Autowired
     public PredictorService(DepartmentRepository departmentRepository, DataRepository dataRepository) {
@@ -100,11 +103,12 @@ public class PredictorService {
         List<DataSimpleDto> deaths = departmentRepository.listSpecificDataByIdDepartment(2, idDepartment);
         List<DataSimpleDto> recovered = departmentRepository.listSpecificDataByIdDepartment(3, idDepartment);
         List<DataSimpleDto> confirmed = departmentRepository.listSpecificDataByIdDepartment(1, idDepartment);
-
+        LOGGER.info(String.valueOf(deaths.size()));
         List<DataSimpleDto> response = new ArrayList<>();
         response.addAll(senddatalineal(confirmed, predictAmount));
-        response.addAll(senddatalineal(deaths, predictAmount));
-        response.addAll(senddatalineal(recovered, predictAmount));
+       response.addAll(senddatalineal(deaths, predictAmount));
+       LOGGER.info(String.valueOf(response.size()));
+       response.addAll(senddatalineal(recovered, predictAmount));
         return response;
     }
 
@@ -129,6 +133,7 @@ public class PredictorService {
             response.add(dataSimpleDto);
         }
         data.addAll(response);
+        //LOGGER.error(data.toString());
         return data;
     }
 
