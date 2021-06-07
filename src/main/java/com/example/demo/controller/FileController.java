@@ -31,7 +31,7 @@ public class FileController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FileController.class);
 
-    @PostMapping("/upload")
+    @RequestMapping(value = "/upload")
     public ResponseEntity<String> uploadData(@RequestParam("file") MultipartFile file, HttpServletRequest request) throws Exception {
         if (file == null) {
             throw new RuntimeException("You must select the a file for uploading");

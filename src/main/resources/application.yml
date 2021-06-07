@@ -7,6 +7,9 @@ spring:
     url: jdbc:mysql://us-cdbr-east-03.cleardb.com/heroku_fe1b8c9c4911eaf
     username: b8c0c234043a4f
     password: 9b5125d7
+    #    url: jdbc:mysql://localhost:3306/arqui
+    #    username: root
+    #    password: root
 
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -33,3 +36,17 @@ server:
     key-store: classpath:localhost.p12
     key-store-type: PKCS12
     key-password: changeit
+
+management:
+  endpoint:
+    info:
+      enabled: true
+      more:
+        detail: "UP"
+    health:
+      status:
+        http-mapping:
+          down: 503
+          fatal: 503
+          out-of-service: 503
+      show-details: always
